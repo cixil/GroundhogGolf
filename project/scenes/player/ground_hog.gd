@@ -34,6 +34,7 @@ func _tx_to_dig():
 	set_collision_mask_value(1, false)
 	current_mode = mode.dig
 	lump_raise_interval.start()
+	Signals.hog_entered_dirt.emit()
 
 func _tx_to_walk():
 	current_mode = mode.transition
@@ -44,6 +45,7 @@ func _tx_to_walk():
 	set_collision_mask_value(1, true)
 	current_mode = mode.walk
 	lump_raise_interval.stop()
+	Signals.hog_exited_dirt.emit()
 
 func _raise_dirt_lump():
 	pass

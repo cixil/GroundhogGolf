@@ -53,7 +53,7 @@ mesh = SubResource("BoxMesh_nwsqw")
 shape = SubResource("ConcavePolygonShape3D_x3uuf")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85049, 1.13337, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06306, -0.0827738, 0)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 
