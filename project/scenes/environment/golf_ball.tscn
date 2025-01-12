@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://buvqi40uk6vqb"]
+
+[ext_resource type="PackedScene" uid="uid://x2l8hmp40dwg" path="res://models/golf-ball.glb" id="1_wi7hp"]
+[ext_resource type="Script" path="res://scenes/environment/golf_ball.gd" id="1_xyi4s"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eyynn"]
+radius = 0.0733205
+
+[node name="GolfBall" type="RigidBody3D"]
+collision_layer = 9
+collision_mask = 21
+mass = 0.2
+linear_damp = 1.0
+script = ExtResource("1_xyi4s")
+
+[node name="golf-ball2" parent="." instance=ExtResource("1_wi7hp")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_eyynn")

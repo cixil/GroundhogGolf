@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://yah42mh215ia"]
+
+[ext_resource type="Script" path="res://scenes/player/dirt_lump.gd" id="1_t75bi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ampwm"]
+albedo_color = Color(0.52447, 0.27283, 0.16559, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hloiy"]
+material = SubResource("StandardMaterial3D_ampwm")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xy7wr"]
+radius = 0.098096
+
+[sub_resource type="Animation" id="Animation_4d2sv"]
+resource_name = "expand"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 2.96667),
+"transitions": PackedFloat32Array(1, 0.406126, 0.406126, 1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(1.1, 1.1, 1.1), Vector3(1.1, 1.1, 1.1), Vector3(1, 0.2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.0198917, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8elc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jhei"]
+_data = {
+"RESET": SubResource("Animation_8elc7"),
+"expand": SubResource("Animation_4d2sv")
+}
+
+[node name="DirtLump" type="Node3D"]
+script = ExtResource("1_t75bi")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 17
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_hloiy")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_xy7wr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6jhei")
+}
+autoplay = "expand"
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

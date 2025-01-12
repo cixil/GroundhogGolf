@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://db6ieujpiy73q"]
+
+[ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
+[ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
+[ext_resource type="PackedScene" uid="uid://yah42mh215ia" path="res://scenes/player/dirt_lump.tscn" id="2_if6fa"]
+[ext_resource type="PackedScene" uid="uid://bkwontgn0746l" path="res://scenes/environment/surface_obstacle.tscn" id="2_sqwbw"]
+[ext_resource type="PackedScene" uid="uid://bltxires7oi0u" path="res://scenes/environment/golf_tee.tscn" id="5_eb384"]
+[ext_resource type="PackedScene" uid="uid://buvqi40uk6vqb" path="res://scenes/environment/golf_ball.tscn" id="6_figgh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15tv3"]
+sky_top_color = Color(0.302046, 0.445495, 0.698011, 1)
+sky_horizon_color = Color(0.499552, 0.689335, 0.758045, 1)
+
+[sub_resource type="Sky" id="Sky_3pk0y"]
+sky_material = SubResource("ProceduralSkyMaterial_15tv3")
+
+[sub_resource type="Environment" id="Environment_nfbip"]
+background_mode = 2
+sky = SubResource("Sky_3pk0y")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xj8pm"]
+albedo_color = Color(0.315794, 0.433667, 0.308167, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwsqw"]
+material = SubResource("StandardMaterial3D_xj8pm")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x3uuf"]
+data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nfbip")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0282007, 0.999602, 0, -0.999602, -0.0282007, 0, 10.7994, 0)
+shadow_enabled = true
+
+[node name="UpperGround" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_0iia1")
+dirt_lump_scene = ExtResource("2_if6fa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UpperGround"]
+mesh = SubResource("BoxMesh_nwsqw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpperGround"]
+shape = SubResource("ConcavePolygonShape3D_x3uuf")
+
+[node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85049, 1.13337, 0)
+
+[node name="CameraPivot" type="Node3D" parent="GroundHog"]
+
+[node name="Camera3D" type="Camera3D" parent="GroundHog/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.864556, 0.502537, 0, -0.502537, 0.864556, -0.134391, 1.73482, 3.18275)
+projection = 1
+current = true
+size = 3.0
+far = 100.0
+
+[node name="SurfaceObstacle" parent="." instance=ExtResource("2_sqwbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00836086, -0.5, -2.47508)
+
+[node name="SurfaceObstacle2" parent="." instance=ExtResource("2_sqwbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49445, -0.500001, -3.04658)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="GolfBall2" parent="Environment" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89754, -0.322018, -1.0925)
+
+[node name="GolfTee" parent="Environment" instance=ExtResource("5_eb384")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95457, -0.494033, -1.37862)
+
+[node name="GolfBall" parent="Environment/GolfTee" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)
+
+[node name="GolfTee2" parent="Environment" instance=ExtResource("5_eb384")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06351, -0.494033, -3.17446)
+
+[node name="GolfBall" parent="Environment/GolfTee2" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)

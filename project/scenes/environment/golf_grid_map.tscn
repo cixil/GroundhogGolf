@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cemay072x3ki1"]
+
+[ext_resource type="MeshLibrary" uid="uid://cfijlyhtnwxli" path="res://other/MeshLibrary.tres" id="1_tn0oi"]
+[ext_resource type="Script" path="res://scenes/environment/golf_grid_map.gd" id="2_23y61"]
+[ext_resource type="PackedScene" uid="uid://yah42mh215ia" path="res://scenes/player/dirt_lump.tscn" id="3_r4x6t"]
+
+[node name="GolfGridMap" type="GridMap"]
+mesh_library = ExtResource("1_tn0oi")
+collision_mask = 0
+script = ExtResource("2_23y61")
+dirt_lump_scene = ExtResource("3_r4x6t")
