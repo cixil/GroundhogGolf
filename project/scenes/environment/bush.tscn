@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://okues4712uh"]
+
+[ext_resource type="PackedScene" uid="uid://c5dh3rgp30jvm" path="res://models/busch.glb" id="1_db32o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k7elg"]
+height = 0.746703
+radius = 0.265373
+
+[node name="Bush" type="StaticBody3D"]
+collision_layer = 33
+collision_mask = 0
+
+[node name="busch2" parent="." instance=ExtResource("1_db32o")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.0583161, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377855, 0)
+shape = SubResource("CylinderShape3D_k7elg")

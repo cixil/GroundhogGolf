@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Metamorphoses"
-run/main_scene="res://scenes/main_scene/world.tscn"
+run/main_scene="res://scenes/tests/test_follow_path.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -69,3 +69,4 @@ stand={
 3d_physics/layer_3="ground"
 3d_physics/layer_4="Golfball"
 3d_physics/layer_5="dirtlump"
+3d_physics/layer_6="underground_obstacle"
