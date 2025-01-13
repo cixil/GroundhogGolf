@@ -20,6 +20,7 @@ func enter(arr=[]):
 	var angle = Vector3(0,0,1).signed_angle_to(body.direction, Vector3(0,1,0))
 	var new_pos:Vector3 = Vector3(0,0,distance_to_fall).rotated(Vector3(0,1,0), angle)
 	body.global_position += new_pos
+	Signals.golfer_tripped.emit()
 
 func _animation_finished(anim_name:String):
 	match anim_name:

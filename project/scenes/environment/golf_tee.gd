@@ -3,6 +3,7 @@ extends Node3D
 
 
 func fall():
+	Signals.golf_tee_fell.emit()
 	animation_player.play("fall")
 
 func reset():

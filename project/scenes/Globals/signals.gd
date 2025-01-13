@@ -8,3 +8,5 @@ signal lump_raised_at(pos:Vector3)
 #### Added for audio #####
 signal hog_entered_dirt
 signal hog_exited_dirt
+signal golf_tee_fell
+signal golfer_tripped
