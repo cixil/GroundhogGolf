@@ -7,7 +7,11 @@ class_name Golfer
 
 var walk_speed := 1.0
 
+
+## Golfer Roll #################
 @export var golfer:bool = false
+@export var tee_to_golf:GolfTee
+
 @export var holding:Holdable.objects = Holdable.objects.None
 
 ## Default home position to return to
@@ -28,13 +32,15 @@ func _ready() -> void:
 	
 	if tee_to_monitor:
 		Signals.golf_tee_fell.connect(_on_tee_fell)
+	if tee_to_golf:
+		Signals.golf_tee_fell.connect(_on_golf_tee_fell)
 	
 	hold_in_hand(holding)
 	
 	if path_to_follow:
 		state_machine.start("FollowPath", [path_to_follow])
 	elif golfer:
-		state_machine.start('golf', [tee_to_monitor])
+		state_machine.start('golf', [tee_to_golf])
 	else:
 		state_machine.start('idle')
 
@@ -48,17 +54,30 @@ func hold_in_hand(obj:Holdable.objects):
 func release_hand_object(obj:Node3D):
 	return
 
+func _on_golf_tee_fell(tee:GolfTee):
+	if tee == tee_to_golf:
+		if state_machine.current_state == $StateMachine/Golf and $StateMachine/Golf.about_to_swing:
+			await $StateMachine/Golf.just_swung
+			state_machine.transition_to("getangry")
+		else:
+			state_machine.transition_to('noticehog', [tee])
+
 func _on_tee_fell(tee:GolfTee):
 	if tee == tee_to_monitor:
 		state_machine.transition_to('resettee', [tee])
+
+
+
 
 func _on_lump_detector_body_entered(body: Node3D) -> void:
 	if animation_player.current_animation == 'walking-forward':
 		state_machine.transition_to('trip')
 
+# TODO need to return to the last state not follow path
 
 func _on_trip_state_ended() -> void:
-	state_machine.transition_to('followpath', [path_to_follow])
+	if path_to_follow:
+		state_machine.transition_to('followpath', [path_to_follow])
 
 
 func _on_reset_tee_state_ended() -> void:

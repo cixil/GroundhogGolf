@@ -120,5 +120,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30262, -4.99815, 0.481902)
 disabled = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.904108, 0, 0.42729, 0, 1, 0, -0.42729, 0, -0.904108, 8.42278, 0, 1.92194)
+transform = Transform3D(-0.904108, 0, 0.427291, 0, 1, 0, -0.427291, 0, -0.904108, 8.42277, 0, 1.92194)
 progress = 5.28

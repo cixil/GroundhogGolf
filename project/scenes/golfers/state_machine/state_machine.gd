@@ -28,12 +28,18 @@ func _physics_process(delta: float) -> void:
 
 func start(init_state:String, init_args:Array = []):
 	current_state = states[init_state.to_lower()]
+	current_state.active = true
 	await current_state.enter(init_args)
 	transitioning = false
 
 func transition_to(new_state:String, args:Array = []):
 	transitioning = true
 	await current_state.exit()
+	#current_state.process_mode = Node.PROCESS_MODE_DISABLED
+	current_state.active = false
+	
 	current_state = states[new_state.to_lower()]
+	#current_state.process_mode = Node.PROCESS_MODE_INHERIT
+	current_state.active = true
 	await current_state.enter(args)
 	transitioning = false

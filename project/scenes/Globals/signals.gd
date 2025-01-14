@@ -6,6 +6,9 @@ signal lump_raised_at(pos:Vector3)
 
 signal golf_tee_fell(tee:GolfTee)
 
+# This is an attempted hit at the ball
+signal golfer_swung(golfer:Golfer)
+
 
 #### Added for audio #####
 signal hog_entered_dirt

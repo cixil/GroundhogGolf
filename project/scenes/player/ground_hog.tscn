@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bnt1aqmoo4cw"]
+[gd_scene load_steps=21 format=4 uid="uid://bnt1aqmoo4cw"]
 
 [ext_resource type="Script" path="res://scenes/player/ground_hog.gd" id="1_ly145"]
 
@@ -917,6 +917,9 @@ albedo_color = Color(0.604662, 0.417076, 0.310678, 1)
 material = SubResource("StandardMaterial3D_bnemb")
 size = Vector3(0.2, 0.2, 0.3)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h67b6"]
+size = Vector3(0.378403, 0.362625, 0.492188)
+
 [node name="GroundHog" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 37
@@ -1061,4 +1064,13 @@ visible = false
 mesh = SubResource("BoxMesh_bpqsd")
 skeleton = NodePath("../..")
 
+[node name="ObstacleDetector" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0191879, 0.0784073, -0.0517578)
+shape = SubResource("BoxShape3D_h67b6")
+
 [connection signal="timeout" from="DigEffects/LumpRaiseInterval" to="." method="_on_lump_raise_interval_timeout"]
+[connection signal="body_entered" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_entered"]
+[connection signal="body_exited" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_exited"]

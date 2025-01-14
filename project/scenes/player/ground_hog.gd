@@ -18,8 +18,15 @@ var jump_impulse = 5
 
 var _target_velocity = Vector3.ZERO
 
-enum mode {dig, walk, transition}
+enum mode {
+	dig, 
+	walk, 
+	transition, 
+	pending_walk  # awaiting walk transition but theres currently an obstacle above us
+	}
 var current_mode = mode.walk
+
+var can_emerge := true
 
 func _ready():
 	_tx_to_walk()
@@ -47,8 +54,6 @@ func _tx_to_walk():
 	lump_raise_interval.stop()
 	Signals.hog_exited_dirt.emit()
 
-func _raise_dirt_lump():
-	pass
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -72,11 +77,14 @@ func _physics_process(delta):
 	elif is_on_floor() and Input.is_action_just_pressed("dig"):
 		_tx_to_dig()
 	elif Input.is_action_just_released("dig"):
-		_tx_to_walk()
+		if can_emerge:
+			_tx_to_walk()
+		else:
+			current_mode = mode.pending_walk
 	
 	
 	match current_mode:
-		mode.dig:
+		mode.dig, mode.pending_walk:
 				dirt_particles.emitting = direction != Vector3.ZERO
 				_target_velocity.x = direction.x * dig_speed_x
 				_target_velocity.z = direction.z * (dig_speed_x + 0.5)
@@ -92,10 +100,6 @@ func _physics_process(delta):
 			_target_velocity.z = direction.z * (walk_speed_x + 0.5)
 	
 	# Ground Velocity
-
-	
-	
-	
 	# Vertical velocity
 	#if is_on_floor() and Input.is_action_just_pressed("dig"):
 		#_target_velocity.y = jump_impulse
@@ -108,10 +112,18 @@ func _physics_process(delta):
 	if collision:
 		var collider = collision.get_collider()
 		if collider is GolfBall:
-			print(collider)
-			collider.apply_impulse(_target_velocity*delta)
+			collider.apply_impulse(_target_velocity*delta*2)
 	
 
 
 func _on_lump_raise_interval_timeout() -> void:
-	Signals.lump_raised_at.emit(position)
+	Signals.lump_raised_at.emit(global_position)
+
+
+func _on_obstacle_detector_body_entered(body: Node3D) -> void:
+	can_emerge = false
+
+func _on_obstacle_detector_body_exited(body: Node3D) -> void:
+	can_emerge = true
+	if current_mode == mode.pending_walk:
+		_tx_to_walk()
