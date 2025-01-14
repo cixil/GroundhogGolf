@@ -26,10 +26,10 @@ albedo_color = Color(0.315794, 0.433667, 0.308167, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nwsqw"]
 material = SubResource("StandardMaterial3D_xj8pm")
-size = Vector3(20, 1, 20)
+size = Vector3(30, 1, 30)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x3uuf"]
-data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2kji"]
+size = Vector3(30, 1, 30)
 
 [node name="World" type="Node3D"]
 
@@ -51,7 +51,7 @@ dirt_lump_scene = ExtResource("2_if6fa")
 mesh = SubResource("BoxMesh_nwsqw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperGround"]
-shape = SubResource("ConcavePolygonShape3D_x3uuf")
+shape = SubResource("BoxShape3D_u2kji")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06306, -0.0827738, 0)

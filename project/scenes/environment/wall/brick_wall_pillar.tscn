@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1vvmsvinguvr"]
+
+[ext_resource type="PackedScene" uid="uid://qseiv6rhh4n3" path="res://models/wall/stone-pillar.glb" id="1_qvnad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8v6t"]
+size = Vector3(0.367615, 2.5681, 0.563904)
+
+[node name="BrickWallPillar" type="StaticBody3D"]
+collision_layer = 33
+collision_mask = 0
+
+[node name="stone-pillar" parent="." instance=ExtResource("1_qvnad")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125351, 1.3058, 0.0202332)
+shape = SubResource("BoxShape3D_v8v6t")
