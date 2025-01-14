@@ -13,4 +13,7 @@ signal golfer_swung(golfer:Golfer)
 #### Added for audio #####
 signal hog_entered_dirt
 signal hog_exited_dirt
+signal hog_started_walking
+signal hog_stopped_walking
+signal hog_touched_ball
 signal golfer_tripped

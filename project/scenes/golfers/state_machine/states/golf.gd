@@ -48,3 +48,4 @@ func real_swing():
 	about_to_swing = false
 	just_swung.emit()
 	Signals.golfer_swung.emit(body)
+	

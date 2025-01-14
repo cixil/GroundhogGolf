@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://rfysofgc0ssw"]
+[gd_scene load_steps=6 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
-[ext_resource type="AudioStream" uid="uid://cgqhvltv7u4y5" path="res://audio/sound.wav" id="2_415kv"]
 [ext_resource type="AudioStream" uid="uid://cg8o6x2uukm4e" path="res://audio/Music/digeridoo.wav" id="2_mdx43"]
-[ext_resource type="AudioStream" uid="uid://bktuqedeuikod" path="res://audio/sound_repeat.wav" id="4_e8il1"]
+[ext_resource type="AudioStream" uid="uid://c60hnnc08hske" path="res://audio/sfx/groundhog touching ball.wav" id="2_v0d0s"]
+[ext_resource type="AudioStream" uid="uid://ctccrqmqgup5t" path="res://audio/sfx/Groundhog grass stepping.wav" id="3_dxhrd"]
+[ext_resource type="AudioStream" uid="uid://1ejc452n8oc" path="res://audio/sfx/digging sfx.wav" id="4_nogc6"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_ovd6e")
-sfx = Array[AudioStream]([ExtResource("2_415kv"), ExtResource("2_mdx43"), ExtResource("4_e8il1")])
+sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6")])
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 

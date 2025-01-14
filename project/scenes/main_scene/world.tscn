@@ -62,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.31396, 0)
 shape = SubResource("BoxShape3D_u2kji")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90834, 0, -1.34814)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18314, 0, 0.374394)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)
@@ -376,5 +376,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3866, -0.0059959, -1.05154
 
 [node name="GolfBall" parent="Environment/GolfTee2" instance=ExtResource("6_figgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)
+
+[node name="GolfBall2" parent="Environment/GolfTee2" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21587, 0.172015, 0.766968)
 
 [node name="Node3D3" type="Node3D" parent="Environment"]
