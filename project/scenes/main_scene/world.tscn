@@ -1,15 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=21 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
 [ext_resource type="PackedScene" uid="uid://yah42mh215ia" path="res://scenes/player/dirt_lump.tscn" id="2_if6fa"]
-[ext_resource type="PackedScene" uid="uid://mgs8ef2jfsy1" path="res://scenes/golfers/Golfer.tscn" id="4_g06dw"]
+[ext_resource type="PackedScene" uid="uid://ckws1qvsqkhv6" path="res://scenes/golfers/individuals/golfer_picker_upper.tscn" id="4_sn38s"]
 [ext_resource type="PackedScene" uid="uid://d1vvmsvinguvr" path="res://scenes/environment/wall/brick_wall_pillar.tscn" id="5_180vv"]
 [ext_resource type="PackedScene" uid="uid://bltxires7oi0u" path="res://scenes/environment/golf_tee.tscn" id="5_eb384"]
+[ext_resource type="PackedScene" uid="uid://b405n7h8xvh55" path="res://scenes/golfers/individuals/golfer_swinger.tscn" id="5_nep4w"]
 [ext_resource type="PackedScene" uid="uid://buvqi40uk6vqb" path="res://scenes/environment/golf_ball.tscn" id="6_figgh"]
 [ext_resource type="PackedScene" uid="uid://uals5nognm5c" path="res://scenes/environment/wall/brick_wall_section.tscn" id="6_w7cal"]
 [ext_resource type="PackedScene" uid="uid://bwkaxu1or8kgd" path="res://scenes/environment/wall/gate.tscn" id="7_2jnrk"]
 [ext_resource type="PackedScene" uid="uid://okues4712uh" path="res://scenes/environment/bush.tscn" id="7_8t7xo"]
+[ext_resource type="PackedScene" uid="uid://np0vw36v8swo" path="res://scenes/environment/mud_pit.tscn" id="8_in42m"]
+[ext_resource type="PackedScene" uid="uid://cmpbhj8q7u8lu" path="res://scenes/environment/hole.tscn" id="9_whhha"]
 [ext_resource type="PackedScene" uid="uid://dx1i63pbpp6v" path="res://scenes/environment/ornamental_golf_cart.tscn" id="11_l3ify"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15tv3"]
@@ -33,10 +36,7 @@ material = SubResource("StandardMaterial3D_xj8pm")
 size = Vector3(30, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2kji"]
-size = Vector3(30, 5.62793, 50)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7bva8"]
-top_radius = 0.1
+size = Vector3(30, 5.628, 37.5723)
 
 [node name="World" type="Node3D"]
 
@@ -54,15 +54,46 @@ collision_mask = 0
 script = ExtResource("1_0iia1")
 dirt_lump_scene = ExtResource("2_if6fa")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="UpperGround"]
+[node name="meshes" type="Node3D" parent="UpperGround"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UpperGround/meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113586, 0, 13.5189)
 mesh = SubResource("BoxMesh_nwsqw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UpperGround/meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182312, 0, -37.2405)
+mesh = SubResource("BoxMesh_nwsqw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="UpperGround/meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3737, 0, -10.2633)
+mesh = SubResource("BoxMesh_nwsqw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="UpperGround/meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3915, 0, -17.4019)
+mesh = SubResource("BoxMesh_nwsqw")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperGround"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.31396, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246124, -2.31396, 7.3009)
+shape = SubResource("BoxShape3D_u2kji")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="UpperGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3164, -2.31396, -21.2805)
+shape = SubResource("BoxShape3D_u2kji")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="UpperGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80436, -2.31396, -27.2825)
+shape = SubResource("BoxShape3D_u2kji")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="UpperGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3824, -2.31396, -14.9833)
 shape = SubResource("BoxShape3D_u2kji")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18314, 0, 0.374394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27805, 0.28717, 19.0215)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)
@@ -78,15 +109,16 @@ far = 100.0
 
 [node name="GolferScenarioGolfing" type="Node3D" parent="Environment"]
 
-[node name="GolferPickUp" parent="Environment/GolferScenarioGolfing" node_paths=PackedStringArray("tee_to_monitor") instance=ExtResource("4_g06dw")]
-transform = Transform3D(-0.375901, 0, 0.92666, 0, 1, 0, -0.92666, 0, -0.375901, 3.25415, 0, -0.544312)
+[node name="GolferPickerUpper" parent="Environment/GolferScenarioGolfing" node_paths=PackedStringArray("tee_to_monitor", "ball_to_monitor") instance=ExtResource("4_sn38s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36847, 0, -2.30408)
+collision_layer = 1
 tee_to_monitor = NodePath("../GolfTee")
+ball_to_monitor = NodePath("../GolfTee/GolfBall")
 
-[node name="Golfer" parent="Environment/GolferScenarioGolfing" node_paths=PackedStringArray("tee_to_golf") instance=ExtResource("4_g06dw")]
-transform = Transform3D(-0.375901, 0, 0.92666, 0, 1, 0, -0.92666, 0, -0.375901, 3.57782, 0, -1.57996)
-golfer = true
+[node name="GolferSwinger" parent="Environment/GolferScenarioGolfing" node_paths=PackedStringArray("tee_to_golf") instance=ExtResource("5_nep4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81384, 0, -1.3031)
+collision_layer = 1
 tee_to_golf = NodePath("../GolfTee")
-holding = 1
 
 [node name="GolfTee" parent="Environment/GolferScenarioGolfing" instance=ExtResource("5_eb384")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6696, -0.0059959, -1.45174)
@@ -94,12 +126,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6696, -0.0059959, -1.45174)
 [node name="GolfBall" parent="Environment/GolferScenarioGolfing/GolfTee" node_paths=PackedStringArray("tee", "hole", "golfer") instance=ExtResource("6_figgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)
 tee = NodePath("..")
-hole = NodePath("../../Hole")
-golfer = NodePath("../../Golfer")
+hole = NodePath("../../Hole2")
+golfer = NodePath("../../GolferSwinger")
 
-[node name="Hole" type="MeshInstance3D" parent="Environment/GolferScenarioGolfing"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86816, -0.894775, -11.2684)
-mesh = SubResource("CylinderMesh_7bva8")
+[node name="MudPit" parent="Environment/GolferScenarioGolfing" instance=ExtResource("8_in42m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4201, 0, -7.32117)
+
+[node name="MudPit2" parent="Environment/GolferScenarioGolfing" instance=ExtResource("8_in42m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86182, 0, 8.09485)
+
+[node name="Hole2" parent="Environment/GolferScenarioGolfing" instance=ExtResource("9_whhha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9444, -1.00098, -11.9675)
 
 [node name="GolferScenario2" type="Node3D" parent="Environment"]
 
@@ -381,3 +418,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21587, 0.172015, 0.766968)
 
 [node name="Node3D3" type="Node3D" parent="Environment"]
+
+[connection signal="reset_ball" from="Environment/GolferScenarioGolfing/GolferPickerUpper" to="Environment/GolferScenarioGolfing/GolferSwinger" method="resume_golfing"]

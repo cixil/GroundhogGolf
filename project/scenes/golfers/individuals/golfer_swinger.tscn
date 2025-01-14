@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b405n7h8xvh55"]
+
+[ext_resource type="PackedScene" uid="uid://mgs8ef2jfsy1" path="res://scenes/golfers/base_scene/Golfer.tscn" id="1_x1nem"]
+[ext_resource type="Script" path="res://scenes/golfers/individuals/golfer_swinger.gd" id="2_f5mw1"]
+
+[node name="GolferSwinger" instance=ExtResource("1_x1nem")]
+script = ExtResource("2_f5mw1")
+holding = 1
+
+[node name="Skeleton3D" parent="Pivot/man2/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.73139, -0.0297859, 0.0126847, 0.68119)
+bones/1/rotation = Quaternion(-0.00538799, -0.0020293, 0.0184445, 0.999813)
+bones/2/rotation = Quaternion(-0.00181007, -0.000465771, 0.00356993, 0.999992)
+bones/3/rotation = Quaternion(-0.00180895, -0.000446916, 0.00357147, 0.999992)
+bones/4/rotation = Quaternion(0.0433658, 0.00322453, -0.00141678, 0.999053)
+bones/5/rotation = Quaternion(-0.0513554, 0.0135818, 0.00193844, 0.998586)
+bones/7/rotation = Quaternion(-0.516699, -0.441592, 0.62507, -0.383804)
+bones/8/rotation = Quaternion(0.493118, 0.253408, 0.170792, 0.814524)
+bones/9/rotation = Quaternion(0.00427491, -9.23623e-05, 0.0897295, 0.995957)
+bones/11/rotation = Quaternion(0.533214, -0.441468, 0.599125, 0.40229)
+bones/12/rotation = Quaternion(0.506732, -0.073679, -0.0943947, 0.853747)
+bones/13/rotation = Quaternion(0.00324115, 6.64869e-05, -0.0687445, 0.997629)
+bones/15/rotation = Quaternion(0.134229, 0.071351, 0.982991, -0.103053)
+bones/16/rotation = Quaternion(-0.313083, -0.0747449, 0.0325393, 0.946221)
+bones/17/rotation = Quaternion(0.541143, -0.0622479, -0.0695765, 0.835732)
+bones/18/rotation = Quaternion(0.38238, -0.0145959, 0.00604107, 0.92387)
+bones/20/rotation = Quaternion(-0.122177, 0.0714499, 0.987412, 0.0706057)
+bones/21/rotation = Quaternion(-0.30493, 0.0482961, -0.02267, 0.950879)
+bones/22/rotation = Quaternion(0.540984, 0.0393317, 0.053135, 0.838431)
+bones/23/rotation = Quaternion(0.383618, 0.0143736, -0.00597133, 0.923361)
+
+[node name="BoneAttachment3D" parent="Pivot/man2/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.0873665, -0.171029, 0.981385, 0.957812, 0.285187, -0.0355673, -0.273796, 0.943089, 0.18873, -0.337627, 0.0377714, -0.810607)
+
+[connection signal="state_ended" from="StateMachine/Golf" to="." method="_on_golf_state_ended"]

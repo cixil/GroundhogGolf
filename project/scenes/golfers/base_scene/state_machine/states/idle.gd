@@ -1,5 +1,5 @@
 extends State
 
 
-func enter(args=[]):
+func enter(_args=[]):
 	animation_player.play("idle-standing")

@@ -1,16 +1,16 @@
 [gd_scene load_steps=32 format=4 uid="uid://mgs8ef2jfsy1"]
 
-[ext_resource type="Script" path="res://scenes/golfers/golfer.gd" id="1_87tke"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/state_machine.gd" id="2_siak4"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/follow_path.gd" id="3_q4j2i"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/trip.gd" id="4_4nvov"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/reset_tee.gd" id="5_r8hre"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/idle.gd" id="6_g7k4g"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/go_to_position.gd" id="7_4hbe3"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/golf.gd" id="8_016qn"]
-[ext_resource type="Script" path="res://scenes/golfers/state_machine/states/notice_hog.gd" id="9_ycboq"]
-[ext_resource type="PackedScene" uid="uid://5oki0c4vqvql" path="res://scenes/golfers/right_hand_attachment.tscn" id="9_yx2gj"]
-[ext_resource type="Script" path="res://scenes/golfers/get_angry.gd" id="10_g3164"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/golfer.gd" id="1_87tke"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/state_machine.gd" id="2_siak4"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/follow_path.gd" id="3_q4j2i"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/trip.gd" id="4_4nvov"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/reset_tee.gd" id="5_r8hre"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/idle.gd" id="6_g7k4g"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/go_to_position.gd" id="7_4hbe3"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/golf.gd" id="8_016qn"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/notice_hog.gd" id="9_ycboq"]
+[ext_resource type="PackedScene" uid="uid://5oki0c4vqvql" path="res://scenes/golfers/base_scene/right_hand_attachment.tscn" id="9_yx2gj"]
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/get_angry.gd" id="10_g3164"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xxynn"]
 height = 1.51473
@@ -1599,6 +1599,7 @@ _data = {
 }
 
 [node name="Golfer" type="CharacterBody3D"]
+collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_87tke")
 
@@ -1646,10 +1647,9 @@ script = ExtResource("10_g3164")
 [node name="man2" type="Node3D" parent="Pivot"]
 
 [node name="Armature" type="Node3D" parent="Pivot/man2"]
-transform = Transform3D(-0.0460778, 0.998938, 0, 0, 0, -1, -0.998938, -0.0460778, 0, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Pivot/man2/Armature"]
-unique_name_in_owner = true
 bones/0/name = "mixamorig_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.012938, 0.001924, -0.955867)
@@ -1842,4 +1842,3 @@ libraries = {
 
 [connection signal="body_entered" from="LumpDetector" to="." method="_on_lump_detector_body_entered"]
 [connection signal="state_ended" from="StateMachine/Trip" to="." method="_on_trip_state_ended"]
-[connection signal="state_ended" from="StateMachine/ResetTee" to="." method="_on_reset_tee_state_ended"]

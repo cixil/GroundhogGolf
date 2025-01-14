@@ -8,6 +8,7 @@ signal golf_tee_fell(tee:GolfTee)
 
 # This is an attempted hit at the ball
 signal golfer_swung(golfer:Golfer)
+signal golf_ball_hit_by_golfer()
 
 
 #### Added for audio #####

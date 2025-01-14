@@ -1,5 +1,4 @@
 extends State
-@onready var skeleton_3d: Skeleton3D = %Skeleton3D
 
 # TODO make golfer in right position when falling so he gets up in right pos
 # also after seeking need to reset position
@@ -12,7 +11,7 @@ func init() -> void:
 	animation_player.animation_finished.connect(_animation_finished)
 
 
-func enter(arr=[]):
+func enter(_arr=[]):
 	animation_player.play('falling-face-front', -1, speed)
 	animation_player.seek(.43) # start playback right when fall happens
 	var distance_to_fall = -0.7
@@ -24,6 +23,8 @@ func enter(arr=[]):
 func _animation_finished(anim_name:String):
 	match anim_name:
 		'falling-face-front':
+			if body.in_mud:
+				body.get_muddy()
 			animation_player.play('getting-up', -1, speed*2)
 			
 			# the end of the fall animation is different from where the body is

@@ -3,7 +3,7 @@ class_name GroundHog
 
 @onready var pivot: Node3D = $Pivot
 @onready var dirt_particles: CPUParticles3D = %DirtParticles
-@onready var collision: CollisionShape3D = $CollisionShape3D
+#@onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var dig_effects: Node3D = $DigEffects
 @onready var lump_raise_interval: Timer = %LumpRaiseInterval
 @onready var animation_player: AnimationPlayer = $"Pivot/ground-hog/AnimationPlayer"
@@ -137,10 +137,10 @@ func _on_lump_raise_interval_timeout() -> void:
 	Signals.lump_raised_at.emit(global_position)
 
 
-func _on_obstacle_detector_body_entered(body: Node3D) -> void:
+func _on_obstacle_detector_body_entered(_body: Node3D) -> void:
 	can_emerge = false
 
-func _on_obstacle_detector_body_exited(body: Node3D) -> void:
+func _on_obstacle_detector_body_exited(_body: Node3D) -> void:
 	can_emerge = true
 	if current_mode == mode.pending_walk:
 		_tx_to_walk()

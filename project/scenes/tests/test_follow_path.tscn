@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://buvqi40uk6vqb" path="res://scenes/environment/golf_ball.tscn" id="5_iw7eg"]
 [ext_resource type="PackedScene" uid="uid://bltxires7oi0u" path="res://scenes/environment/golf_tee.tscn" id="6_gbwbi"]
 [ext_resource type="PackedScene" uid="uid://okues4712uh" path="res://scenes/environment/bush.tscn" id="7_o1wpi"]
-[ext_resource type="PackedScene" uid="uid://mgs8ef2jfsy1" path="res://scenes/golfers/Golfer.tscn" id="8_xno2f"]
+[ext_resource type="PackedScene" uid="uid://mgs8ef2jfsy1" path="res://scenes/golfers/base_scene/Golfer.tscn" id="8_xno2f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15tv3"]
 sky_top_color = Color(0.302046, 0.445495, 0.698011, 1)

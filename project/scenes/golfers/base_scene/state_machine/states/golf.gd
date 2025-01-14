@@ -12,8 +12,9 @@ func _ready():
 	end_practice /= slow_speed
 
 func enter(args=[]) -> void:
-	var tee:GolfTee = args[0]
-	pivot.basis = Basis.looking_at(body.global_position.direction_to(tee.global_position))
+	#var tee:GolfTee = argsA[0]
+	#pivot.basis = Basis.looking_at(body.global_position.direction_to(tee.global_position))
+	pivot.rotate_y(PI*-1.6)
 	start_teeing()
 
 func start_teeing():
@@ -48,4 +49,6 @@ func real_swing():
 	about_to_swing = false
 	just_swung.emit()
 	Signals.golfer_swung.emit(body)
+	await animation_player.animation_finished
+	state_ended.emit()
 	

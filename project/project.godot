@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Signals="*res://scenes/Globals/signals.gd"
 Audio="*res://scenes/Globals/Audio.tscn"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [input]
 
 move_right={
@@ -70,3 +74,4 @@ stand={
 3d_physics/layer_4="Golfball"
 3d_physics/layer_5="dirtlump"
 3d_physics/layer_6="underground_obstacle"
+3d_physics/layer_7="golfer"

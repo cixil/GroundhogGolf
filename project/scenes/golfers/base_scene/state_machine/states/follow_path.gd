@@ -23,7 +23,7 @@ func enter(args:Array = []):
 #func _exit_tree() -> void:
 	#current_follower.get_parent
 
-func phys_update(delta: float) -> void:
+func phys_update(_delta: float) -> void:
 	#current_follower.progress += delta*move_speed
 	
 	if body.global_position.distance_squared_to(target) < 1.3:

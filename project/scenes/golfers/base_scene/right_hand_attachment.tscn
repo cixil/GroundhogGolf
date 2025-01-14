@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://5oki0c4vqvql"]
+
+[ext_resource type="Script" path="res://scenes/golfers/base_scene/right_hand_attachment.gd" id="1_26ysm"]
+[ext_resource type="PackedScene" uid="uid://qcuaijbh2ksn" path="res://scenes/golfers/base_scene/golf_club.tscn" id="1_edh4m"]
+[ext_resource type="PackedScene" uid="uid://x2l8hmp40dwg" path="res://models/golf-ball.glb" id="3_imjij"]
+
+[node name="BoneAttachment3D" type="BoneAttachment3D"]
+transform = Transform3D(-0.562599, 0.793984, 0.230373, -0.165865, 0.164587, -0.972317, -0.80992, -0.585235, 0.0390978, 0.00694653, 0.423777, -1.20049)
+bone_name = "mixamorig_RightHand"
+bone_idx = 14
+script = ExtResource("1_26ysm")
+
+[node name="GolfClub" parent="." instance=ExtResource("1_edh4m")]
+
+[node name="GolfBall" parent="." instance=ExtResource("3_imjij")]

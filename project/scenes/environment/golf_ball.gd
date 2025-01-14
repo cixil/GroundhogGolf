@@ -8,17 +8,29 @@ class_name GolfBall
 var force := 2.5
 var on_tee := false
 var hit_impulse:Vector3
+var initial_pos:Vector3
 
 func _ready():
+	initial_pos = global_position
 	if hole:
 		assert(tee)
 		var direction = global_position.direction_to(hole.global_position)
 		hit_impulse = (direction + Vector3(0, 2, 0)) * force
 		Signals.golfer_swung.connect(_hit)
 
+func disable():
+	$CollisionShape3D.disabled = true
+	hide()
+
+func reset_position():
+	global_position = initial_pos
+	$CollisionShape3D.disabled = false
+	show()
+
 func _hit(person:Golfer):
 	if person == golfer:
 		if on_tee:
+			Signals.golf_ball_hit_by_golfer.emit()
 			apply_impulse(hit_impulse)
 
 func hit_from_gopher(direction:Vector3):

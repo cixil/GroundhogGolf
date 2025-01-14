@@ -1,7 +1,7 @@
 extends State
 
 
-func enter(args=[]):
+func enter(_args=[]):
 	play()
 
 func play():

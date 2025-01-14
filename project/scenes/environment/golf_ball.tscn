@@ -7,7 +7,7 @@
 radius = 0.0733205
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6kdaj"]
-radius = 0.115896
+radius = 0.0765121
 
 [node name="GolfBall" type="RigidBody3D"]
 collision_layer = 9
