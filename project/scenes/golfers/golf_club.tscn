@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://qcuaijbh2ksn"]
+
+[ext_resource type="Script" path="res://scenes/golfers/golf_club.gd" id="1_atpse"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_066un"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+
+[node name="GolfClub" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312523, 0)
+script = ExtResource("1_atpse")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_066un")

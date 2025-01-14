@@ -1,6 +1,8 @@
 extends Node
+class_name StateMachine
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var pivot: Node3D = $"../Pivot"
 
 
 var states:Dictionary # maps state name string to state node
@@ -13,6 +15,7 @@ func _ready() -> void:
 			states[node.name.to_lower()] = node
 			node.animation_player = animation_player
 			node.body = owner
+			node.pivot = pivot
 			node.init()
 
 func _process(delta: float) -> void:

@@ -1,9 +1,10 @@
 extends Node3D
+class_name GolfTee
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func fall():
-	Signals.golf_tee_fell.emit()
+	Signals.golf_tee_fell.emit(self)
 	animation_player.play("fall")
 
 func reset():

@@ -3,6 +3,7 @@ class_name State
 
 var animation_player:AnimationPlayer
 var body:CharacterBody3D
+var pivot:Node3D
 
 signal state_ended
 

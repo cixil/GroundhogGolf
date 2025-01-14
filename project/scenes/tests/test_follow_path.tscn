@@ -63,7 +63,7 @@ mesh = SubResource("BoxMesh_nwsqw")
 shape = SubResource("ConcavePolygonShape3D_x3uuf")
 
 [node name="GroundHog" parent="World" instance=ExtResource("3_1cve8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58723, 0.683809, 1.71927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53655, 0.400572, -0.785254)
 
 [node name="CameraPivot" type="Node3D" parent="World/GroundHog"]
 
@@ -96,9 +96,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922042, -0.366793, -0.952245)
 
 [node name="Bush2" parent="World/Environment" instance=ExtResource("7_o1wpi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0906036, -0.366793, 1.14498)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18007, -0.366793, 1.36274)
 
-[node name="Golfer" parent="." node_paths=PackedStringArray("path_to_follow") instance=ExtResource("8_xno2f")]
+[node name="GolferTeeFixer" parent="." node_paths=PackedStringArray("tee_to_monitor") instance=ExtResource("8_xno2f")]
+transform = Transform3D(-0.999892, 0, -0.0144909, 0, 1, 0, 0.0144909, 0, -0.999892, -0.20734, 0, 1.34728)
+tee_to_monitor = NodePath("../World/Environment/GolfTee")
+
+[node name="GolfDriver" parent="." node_paths=PackedStringArray("tee_to_monitor") instance=ExtResource("8_xno2f")]
+transform = Transform3D(-0.999892, 0, -0.0144909, 0, 1, 0, 0.0144909, 0, -0.999892, 1.40462, 0, -0.847677)
+golfer = true
+holding = 1
+tee_to_monitor = NodePath("../World/Environment/GolfTee")
+
+[node name="GolferPatroler" parent="." node_paths=PackedStringArray("path_to_follow") instance=ExtResource("8_xno2f")]
 transform = Transform3D(-0.999892, 0, -0.0144909, 0, 1, 0, 0.0144909, 0, -0.999892, 7.88943, 0, 2.377)
 path_to_follow = NodePath("../Path3D")
 

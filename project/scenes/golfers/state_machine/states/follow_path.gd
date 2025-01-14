@@ -5,10 +5,6 @@ var points:PackedVector3Array
 var idx := 0
 var target:Vector3
 
-const move_speed = 1
-@onready var pivot: Node3D = $"../../Pivot"
-
-
 func enter(args:Array = []):
 	var path:Path3D = args[0]
 	assert(path)
@@ -37,7 +33,7 @@ func phys_update(delta: float) -> void:
 	var direction = body.global_position.direction_to(target).normalized()
 	body.direction = direction
 	pivot.basis = Basis.looking_at(direction)
-	body.velocity = move_speed*direction
+	body.velocity = body.walk_speed*direction
 	
 	
 	body.move_and_slide()

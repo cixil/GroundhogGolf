@@ -1,6 +1,5 @@
 extends State
 @onready var skeleton_3d: Skeleton3D = %Skeleton3D
-@onready var pivot: Node3D = $"../../Pivot"
 
 # TODO make golfer in right position when falling so he gets up in right pos
 # also after seeking need to reset position
@@ -25,7 +24,7 @@ func enter(arr=[]):
 func _animation_finished(anim_name:String):
 	match anim_name:
 		'falling-face-front':
-			animation_player.play('getting-up', -1, speed)
+			animation_player.play('getting-up', -1, speed*2)
 			
 			# the end of the fall animation is different from where the body is
 			# move the body to the approximate distance we fell so the skeleton doesn't
