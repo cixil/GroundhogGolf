@@ -5,7 +5,7 @@ class_name GolfBall
 @export var hole:Node3D
 @export var golfer:Golfer
 
-var force := 2.5
+var force := 1
 var on_tee := false
 var hit_impulse:Vector3
 var initial_pos:Vector3

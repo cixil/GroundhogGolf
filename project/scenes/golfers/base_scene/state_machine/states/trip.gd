@@ -35,5 +35,8 @@ func _animation_finished(anim_name:String):
 			var new_pos:Vector3 = Vector3(0,0,distance_to_fall).rotated(Vector3(0,1,0), angle)
 			body.global_position += new_pos
 			
+			if body.holding_object == Holdable.objects.Ball:
+				body.ba
+			
 		'getting-up':
 			state_ended.emit()

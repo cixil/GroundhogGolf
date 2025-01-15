@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3824, -2.31396, -14.9833)
 shape = SubResource("BoxShape3D_u2kji")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97654, 0.28717, 18.7205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74796, 0.28717, -1.09666)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)

@@ -139,7 +139,9 @@ script = ExtResource("2_1dqn7")
 [node name="RetrieveBall" type="Node" parent="StateMachine" index="8"]
 script = ExtResource("2_xijkl")
 
-[node name="WatchBall" type="Node" parent="StateMachine" index="9"]
+[node name="PutBallOnTee" type="Node" parent="StateMachine" index="9"]
+
+[node name="WatchBall" type="Node" parent="StateMachine" index="10"]
 script = ExtResource("4_nwfr1")
 
 [node name="man2" parent="Pivot" index="0"]
@@ -172,7 +174,7 @@ bones/23/rotation = Quaternion(0.383643, 0.0143749, -0.00597213, 0.92335)
 mesh = SubResource("ArrayMesh_75mvj")
 
 [node name="BoneAttachment3D" parent="Pivot/man2/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.717464, -0.0109536, 0.696509, 0.688947, 0.158922, -0.707175, -0.102944, 0.98723, 0.121567, -0.237653, 0.0452714, -0.825222)
+transform = Transform3D(0.717464, -0.0109536, 0.696509, 0.688947, 0.158922, -0.707175, -0.102944, 0.98723, 0.121567, -0.237654, 0.0452714, -0.825222)
 
 [connection signal="state_ended" from="StateMachine/ResetTee" to="." method="_on_reset_tee_state_ended"]
 [connection signal="state_ended" from="StateMachine/WatchBall" to="." method="_on_watch_ball_state_ended"]

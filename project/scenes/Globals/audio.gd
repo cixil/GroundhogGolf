@@ -10,7 +10,8 @@ func _ready() -> void:
 	 #play the sound when the signal is emitted.
 	play_once(Signals.hog_touched_ball, sfx[0])
 	
-	#play_once(Signals.hog_exited_dirt, sfx[1])
+	play_once(Signals.golfer_swung_no_arg, sfx[3])
+	play_once(Signals.golf_ball_hit_by_golfer, sfx[4])
 	
 	 #play sound when signal 1 is emitted and end it when signal 2 is emitted
 	 #the sound should be a looping sound
@@ -23,6 +24,7 @@ func play_once(sig:Signal, sound:AudioStream):
 	player.stream = sound
 	add_child(player)
 	sig.connect(player.play)
+
 
 func play_until(sig_start:Signal, sig_end:Signal, sound:AudioStream):
 	var player = AudioStreamPlayer.new()

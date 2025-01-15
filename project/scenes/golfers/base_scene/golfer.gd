@@ -13,7 +13,7 @@ var in_mud:bool = false
 ## Default home position to return to
 var home_position:Vector3
 
-
+var holding_object:Holdable.objects
 
 ## If set, will patrol this path on startup
 @export var path_to_follow:Path3D
@@ -35,6 +35,7 @@ func _ready() -> void:
 	#return skeleton.get_bone_global_pose(13)
 
 func hold_in_hand(obj:Holdable.objects):
+	holding_object = obj
 	hand.show_obj(obj)
 	
 

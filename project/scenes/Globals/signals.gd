@@ -18,3 +18,4 @@ signal hog_started_walking
 signal hog_stopped_walking
 signal hog_touched_ball
 signal golfer_tripped
+signal golfer_swung_no_arg

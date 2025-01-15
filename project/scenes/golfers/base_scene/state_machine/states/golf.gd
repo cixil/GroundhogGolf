@@ -45,10 +45,11 @@ func real_swing():
 	about_to_swing = true
 	await get_tree().create_timer(0.2).timeout
 	animation_player.play(anim)
-	await get_tree().create_timer(1.3).timeout
+	await get_tree().create_timer(1.2).timeout
 	about_to_swing = false
 	just_swung.emit()
 	Signals.golfer_swung.emit(body)
+	Signals.golfer_swung_no_arg.emit()
 	await animation_player.animation_finished
 	state_ended.emit()
 	
