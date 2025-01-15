@@ -24,7 +24,8 @@ var _prev_direction:Vector3 = Vector3.ZERO
 enum mode {
 	dig, 
 	walk, 
-	transition, 
+	transition_to_dig,
+	transition_to_walk, 
 	pending_walk  # awaiting walk transition but theres currently an obstacle above us
 	}
 var current_mode = mode.walk
@@ -35,34 +36,48 @@ func _ready():
 	_tx_to_walk()
 
 func _tx_to_dig():
+	current_mode = mode.transition_to_dig
+	
 	Signals.hog_stopped_walking.emit()
 	ball_detector_collision.set_deferred('disabled', true)
 	_target_velocity.y = 0 # stop falling velocity if there is any
-	current_mode = mode.transition
+	
+	#animation_player.play('Jump in ground', -1, 2)
+	#await animation_player.animation_finished
+	
+	# toggle dig effects
 	pivot.hide()
 	dig_effects.show()
-	#collision.set_deferred('disabled', true)
 	dirt_particles.emitting = true
+	
 	set_collision_mask_value(1, false)
-	current_mode = mode.dig
+	
 	lump_raise_interval.start()
 	Signals.hog_entered_dirt.emit()
+	current_mode = mode.dig
 
 func _tx_to_walk():
+
+	current_mode = mode.transition_to_walk
 	if _prev_direction != Vector3.ZERO:
 		Signals.hog_started_walking.emit()
 	
 	ball_detector_collision.set_deferred('disabled', false)
-
-	current_mode = mode.transition
+	
+	# toggle dig effects
 	pivot.show()
 	dirt_particles.emitting = false
 	dig_effects.hide()
-	#collision.set_deferred('disabled', false)
-	set_collision_mask_value(1, true)
-	current_mode = mode.walk
 	lump_raise_interval.stop()
+
+	set_collision_mask_value(1, true)
+	
+	animation_player.play('jump out')
+	await animation_player.animation_finished
+	
+	
 	Signals.hog_exited_dirt.emit()
+	current_mode = mode.walk
 
 
 func _physics_process(delta):
@@ -85,9 +100,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("stand"):
 		animation_player.play("stand")
 		return
-	elif is_on_floor() and Input.is_action_just_pressed("dig"):
+	
+	#if current_mode != mode.transition:
+	if is_on_floor() and Input.is_action_just_pressed("dig"):
 		_tx_to_dig()
 	elif Input.is_action_just_released("dig"):
+		print(current_mode)
 		if can_emerge:
 			_tx_to_walk()
 		else:
