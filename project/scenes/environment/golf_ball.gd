@@ -33,6 +33,12 @@ func _hit(person:Golfer):
 			Signals.golf_ball_hit_by_golfer.emit()
 			apply_impulse(hit_impulse)
 
+func push_from_gopher(direction:Vector3):
+	var force:float = 0.1
+	#direction.y = 0
+	#direction = direction.normalized()
+	apply_central_impulse(direction*force)
+
 func hit_from_gopher(direction:Vector3):
 	Signals.hog_touched_ball.emit()
 	apply_impulse((direction*0.5 + Vector3(0,0.2,0)))

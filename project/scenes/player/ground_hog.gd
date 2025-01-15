@@ -16,10 +16,11 @@ var dig_speed_x = 1.5
 var speed_z = 2
 # The downward acceleration when in the air, in meters per second squared.
 var fall_acceleration = 2
-var jump_impulse = 5
+var jump_impulse = .3
 
 var _target_velocity = Vector3.ZERO
 var _prev_direction:Vector3 = Vector3.ZERO
+var push_force := 0.1
 
 enum mode {
 	dig, 
@@ -31,8 +32,14 @@ enum mode {
 var current_mode = mode.walk
 
 var can_emerge := true
+var _on_ground := false
+
+var _used_mask_layers:Array[int] = []
 
 func _ready():
+	for i in range(1, 33):
+		if get_collision_mask_value(i):
+			_used_mask_layers.append(i)
 	_tx_to_walk()
 
 func _tx_to_dig():
@@ -50,11 +57,19 @@ func _tx_to_dig():
 	dig_effects.show()
 	dirt_particles.emitting = true
 	
-	set_collision_mask_value(1, false)
+	set_collision_masks(false)
 	
 	lump_raise_interval.start()
 	Signals.hog_entered_dirt.emit()
 	current_mode = mode.dig
+
+func set_collision_masks(val:bool):
+	var ground_collision := 3
+	var underground_collision := 6
+	for i in _used_mask_layers:
+		if i != ground_collision and i != underground_collision:
+			set_collision_mask_value(i, val)
+
 
 func _tx_to_walk():
 
@@ -70,9 +85,10 @@ func _tx_to_walk():
 	dig_effects.hide()
 	lump_raise_interval.stop()
 
-	set_collision_mask_value(1, true)
+	set_collision_masks(true)
 	
-	animation_player.play('jump out')
+	animation_player.play('jump out', -1, 2)
+	_target_velocity.y = jump_impulse
 	await animation_player.animation_finished
 	
 	
@@ -102,10 +118,9 @@ func _physics_process(delta):
 		return
 	
 	#if current_mode != mode.transition:
-	if is_on_floor() and Input.is_action_just_pressed("dig"):
+	if is_on_floor() and _on_ground and Input.is_action_just_pressed("dig"):
 		_tx_to_dig()
-	elif Input.is_action_just_released("dig"):
-		print(current_mode)
+	elif current_mode == mode.dig and Input.is_action_just_released("dig"):
 		if can_emerge:
 			_tx_to_walk()
 		else:
@@ -141,13 +156,22 @@ func _physics_process(delta):
 	# Moving the Character
 	velocity = _target_velocity
 	move_and_slide()
-	var collision:KinematicCollision3D = get_last_slide_collision()
-	if collision:
-		var collider = collision.get_collider()
-		if collider is GolfBall:
-			pass
-			# Todo if hitting ball is separate button, could make this just pushing it
-			#collider.apply_impulse((_target_velocity.normalized()*0.1 + Vector3(0,0.15,0)))
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		var collider = c.get_collider()
+		if collider is RigidBody3D:
+			if current_mode == mode.transition_to_walk:
+				#print('boom')
+				#collider.apply_impulse((-c.get_normal() * push_force + Vector3.UP*20)*delta, c.get_position())
+				collider.apply_central_impulse((-c.get_normal() + Vector3.UP) * push_force * delta * 200)
+			else:
+			
+				#collider.apply_force(-c.get_normal() * push_force * delta * 50, c.get_position())
+				collider.apply_central_force(-c.get_normal() * push_force * delta * 200)
+			
+			#print('pushing ', c.get_collider(),' ', c.get_normal().distance_to(Vector3.UP))
+
 	_prev_direction = direction
 
 
@@ -165,5 +189,14 @@ func _on_obstacle_detector_body_exited(_body: Node3D) -> void:
 
 
 func _on_golf_ball_detector_body_entered(body: Node3D) -> void:
+	return 
+	#TODO fix
 	if body is GolfBall:
 		body.hit_from_gopher(_target_velocity.normalized())
+
+
+func _on_ground_detector_body_entered(body: Node3D) -> void:
+	_on_ground = true
+
+func _on_ground_detector_body_exited(body: Node3D) -> void:
+	_on_ground = false

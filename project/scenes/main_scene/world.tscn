@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=23 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://np0vw36v8swo" path="res://scenes/environment/mud_pit.tscn" id="8_in42m"]
 [ext_resource type="PackedScene" uid="uid://cmpbhj8q7u8lu" path="res://scenes/environment/hole.tscn" id="9_whhha"]
 [ext_resource type="PackedScene" uid="uid://dx1i63pbpp6v" path="res://scenes/environment/ornamental_golf_cart.tscn" id="11_l3ify"]
+[ext_resource type="PackedScene" uid="uid://bpiu14v1sey5r" path="res://scenes/environment/crate_with_balls.tscn" id="15_3jqbs"]
+[ext_resource type="PackedScene" uid="uid://4rtr770dm2y7" path="res://scenes/environment/crate.tscn" id="16_jryvw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15tv3"]
 sky_top_color = Color(0.302046, 0.445495, 0.698011, 1)
@@ -93,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3824, -2.31396, -14.9833)
 shape = SubResource("BoxShape3D_u2kji")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27805, 0.28717, 19.0215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97654, 0.28717, 18.7205)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)
@@ -394,7 +396,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18647, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32161, 0.121244, 16.9972)
 
 [node name="Bush3" parent="Environment/Decorations" instance=ExtResource("7_8t7xo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32799, 0.121244, 9.0613)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16027, 0.121244, 6.01784)
 
 [node name="Bush2" parent="Environment/Decorations" instance=ExtResource("7_8t7xo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75222, 0.121244, 17.0487)
@@ -418,5 +420,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172015, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21587, 0.172015, 0.766968)
 
 [node name="Node3D3" type="Node3D" parent="Environment"]
+
+[node name="CrateWithBalls" parent="Environment" instance=ExtResource("15_3jqbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55927, 0.0900879, 7.88269)
+
+[node name="CrateWithBalls2" parent="Environment" instance=ExtResource("15_3jqbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56335, 0.0900879, 8.74609)
+
+[node name="CrateWithBalls3" parent="Environment" instance=ExtResource("15_3jqbs")]
+transform = Transform3D(0.586528, 0.809929, 0, -0.809929, 0.586528, 0, 0, 0, 1, 7.97516, 1.16675, 3.68237)
+
+[node name="CrateWithBalls4" parent="Environment" instance=ExtResource("15_3jqbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97107, 0.0900879, 4.54578)
+
+[node name="Crate" parent="Environment" instance=ExtResource("16_jryvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73474, 0, 12.2408)
 
 [connection signal="reset_ball" from="Environment/GolferScenarioGolfing/GolferPickerUpper" to="Environment/GolferScenarioGolfing/GolferSwinger" method="resume_golfing"]

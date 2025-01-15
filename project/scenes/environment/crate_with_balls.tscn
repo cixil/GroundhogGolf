@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpiu14v1sey5r"]
+
+[ext_resource type="PackedScene" uid="uid://4rtr770dm2y7" path="res://scenes/environment/crate.tscn" id="1_2kthq"]
+[ext_resource type="PackedScene" uid="uid://buvqi40uk6vqb" path="res://scenes/environment/golf_ball.tscn" id="2_l4s7k"]
+
+[node name="CrateWithBalls" type="Node3D"]
+
+[node name="Crate" parent="." instance=ExtResource("1_2kthq")]
+
+[node name="GolfBall" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200102, 0.130896, -0.209064)
+
+[node name="GolfBall2" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00976646, 0.130896, -0.230065)
+
+[node name="GolfBall3" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.193249, 0.130896, -0.0241212)
+
+[node name="GolfBall4" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0205562, 0.130896, -0.0515556)
+
+[node name="GolfBall5" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172614, 0.130896, 0.179378)
+
+[node name="GolfBall6" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0421453, 0.130896, 0.174426)
+
+[node name="GolfBall7" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171216, 0.130896, -0.169406)
+
+[node name="GolfBall8" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143863, 0.130896, 0.0183365)
+
+[node name="GolfBall9" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099043, 0.322656, -0.104127)
+
+[node name="GolfBall10" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0899945, 0.322656, 0.0671317)
+
+[node name="GolfBall11" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488869, 0.322656, 0.0540835)
+
+[node name="GolfBall12" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0682255, 0.322656, -0.0908798)
+
+[node name="GolfBall13" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169435, 0.322656, 0.191756)
+
+[node name="GolfBall14" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0166852, 0.322656, 0.199072)
+
+[node name="GolfBall15" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0166852, 0.487284, 0.199072)
+
+[node name="GolfBall16" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0836394, 0.487284, 0.0548379)
+
+[node name="GolfBall17" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0791429, 0.487284, -0.124169)
+
+[node name="GolfBall18" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622921, 0.487284, -0.01514)
+
+[node name="GolfBall19" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123473, 0.487284, 0.171852)
+
+[node name="GolfBall20" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.208519, 0.487284, 0.0489201)
+
+[node name="GolfBall21" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0626539, 0.487284, -0.209279)
+
+[node name="GolfBall22" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195565, 0.487284, -0.120063)
+
+[node name="GolfBall23" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115079, 0.600909, 0.171461)
+
+[node name="GolfBall24" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101561, 0.600909, -0.0328714)
+
+[node name="GolfBall25" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494484, 0.600909, 0.0551342)
+
+[node name="GolfBall26" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118345, 0.600909, -0.119806)
+
+[node name="GolfBall27" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19771, 0.600909, 0.158182)
+
+[node name="GolfBall28" parent="." instance=ExtResource("2_l4s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19771, 0.600909, 0.158182)
