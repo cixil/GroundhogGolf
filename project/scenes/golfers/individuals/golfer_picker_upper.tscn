@@ -173,7 +173,7 @@ bones/23/rotation = Quaternion(0.399902, 0.0152543, -0.00648026, 0.916408)
 mesh = SubResource("ArrayMesh_75mvj")
 
 [node name="BoneAttachment3D" parent="Pivot/man2/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.495825, 0.081967, 0.864545, 0.734533, 0.491496, -0.46786, -0.463269, 0.867014, 0.183488, -0.262003, 0.18658, -0.879746)
+transform = Transform3D(0.495825, 0.0819669, 0.864545, 0.734533, 0.491496, -0.46786, -0.463269, 0.867014, 0.183488, -0.262003, 0.18658, -0.879746)
 
 [connection signal="state_ended" from="StateMachine/ResetTee" to="." method="_on_reset_tee_state_ended"]
 [connection signal="state_ended" from="StateMachine/WatchBall" to="." method="_on_watch_ball_state_ended"]

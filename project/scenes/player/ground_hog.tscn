@@ -1352,17 +1352,17 @@ floor_constant_speed = true
 safe_margin = 0.005
 script = ExtResource("1_ly145")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Sphere" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0071106, 0.106725, -0.0361078)
-visible = false
 shape = SubResource("SphereShape3D_tbl6w")
+
+[node name="Cylinder" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00106945, 0)
+visible = false
+shape = SubResource("CylinderShape3D_4go5h")
 disabled = true
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00106945, 0)
-shape = SubResource("CylinderShape3D_4go5h")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="Square" type="CollisionShape3D" parent="."]
 visible = false
 shape = SubResource("BoxShape3D_g3kvm")
 disabled = true
