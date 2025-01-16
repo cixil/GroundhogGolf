@@ -1350,6 +1350,7 @@ collision_mask = 173
 wall_min_slide_angle = 1.5708
 floor_constant_speed = true
 floor_block_on_wall = false
+platform_floor_layers = 4278190084
 safe_margin = 0.005
 script = ExtResource("1_ly145")
 
@@ -1359,6 +1360,7 @@ shape = SubResource("CylinderShape3D_4go5h")
 
 [node name="square" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00502777, 0.0711814, -0.0978534)
+visible = false
 shape = SubResource("BoxShape3D_eaeq7")
 disabled = true
 

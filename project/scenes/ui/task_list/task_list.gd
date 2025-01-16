@@ -7,7 +7,8 @@ extends Control
 var tasks = [
 	["Make him miss the shot", Signals.missed_the_shot , false],
 	["Ruin someone's outfit", Signals.outfit_ruined, false],
-	["Balls everywhere", Signals.balls_everywhere, false]
+	["Balls everywhere", Signals.balls_everywhere, false],
+	["Put the special ball in the hole", Signals.purple_ball_in_hole, false]
 ]
 
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 	hide()
 
 func mark_done(index:int):
+	print('mark done ', index)
 	tasks[index][2] = true
 	var item:TaskItemControl = item_container.get_child(index)
 	item.set_done()

@@ -5,6 +5,8 @@ class_name GolfBall
 @export var hole:Node3D
 @export var golfer:Golfer
 
+@export var is_purple := false
+
 var force := 1
 var on_tee := false
 var hit_impulse:Vector3

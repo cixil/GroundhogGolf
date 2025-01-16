@@ -82,7 +82,7 @@ albedo_color = Color(0.90929, 0.677036, 0.0286778, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2p7s"]
 resource_name = "skin"
 cull_mode = 2
-albedo_color = Color(0.921269, 0.616366, 0.690839, 1)
+albedo_color = Color(0.800559, 0.466461, 0.290858, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5cwn"]
 resource_name = "pants"

@@ -171,15 +171,20 @@ func _physics_process(delta):
 			if current_mode == mode.transition_to_walk:
 				#print('boom')
 				#collider.apply_impulse((-c.get_normal() * push_force + Vector3.UP*20)*delta, c.get_position())
-				collider.apply_central_impulse((-c.get_normal() + Vector3.UP) * push_force * delta * 200)
+				if collider is GolfBall:
+					collider.apply_central_impulse((-c.get_normal() + Vector3.UP) * push_force * delta * 20)
+				else:
+					collider.apply_central_impulse((-c.get_normal() + Vector3.UP) * push_force * delta * 200)
 			else:
 				if collider is GolfBall:
-					collider.apply_central_force(-c.get_normal() * push_force * delta * 200)
+					collider.push_from_gopher(-c.get_normal())
+					#collider.apply_central_force(-c.get_normal() * push_force * delta * 300)
 				else:
 					#print('colliding at ', c.get_position())
 					if not in_crate:
-						collider.apply_central_force(-c.get_normal() * push_force * delta * 1500)
+						collider.apply_central_force(-c.get_normal() * push_force * delta * 1800)
 					collider.apply_force(c.get_normal() * push_force * delta * 100, c.get_position())
+					collider.apply_central_force(-c.get_normal() * push_force * delta * 100)
 
 			
 			#print('pushing ', c.get_collider(),' ', c.get_normal().distance_to(Vector3.UP))

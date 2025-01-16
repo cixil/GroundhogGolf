@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1msrql0hw5ro"]
+[gd_scene load_steps=5 format=3 uid="uid://d1msrql0hw5ro"]
 
 [ext_resource type="Script" path="res://scenes/ui/task_list/task_list.gd" id="1_panm4"]
 [ext_resource type="PackedScene" uid="uid://drjarpv62rv3b" path="res://scenes/ui/task_list/task_item.tscn" id="2_leihd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4xyr"]
 bg_color = Color(0.920576, 0.893824, 0.651623, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kr35y"]
+font_color = Color(0.712896, 0.3836, 0.0872114, 1)
 
 [node name="TaskList" type="Control"]
 process_mode = 3
@@ -40,6 +43,14 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ItemContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Revenge Tasks"
+label_settings = SubResource("LabelSettings_kr35y")
+
+[node name="ItemContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
