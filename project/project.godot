@@ -81,3 +81,4 @@ pause={
 3d_physics/layer_5="dirtlump"
 3d_physics/layer_6="underground_obstacle"
 3d_physics/layer_7="golfer"
+3d_physics/layer_8="movable_obstacle"

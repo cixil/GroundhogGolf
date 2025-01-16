@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scenes/player/ground_hog.gd" id="1_ly145"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_tbl6w"]
-radius = 0.225058
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4go5h"]
 height = 0.2267
 radius = 0.262494
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tbl6w"]
+radius = 0.225058
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g3kvm"]
 size = Vector3(0.261292, 0.27095, 0.440819)
@@ -1342,25 +1342,25 @@ _data = {
 size = Vector3(0.52899, 0.362625, 0.532227)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lt5xl"]
-size = Vector3(0.570221, 0.034918, 0.511963)
+size = Vector3(0.570221, 0.380252, 0.511963)
 
 [node name="GroundHog" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 173
 wall_min_slide_angle = 1.5708
 floor_constant_speed = true
+floor_block_on_wall = false
 safe_margin = 0.005
 script = ExtResource("1_ly145")
+
+[node name="Cylinder" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00106945, 0)
+shape = SubResource("CylinderShape3D_4go5h")
+disabled = true
 
 [node name="Sphere" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0071106, 0.106725, -0.0361078)
 shape = SubResource("SphereShape3D_tbl6w")
-
-[node name="Cylinder" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00106945, 0)
-visible = false
-shape = SubResource("CylinderShape3D_4go5h")
-disabled = true
 
 [node name="Square" type="CollisionShape3D" parent="."]
 visible = false
@@ -1388,9 +1388,6 @@ unique_name_in_owner = true
 wait_time = 0.05
 
 [node name="Pivot" type="Node3D" parent="."]
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="GolfBallDetector" type="Area3D" parent="Pivot"]
 collision_layer = 0
@@ -1527,7 +1524,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detectors/GroundDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214889, -0.130276, -0.0413818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214889, 0.042391, -0.0413818)
 shape = SubResource("BoxShape3D_lt5xl")
 
 [connection signal="timeout" from="DigEffects/LumpRaiseInterval" to="." method="_on_lump_raise_interval_timeout"]
