@@ -40,7 +40,7 @@ func _exit():
 
 func phys_update(_delta):
 	if not fallen:
-		body.velocity = body.direction * 1.5
+		body.velocity = body.direction * 1.7
 		body.move_and_slide()
 
 func _animation_finished(anim_name:String):
