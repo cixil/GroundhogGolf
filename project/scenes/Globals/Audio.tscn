@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rfysofgc0ssw"]
+[gd_scene load_steps=10 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
 [ext_resource type="AudioStream" uid="uid://cg8o6x2uukm4e" path="res://audio/Music/digeridoo.wav" id="2_mdx43"]
@@ -7,10 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://1ejc452n8oc" path="res://audio/sfx/digging sfx.wav" id="4_nogc6"]
 [ext_resource type="AudioStream" uid="uid://dt73tpm6iivj4" path="res://audio/sfx/golf swing no hit.wav" id="5_ubfdg"]
 [ext_resource type="AudioStream" uid="uid://c8fn1duhj56mp" path="res://audio/sfx/golf swing hit.wav" id="6_2fj5b"]
+[ext_resource type="AudioStream" uid="uid://bn52fjcmqmfnd" path="res://audio/sfx/hog going down.wav" id="7_008x6"]
+[ext_resource type="AudioStream" uid="uid://b5k0ialylndnc" path="res://audio/sfx/hog going up.wav" id="8_jy2yl"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_ovd6e")
-sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b")])
+sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b"), ExtResource("7_008x6"), ExtResource("8_jy2yl")])
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
