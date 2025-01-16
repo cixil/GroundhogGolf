@@ -28,8 +28,10 @@ func resume_golfing():
 
 func _on_golf_tee_fell(tee:GolfTee):
 	if tee == tee_to_golf:
+		print($StateMachine/Golf.about_to_swing)
 		if state_machine.current_state == $StateMachine/Golf and $StateMachine/Golf.about_to_swing:
 			await $StateMachine/Golf.just_swung
+			print('get angry')
 			state_machine.transition_to("getangry")
 		else:
 			state_machine.transition_to('noticehog', [tee])
@@ -42,8 +44,8 @@ func _on_lump_detector_body_entered(_body: Node3D) -> void:
 # TODO need to return to the last state not follow path
 
 func _on_trip_state_ended() -> void:
-	if path_to_follow:
-		state_machine.transition_to('followpath', [path_to_follow])
+	return
+
 
 
 func _on_golf_state_ended() -> void:

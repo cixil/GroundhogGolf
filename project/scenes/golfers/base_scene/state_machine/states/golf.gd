@@ -16,6 +16,9 @@ func enter(args=[]) -> void:
 	#pivot.basis = Basis.looking_at(body.global_position.direction_to(tee.global_position))
 	pivot.rotate_y(PI*-1.6)
 	start_teeing()
+	
+
+# TODO change this to use proc_update and timers so it is pausable
 
 func start_teeing():
 	for i in range(practice_swings):
@@ -23,7 +26,6 @@ func start_teeing():
 		await practice_swing()
 	if not active: return
 	real_swing()
-	state_ended.emit()
 
 func practice_swing():
 	if not active: return
@@ -47,6 +49,8 @@ func real_swing():
 	animation_player.play(anim)
 	await get_tree().create_timer(1.2).timeout
 	about_to_swing = false
+	if not active: return
+	#print('swiing ', get_tree().paused)
 	just_swung.emit()
 	Signals.golfer_swung.emit(body)
 	Signals.golfer_swung_no_arg.emit()

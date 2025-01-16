@@ -1,9 +1,9 @@
 extends CharacterBody3D
 class_name Golfer
 #@onready var skeleton: Skeleton3D = %Skeleton3D
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Pivot/man/AnimationPlayer
 @onready var state_machine: Node = $StateMachine
-@onready var hand: Holdable = %BoneAttachment3D
+@onready var hand: Holdable = $Pivot/man/Armature/Skeleton3D/BoneAttachment3D
 @onready var pivot: Node3D = $Pivot
 
 @export var walk_speed := 1.0

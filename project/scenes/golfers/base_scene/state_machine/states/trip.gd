@@ -18,11 +18,11 @@ func enter(arg=[]):
 	if len(arg) > 0:
 		ball = arg[0]
 	animation_player.play('falling-face-front', -1, speed)
-	animation_player.seek(start_offset) # start playback right when fall happens
-	var distance_to_fall = -0.7
-	var angle = Vector3(0,0,1).signed_angle_to(body.direction, Vector3(0,1,0))
-	var new_pos:Vector3 = Vector3(0,0,distance_to_fall).rotated(Vector3(0,1,0), angle)
-	body.global_position += new_pos
+	#animation_player.seek(start_offset) # start playback right when fall happens
+	#var distance_to_fall = -0.7
+	#var angle = Vector3(0,0,1).signed_angle_to(body.direction, Vector3(0,1,0))
+	#var new_pos:Vector3 = Vector3(0,0,distance_to_fall).rotated(Vector3(0,1,0), angle)
+	#body.global_position += new_pos
 	Signals.golfer_tripped.emit()
 	
 	# If holding a ball have it "fall from the hand"

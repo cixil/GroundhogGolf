@@ -1,9 +1,10 @@
 extends Node
 class_name StateMachine
 
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var pivot: Node3D = $"../Pivot"
+@onready var animation_player: AnimationPlayer = $"../Pivot/man/AnimationPlayer"
 
+@export var debug := false
 
 var states:Dictionary # maps state name string to state node
 var current_state:State
@@ -33,6 +34,8 @@ func start(init_state:String, init_args:Array = []):
 	transitioning = false
 
 func transition_to(new_state:String, args:Array = []):
+	if debug:
+		print_debug("Transitioning from ", current_state.name, " to ", new_state)
 	transitioning = true
 	await current_state.exit()
 	#current_state.process_mode = Node.PROCESS_MODE_DISABLED
