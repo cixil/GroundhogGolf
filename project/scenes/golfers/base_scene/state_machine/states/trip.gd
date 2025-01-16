@@ -7,7 +7,8 @@ extends State
 var speed = 1
 var ball:GolfBall
 
-var start_offset = 0.43
+var fall_offset := .75
+var fallen:bool
 var ball_release_offset = 1.1
 
 func init() -> void:
@@ -18,18 +19,18 @@ func enter(arg=[]):
 	if len(arg) > 0:
 		ball = arg[0]
 	animation_player.play('falling-face-front', -1, speed)
-	#animation_player.seek(start_offset) # start playback right when fall happens
-	#var distance_to_fall = -0.7
-	#var angle = Vector3(0,0,1).signed_angle_to(body.direction, Vector3(0,1,0))
-	#var new_pos:Vector3 = Vector3(0,0,distance_to_fall).rotated(Vector3(0,1,0), angle)
-	#body.global_position += new_pos
 	Signals.golfer_tripped.emit()
-	
+	fallen = false
+	start_fall()
+
+func start_fall():
+	await get_tree().create_timer(fall_offset).timeout
+	fallen = true
 	# If holding a ball have it "fall from the hand"
 	# this is necessary for the ResetTee state to be resumable after a trip
 	if body.holding_object == Holdable.objects.Ball:
 		if ball:
-			await get_tree().create_timer(ball_release_offset-start_offset)
+			await get_tree().create_timer(ball_release_offset-fall_offset)
 			ball.reset_position(body.hand.global_position)
 			body.hold_in_hand(Holdable.objects.None)
 			ball.fell_from_golfer(body.direction) # TODO fix direction
@@ -38,7 +39,9 @@ func _exit():
 	ball = null
 
 func phys_update(_delta):
-	pass
+	if not fallen:
+		body.velocity = body.direction * 1.5
+		body.move_and_slide()
 
 func _animation_finished(anim_name:String):
 	match anim_name:
