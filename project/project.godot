@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*res://scenes/Globals/signals.gd"
 Audio="*res://scenes/Globals/Audio.tscn"
+TaskList="*res://scenes/ui/task_list/task_list.tscn"
 
 [debug]
 
@@ -65,6 +66,11 @@ stand={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -75,4 +81,3 @@ stand={
 3d_physics/layer_5="dirtlump"
 3d_physics/layer_6="underground_obstacle"
 3d_physics/layer_7="golfer"
-3d_physics/layer_8="move_able_obstacle"

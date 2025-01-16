@@ -22,16 +22,24 @@ func disable():
 	$CollisionShape3D.disabled = true
 	hide()
 
-func reset_position():
-	global_position = initial_pos
-	$CollisionShape3D.disabled = false
+
+func reset_position(pos:Vector3=initial_pos):
+	$CollisionShape3D.set_deferred('disabled', false)
+	global_position = pos
 	show()
 
 func _hit(person:Golfer):
 	if person == golfer:
 		if on_tee:
 			Signals.golf_ball_hit_by_golfer.emit()
-			apply_impulse(hit_impulse)
+			apply_central_impulse(hit_impulse)
+
+## falling out of hand when golfer trips
+func fell_from_golfer(direction:Vector3):
+	var force:float = 0.1
+	#print(direction)
+	# TODO fixaw 
+	#apply_central_impulse(direction*force)
 
 func push_from_gopher(direction:Vector3):
 	var force:float = 0.1

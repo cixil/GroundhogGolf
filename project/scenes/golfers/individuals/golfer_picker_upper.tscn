@@ -144,37 +144,36 @@ script = ExtResource("2_xijkl")
 [node name="WatchBall" type="Node" parent="StateMachine" index="10"]
 script = ExtResource("4_nwfr1")
 
-[node name="man2" parent="Pivot" index="0"]
+[node name="man2" parent="Pivot" index="1"]
 transform = Transform3D(0.132256, 0, 0.991216, 0, 1, 0, -0.991216, 0, 0.132256, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Pivot/man2/Armature" index="0"]
-bones/0/position = Vector3(3.31448e-05, -0.00218996, -0.955233)
-bones/0/rotation = Quaternion(-0.707095, 0.00949512, -0.0175266, 0.706838)
-bones/1/rotation = Quaternion(-0.0214823, 0.00509377, -0.00688745, 0.999733)
-bones/2/rotation = Quaternion(-0.00217097, 0.00937672, -0.0023745, 0.999951)
-bones/3/rotation = Quaternion(-0.00200697, 0.01182, 0.0159437, 0.999801)
-bones/4/rotation = Quaternion(0.0939092, 0.00189564, 0.0334635, 0.995016)
-bones/5/rotation = Quaternion(-0.0589293, -0.0245614, -0.0469411, 0.996855)
-bones/7/rotation = Quaternion(-0.635311, -0.311789, 0.565956, -0.42292)
-bones/8/rotation = Quaternion(0.465463, 0.262887, 0.0698586, 0.842232)
-bones/9/rotation = Quaternion(0.00385448, -9.24032e-05, 0.0809016, 0.996715)
-bones/11/rotation = Quaternion(0.588315, -0.363596, 0.61549, 0.377961)
-bones/12/rotation = Quaternion(0.436615, -0.330925, -0.136121, 0.825425)
-bones/13/rotation = Quaternion(0.00444274, 6.62939e-05, -0.0942238, 0.995541)
-bones/15/rotation = Quaternion(0.0961502, 0.0458326, 0.994258, -0.0102555)
-bones/16/rotation = Quaternion(-0.0980204, 0.0282173, 0.0019492, 0.994782)
-bones/17/rotation = Quaternion(0.427546, -0.0525954, 0.0465269, 0.901262)
-bones/18/rotation = Quaternion(0.382413, -0.0145977, 0.00604209, 0.923856)
-bones/20/rotation = Quaternion(0.00598215, 0.0285294, 0.9995, -0.0122179)
-bones/21/rotation = Quaternion(-0.0596824, 0.0464204, -0.00341781, 0.997132)
-bones/22/rotation = Quaternion(0.41011, -0.0230612, -0.0246258, 0.911412)
-bones/23/rotation = Quaternion(0.383643, 0.0143749, -0.00597213, 0.92335)
+bones/0/rotation = Quaternion(-0.67912, 0.0687212, -0.0698743, 0.727455)
+bones/1/rotation = Quaternion(-0.00884458, 0.000110802, 0.00611849, 0.999942)
+bones/2/rotation = Quaternion(-0.00429919, 9.82881e-05, -0.00144679, 0.99999)
+bones/3/rotation = Quaternion(-0.00429902, 8.86076e-05, -0.00144781, 0.99999)
+bones/4/rotation = Quaternion(-0.0253948, -0.0106652, 0.0164095, 0.999486)
+bones/5/rotation = Quaternion(-0.0471574, -0.0288961, -0.0112455, 0.998406)
+bones/7/rotation = Quaternion(-0.598507, -0.397059, 0.555237, -0.41934)
+bones/8/rotation = Quaternion(0.497324, 0.154587, 0.0400834, 0.85274)
+bones/9/rotation = Quaternion(0.0101072, -9.07425e-05, 0.212137, 0.977188)
+bones/11/rotation = Quaternion(0.560998, -0.426577, 0.578105, 0.411228)
+bones/12/rotation = Quaternion(0.486699, -0.125909, -0.0914505, 0.859598)
+bones/13/rotation = Quaternion(0.0131104, 6.38971e-05, -0.278048, 0.960478)
+bones/15/rotation = Quaternion(0.0119895, 0.25498, 0.966869, 0.00251243)
+bones/16/rotation = Quaternion(-0.465677, -0.0622204, 0.0591888, 0.880778)
+bones/17/rotation = Quaternion(0.436483, -0.0866968, -0.0488527, 0.894192)
+bones/18/rotation = Quaternion(0.401035, -0.015602, 0.00662203, 0.915906)
+bones/20/rotation = Quaternion(-0.032756, 0.0995702, 0.993499, -0.0444221)
+bones/21/rotation = Quaternion(-0.239892, 0.0638473, -0.0400654, 0.967869)
+bones/22/rotation = Quaternion(0.541259, 0.0052405, -0.0306971, 0.840279)
+bones/23/rotation = Quaternion(0.399902, 0.0152543, -0.00648026, 0.916408)
 
 [node name="man" parent="Pivot/man2/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_75mvj")
 
 [node name="BoneAttachment3D" parent="Pivot/man2/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.717464, -0.0109536, 0.696509, 0.688947, 0.158922, -0.707175, -0.102944, 0.98723, 0.121567, -0.237654, 0.0452714, -0.825222)
+transform = Transform3D(0.495825, 0.081967, 0.864545, 0.734533, 0.491496, -0.46786, -0.463269, 0.867014, 0.183488, -0.262003, 0.18658, -0.879746)
 
 [connection signal="state_ended" from="StateMachine/ResetTee" to="." method="_on_reset_tee_state_ended"]
 [connection signal="state_ended" from="StateMachine/WatchBall" to="." method="_on_watch_ball_state_ended"]

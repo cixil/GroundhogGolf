@@ -141,17 +141,18 @@ func _physics_process(delta):
 				if _prev_direction == Vector3.ZERO:
 					Signals.hog_started_walking.emit()
 				animation_player.play('walk')
-			if not is_on_floor(): # If in the air, fall towards the floor.
-				_target_velocity.y = _target_velocity.y - (fall_acceleration * delta * (-get_gravity().y))
+			
 			
 			_target_velocity.x = direction.x * walk_speed_x
 			_target_velocity.z = direction.z * (walk_speed_x + 0.5)
-	
-	# Ground Velocity
-	# Vertical velocity
-	#if is_on_floor() and Input.is_action_just_pressed("dig"):
-		#_target_velocity.y = jump_impulse
-	
+			
+	if not is_on_floor(): # If in the air, fall towards the floor.
+		_target_velocity.y = _target_velocity.y - (fall_acceleration * delta * (-get_gravity().y))
+
+	#print('floor ', get_floor_normal())
+	#if get_floor_normal() != Vector3.UP:
+		#_target_velocity *= 2
+		#print(_target_velocity)
 	#
 	# Moving the Character
 	velocity = _target_velocity
@@ -196,7 +197,9 @@ func _on_golf_ball_detector_body_entered(body: Node3D) -> void:
 
 
 func _on_ground_detector_body_entered(body: Node3D) -> void:
+	print('on grd')
 	_on_ground = true
 
 func _on_ground_detector_body_exited(body: Node3D) -> void:
+	print('off grnd')
 	_on_ground = false

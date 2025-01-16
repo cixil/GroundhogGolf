@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://drjarpv62rv3b"]
+
+[ext_resource type="Script" path="res://scenes/ui/task_list/task_item.gd" id="1_nhsmv"]
+
+[node name="TaskItem" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nhsmv")
+accomplished_color = Color(0.385493, 0.385493, 0.385492, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.167608, 0.0566296, 0.0607286, 1)
+bbcode_enabled = true
+text = "test words"
+fit_content = true

@@ -19,3 +19,9 @@ signal hog_stopped_walking
 signal hog_touched_ball
 signal golfer_tripped
 signal golfer_swung_no_arg
+
+
+## Tasks
+signal missed_the_shot
+signal outfit_ruined
+signal balls_everywhere

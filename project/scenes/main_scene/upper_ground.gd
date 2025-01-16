@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends GridMap
 
 @export var dirt_lump_scene:PackedScene
 
