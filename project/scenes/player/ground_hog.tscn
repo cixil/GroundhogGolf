@@ -1,13 +1,16 @@
-[gd_scene load_steps=26 format=4 uid="uid://bnt1aqmoo4cw"]
+[gd_scene load_steps=27 format=4 uid="uid://bnt1aqmoo4cw"]
 
 [ext_resource type="Script" path="res://scenes/player/ground_hog.gd" id="1_ly145"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4go5h"]
-height = 0.2267
-radius = 0.262494
+height = 0.0235583
+radius = 0.197302
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eaeq7"]
+size = Vector3(0.172745, 0.0322876, 0.390564)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tbl6w"]
-radius = 0.225058
+radius = 0.188157
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4nny"]
 albedo_color = Color(0.369677, 0.219345, 0.0653184, 1)
@@ -1351,12 +1354,16 @@ safe_margin = 0.005
 script = ExtResource("1_ly145")
 
 [node name="Cylinder" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00106945, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00282639, 0.144503, -0.0386283)
 shape = SubResource("CylinderShape3D_4go5h")
+
+[node name="square" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00502777, 0.0711814, -0.0978534)
+shape = SubResource("BoxShape3D_eaeq7")
 disabled = true
 
 [node name="Sphere" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0071106, 0.106725, -0.0361078)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00282639, 0.0691308, -0.0386283)
 shape = SubResource("SphereShape3D_tbl6w")
 
 [node name="DigEffects" type="Node3D" parent="."]

@@ -33,6 +33,7 @@ var current_mode = mode.walk
 
 var can_emerge := true
 var _on_ground := false
+var in_crate := false
 
 var _used_mask_layers:Array[int] = []
 
@@ -85,11 +86,16 @@ func _tx_to_walk():
 	dig_effects.hide()
 	lump_raise_interval.stop()
 
-	set_collision_masks(true)
+	
 	
 	animation_player.play('jump out', -1, 2)
 	Signals.hog_left_ground_at.emit(global_position)
 	_target_velocity.y = jump_impulse
+	# wait a short time before setting collisions back so the obstacle clearer
+	# can make sure baskets are out of the way
+	await get_tree().create_timer(0.05).timeout
+	set_collision_masks(true)
+
 	await animation_player.animation_finished
 	
 	Signals.hog_exited_dirt.emit()
@@ -167,9 +173,14 @@ func _physics_process(delta):
 				#collider.apply_impulse((-c.get_normal() * push_force + Vector3.UP*20)*delta, c.get_position())
 				collider.apply_central_impulse((-c.get_normal() + Vector3.UP) * push_force * delta * 200)
 			else:
-			
-				#collider.apply_force(-c.get_normal() * push_force * delta * 50, c.get_position())
-				collider.apply_central_force(-c.get_normal() * push_force * delta * 200)
+				if collider is GolfBall:
+					collider.apply_central_force(-c.get_normal() * push_force * delta * 200)
+				else:
+					#print('colliding at ', c.get_position())
+					if not in_crate:
+						collider.apply_central_force(-c.get_normal() * push_force * delta * 1500)
+					collider.apply_force(c.get_normal() * push_force * delta * 100, c.get_position())
+
 			
 			#print('pushing ', c.get_collider(),' ', c.get_normal().distance_to(Vector3.UP))
 

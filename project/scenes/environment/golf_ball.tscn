@@ -13,7 +13,7 @@ radius = 0.0733205
 radius = 0.0765121
 
 [node name="GolfBall" type="RigidBody3D"]
-collision_layer = 392
+collision_layer = 136
 collision_mask = 157
 mass = 0.05
 physics_material_override = SubResource("PhysicsMaterial_fdefp")

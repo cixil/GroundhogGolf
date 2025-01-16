@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://4rtr770dm2y7"]
+[gd_scene load_steps=10 format=4 uid="uid://4rtr770dm2y7"]
+
+[ext_resource type="Script" path="res://scenes/environment/crate.gd" id="1_sg7ae"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jpqod"]
-friction = 0.5
+friction = 0.3
 bounce = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ud60"]
@@ -78,13 +80,17 @@ size = Vector3(0.625366, 0.138078, 0.625183)
 [sub_resource type="BoxShape3D" id="BoxShape3D_60r4j"]
 size = Vector3(0.62521, 0.529846, 0.0414734)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioy32"]
+size = Vector3(0.387177, 0.0843811, 0.445679)
+
 [node name="Crate" type="RigidBody3D"]
 collision_layer = 128
-collision_mask = 285
+collision_mask = 413
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_jpqod")
 linear_damp = 1.0
-angular_damp = 10.0
+angular_damp = 30.0
+script = ExtResource("1_sg7ae")
 
 [node name="ball-container" type="Node3D" parent="."]
 
@@ -111,3 +117,14 @@ shape = SubResource("BoxShape3D_60r4j")
 [node name="Side4" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.290877, 0.321442, 0.00448518)
 shape = SubResource("BoxShape3D_60r4j")
+
+[node name="InsideCrate" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsideCrate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00276184, 0.146194, -0.0125122)
+shape = SubResource("BoxShape3D_ioy32")
+
+[connection signal="body_entered" from="InsideCrate" to="." method="_on_inside_crate_body_entered"]
+[connection signal="body_exited" from="InsideCrate" to="." method="_on_inside_crate_body_exited"]
