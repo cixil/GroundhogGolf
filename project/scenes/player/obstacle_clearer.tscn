@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://xnxdla6g3vtd"]
+
+[ext_resource type="Script" path="res://scenes/player/obstacle_clearer.gd" id="1_j2bdk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_awvr3"]
+height = 0.6
+radius = 0.0809389
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u7lci"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.6
+
+[sub_resource type="Animation" id="Animation_v3xaw"]
+resource_name = "rise"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleClearer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.1, 0), Vector3(0, 0.9, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u3bbl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleClearer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eor1v"]
+_data = {
+"RESET": SubResource("Animation_u3bbl"),
+"rise": SubResource("Animation_v3xaw")
+}
+
+[node name="ObstacleClearer" type="Node3D"]
+script = ExtResource("1_j2bdk")
+
+[node name="ObstacleClearer" type="StaticBody3D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleClearer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.337129, 0)
+shape = SubResource("CylinderShape3D_awvr3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleClearer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.340931, 0)
+visible = false
+mesh = SubResource("CylinderMesh_u7lci")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eor1v")
+}
+autoplay = "rise"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

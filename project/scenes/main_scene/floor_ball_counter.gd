@@ -4,7 +4,7 @@ extends Area3D
 
 var balls:Array[GolfBall]
 
-var threshhold = 10
+var threshhold = 15
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is GolfBall:

@@ -3,6 +3,7 @@ extends Node
 
 # emitted every time a dirt lump gets raised
 signal lump_raised_at(pos:Vector3)
+signal hog_left_ground_at(pos:Vector3)
 
 signal golf_tee_fell(tee:GolfTee)
 

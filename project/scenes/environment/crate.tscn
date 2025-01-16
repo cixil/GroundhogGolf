@@ -80,7 +80,7 @@ size = Vector3(0.62521, 0.529846, 0.0414734)
 
 [node name="Crate" type="RigidBody3D"]
 collision_layer = 128
-collision_mask = 29
+collision_mask = 285
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_jpqod")
 linear_damp = 1.0

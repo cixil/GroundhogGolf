@@ -88,9 +88,9 @@ func _tx_to_walk():
 	set_collision_masks(true)
 	
 	animation_player.play('jump out', -1, 2)
+	Signals.hog_left_ground_at.emit(global_position)
 	_target_velocity.y = jump_impulse
 	await animation_player.animation_finished
-	
 	
 	Signals.hog_exited_dirt.emit()
 	current_mode = mode.walk

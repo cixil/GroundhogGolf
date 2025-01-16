@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bnt1aqmoo4cw"]
+[gd_scene load_steps=26 format=4 uid="uid://bnt1aqmoo4cw"]
 
 [ext_resource type="Script" path="res://scenes/player/ground_hog.gd" id="1_ly145"]
 
@@ -8,9 +8,6 @@ radius = 0.262494
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tbl6w"]
 radius = 0.225058
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g3kvm"]
-size = Vector3(0.261292, 0.27095, 0.440819)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4nny"]
 albedo_color = Color(0.369677, 0.219345, 0.0653184, 1)
@@ -1361,11 +1358,6 @@ disabled = true
 [node name="Sphere" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0071106, 0.106725, -0.0361078)
 shape = SubResource("SphereShape3D_tbl6w")
-
-[node name="Square" type="CollisionShape3D" parent="."]
-visible = false
-shape = SubResource("BoxShape3D_g3kvm")
-disabled = true
 
 [node name="DigEffects" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0270956, 0)
