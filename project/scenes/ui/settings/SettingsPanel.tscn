@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://onwxwtuppplq"]
+[gd_scene load_steps=6 format=3 uid="uid://onwxwtuppplq"]
 
 [ext_resource type="PackedScene" uid="uid://cly2hs7phsrwy" path="res://scenes/ui/settings/audio_slider.tscn" id="1_1qoxr"]
 [ext_resource type="Script" path="res://scenes/ui/settings/settings_panel.gd" id="1_2jhls"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqjol"]
 bg_color = Color(0.808214, 0.766688, 0.417176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i0jbn"]
+font_color = Color(0.55, 0.329542, 0.1925, 1)
 
 [node name="SettingsPanel" type="MarginContainer"]
 anchors_preset = 15
@@ -16,12 +19,14 @@ grow_vertical = 2
 script = ExtResource("1_2jhls")
 dig_mode_help_text = "Hold button to dig:
 
-Enabled: Hold the dig button to dig and release it to walk
+Enabled: 
+Hold the dig button to dig and release it to walk.
 
-Disabled: Press the dig button to toggle between digging and walking"
-cam_mode_help_text = "Use Orthographic Projection
+Disabled: 
+Press the dig button to toggle between digging and walking."
+cam_mode_help_text = "Use Orthographic Projection:
+
 Enabled:
-
 A more classic top-down camera view. Less likely to get motion sick.
 
 Disabled:
@@ -43,23 +48,33 @@ layout_mode = 2
 
 [node name="Audio" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_i0jbn")
+horizontal_alignment = 1
+
+[node name="Audio2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Audio"
+label_settings = SubResource("LabelSettings_i0jbn")
 
 [node name="MusicSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1qoxr")]
 unique_name_in_owner = true
 layout_mode = 2
 label_text = "Music"
 bus_name = "Music"
+initial_value = 0.7
 
 [node name="SFXSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1qoxr")]
 unique_name_in_owner = true
 layout_mode = 2
 label_text = "Sound Effects"
 bus_name = "SFX"
+initial_value = 0.7
 
 [node name="Accessibility" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Accessability"
+label_settings = SubResource("LabelSettings_i0jbn")
 
 [node name="SettingCheckBox" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_7kqg8")]
 layout_mode = 2

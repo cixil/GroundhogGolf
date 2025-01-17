@@ -6,7 +6,6 @@ func _ready() -> void:
 	hide()
 
 func display_text(text:String):
-	print('show text')
 	show()
 	label.text = text
 
