@@ -24,4 +24,3 @@ func _raise_obstacle_clear_at(pos:Vector3) -> void:
 	add_child(lump)
 	var lump_pos = Vector3(pos.x, pos.y, pos.z)
 	lump.global_position = lump_pos
-	print('raise at ', lump_pos)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://ce7qgvjpmvrbj"]
 
-[ext_resource type="Script" path="res://scenes/environment/golf_ball.gd" id="1_4gubb"]
+[ext_resource type="Script" path="res://scenes/environment/interactable/golf_ball.gd" id="1_4gubb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fdefp"]
 bounce = 0.5

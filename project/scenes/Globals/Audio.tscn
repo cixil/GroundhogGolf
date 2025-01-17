@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
-[ext_resource type="AudioStream" uid="uid://cg8o6x2uukm4e" path="res://audio/Music/digeridoo.wav" id="2_mdx43"]
 [ext_resource type="AudioStream" uid="uid://c60hnnc08hske" path="res://audio/sfx/groundhog touching ball.wav" id="2_v0d0s"]
 [ext_resource type="AudioStream" uid="uid://ctccrqmqgup5t" path="res://audio/sfx/Groundhog grass stepping.wav" id="3_dxhrd"]
 [ext_resource type="AudioStream" uid="uid://1ejc452n8oc" path="res://audio/sfx/digging sfx.wav" id="4_nogc6"]
@@ -9,16 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://c8fn1duhj56mp" path="res://audio/sfx/golf swing hit.wav" id="6_2fj5b"]
 [ext_resource type="AudioStream" uid="uid://bn52fjcmqmfnd" path="res://audio/sfx/hog going down.wav" id="7_008x6"]
 [ext_resource type="AudioStream" uid="uid://b5k0ialylndnc" path="res://audio/sfx/hog going up.wav" id="8_jy2yl"]
+[ext_resource type="AudioStream" uid="uid://gbjhwtjjkedc" path="res://audio/Music/Gopher Main Theme NO intro.wav" id="9_7ncrf"]
 
 [node name="Audio" type="Node"]
+process_mode = 3
 script = ExtResource("1_ovd6e")
 sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b"), ExtResource("7_008x6"), ExtResource("8_jy2yl")])
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-
-[node name="DirtEnterSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_mdx43")
-
-[node name="Node" type="Node" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_7ncrf")
+bus = &"Music"

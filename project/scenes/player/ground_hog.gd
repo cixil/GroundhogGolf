@@ -10,6 +10,8 @@ class_name GroundHog
 @onready var ball_detector_collision: CollisionShape3D = %BallDetectorCollision
 
 
+var hold_to_dig := true
+
 # Different speeds so it looks more normal with the camera angle
 var walk_speed_x = .7
 var dig_speed_x = 1.5
@@ -73,7 +75,6 @@ func set_collision_masks(val:bool):
 
 
 func _tx_to_walk():
-
 	current_mode = mode.transition_to_walk
 	if _prev_direction != Vector3.ZERO:
 		Signals.hog_started_walking.emit()
@@ -123,15 +124,23 @@ func _physics_process(delta):
 		animation_player.play("stand")
 		return
 	
-	#if current_mode != mode.transition:
-	if is_on_floor() and _on_ground and Input.is_action_just_pressed("dig"):
-		_tx_to_dig()
-	elif current_mode == mode.dig and Input.is_action_just_released("dig"):
-		if can_emerge:
-			_tx_to_walk()
-		else:
-			current_mode = mode.pending_walk
-	
+	if hold_to_dig: # hold dig to dig and release to emerge
+		if is_on_floor() and _on_ground and Input.is_action_just_pressed("dig"):
+			_tx_to_dig()
+		elif current_mode == mode.dig and Input.is_action_just_released("dig"):
+			if can_emerge:
+				_tx_to_walk()
+			else:
+				current_mode = mode.pending_walk
+				
+	else: # Whenever dig is pressed, toggle digging/walking
+		if Input.is_action_just_pressed("dig"):
+			if current_mode == mode.dig:
+				if can_emerge:
+					_tx_to_walk()
+			elif is_on_floor() and _on_ground:
+				_tx_to_dig()
+			
 	
 	match current_mode:
 		mode.dig, mode.pending_walk:

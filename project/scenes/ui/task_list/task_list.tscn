@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1msrql0hw5ro"]
+[gd_scene load_steps=6 format=3 uid="uid://d1msrql0hw5ro"]
 
 [ext_resource type="Script" path="res://scenes/ui/task_list/task_list.gd" id="1_panm4"]
 [ext_resource type="PackedScene" uid="uid://drjarpv62rv3b" path="res://scenes/ui/task_list/task_item.tscn" id="2_leihd"]
+[ext_resource type="PackedScene" uid="uid://cly2hs7phsrwy" path="res://scenes/ui/settings/audio_slider.tscn" id="3_tx4wc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4xyr"]
 bg_color = Color(0.920576, 0.893824, 0.651623, 1)
@@ -17,8 +18,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_panm4")
 task_item_scene = ExtResource("2_leihd")
+
+[node name="AudioSlider" parent="." instance=ExtResource("3_tx4wc")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -50,6 +62,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Revenge Tasks"
 label_settings = SubResource("LabelSettings_kr35y")
+horizontal_alignment = 1
 
 [node name="ItemContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

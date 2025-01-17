@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_b1bxq"]
 [ext_resource type="PackedScene" uid="uid://yah42mh215ia" path="res://scenes/player/dirt_lump.tscn" id="2_nusfp"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="3_1cve8"]
-[ext_resource type="PackedScene" uid="uid://buvqi40uk6vqb" path="res://scenes/environment/golf_ball.tscn" id="5_iw7eg"]
+[ext_resource type="PackedScene" uid="uid://buvqi40uk6vqb" path="res://scenes/environment/interactable/golf_ball.tscn" id="5_iw7eg"]
 [ext_resource type="PackedScene" uid="uid://bltxires7oi0u" path="res://scenes/environment/golf_tee.tscn" id="6_gbwbi"]
 [ext_resource type="PackedScene" uid="uid://okues4712uh" path="res://scenes/environment/bush.tscn" id="7_o1wpi"]
 [ext_resource type="PackedScene" uid="uid://mgs8ef2jfsy1" path="res://scenes/golfers/base_scene/Golfer.tscn" id="8_xno2f"]

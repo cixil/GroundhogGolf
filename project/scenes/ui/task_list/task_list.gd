@@ -25,7 +25,6 @@ func _ready() -> void:
 	hide()
 
 func mark_done(index:int):
-	print('mark done ', index)
 	tasks[index][2] = true
 	var item:TaskItemControl = item_container.get_child(index)
 	item.set_done()
@@ -34,7 +33,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if visible:
 			get_tree().paused = false
+			Audio.undim_theme()
 			hide()
 		else:
 			show()
+			$AudioSlider.grab_focus()
+			Audio.dim_theme()
 			get_tree().paused = true

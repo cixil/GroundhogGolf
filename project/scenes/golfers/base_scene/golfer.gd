@@ -41,7 +41,7 @@ func hold_in_hand(obj:Holdable.objects):
 
 func get_muddy():
 	Signals.outfit_ruined.emit()
-	var mesh:Mesh = $Pivot/man2/Armature/Skeleton3D/man.mesh
+	var mesh:Mesh = $Pivot/man/Armature/Skeleton3D/man.mesh
 	var material:Material = mesh.surface_get_material(0)
 	var mud_color = Color('9d5a40')
 	material.albedo_color = mud_color
