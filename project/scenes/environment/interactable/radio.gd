@@ -3,9 +3,10 @@ class_name Radio
 
 var _golfers:Array[Golfer]
 
+# TODO make audio3d node play from position
+
 var on := false:
 	set(value):
-		print('turned ', value)
 		on = value
 		if on:
 			_turn_on()

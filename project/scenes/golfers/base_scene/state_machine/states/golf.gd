@@ -19,6 +19,7 @@ func enter(args=[]) -> void:
 	
 
 # TODO change this to use proc_update and timers so it is pausable
+# gitches out and still hits even when paused
 
 func start_teeing():
 	for i in range(practice_swings):
