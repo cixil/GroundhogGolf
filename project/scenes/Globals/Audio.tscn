@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rfysofgc0ssw"]
+[gd_scene load_steps=11 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
 [ext_resource type="AudioStream" uid="uid://c60hnnc08hske" path="res://audio/sfx/groundhog touching ball.wav" id="2_v0d0s"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bn52fjcmqmfnd" path="res://audio/sfx/hog going down.wav" id="7_008x6"]
 [ext_resource type="AudioStream" uid="uid://b5k0ialylndnc" path="res://audio/sfx/hog going up.wav" id="8_jy2yl"]
 [ext_resource type="AudioStream" uid="uid://c6t1ce5q1dpso" path="res://audio/Music/Gopher Main Theme WITH intro.wav" id="9_busy6"]
+[ext_resource type="AudioStream" uid="uid://05pxvnfanc54" path="res://audio/Music/latin-beats-120752.mp3" id="10_83s05"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
@@ -17,4 +18,8 @@ sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtRes
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_busy6")
+bus = &"Music"
+
+[node name="RadioTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_83s05")
 bus = &"Music"

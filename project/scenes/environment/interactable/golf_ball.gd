@@ -43,6 +43,9 @@ func fell_from_golfer(direction:Vector3):
 	# TODO fixaw 
 	#apply_central_impulse(direction*force)
 
+func boop(direction:Vector3):
+	hit_from_gopher(direction)
+
 func push_from_gopher(direction:Vector3):
 	var force:float = 0.1
 	#direction.y = 0

@@ -11,6 +11,9 @@ signal golf_tee_fell(tee:GolfTee)
 signal golfer_swung(golfer:Golfer)
 signal golf_ball_hit_by_golfer()
 
+signal radio_turned_on
+signal radio_turned_off
+
 
 #### Added for audio #####
 signal hog_entered_dirt

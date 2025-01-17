@@ -1,18 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://63sn7aw2pf6p"]
+[gd_scene load_steps=6 format=3 uid="uid://63sn7aw2pf6p"]
 
 [ext_resource type="PackedScene" uid="uid://2en1cesdwmeg" path="res://models/radio.glb" id="1_l8j5t"]
+[ext_resource type="Script" path="res://scenes/environment/interactable/radio.gd" id="1_xnf3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5mfnc"]
 size = Vector3(0.124817, 0.190613, 0.260498)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ego3d"]
+radius = 3.27306
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n3tt2"]
+radius = 0.153998
+
 [node name="Radio" type="RigidBody3D"]
 collision_layer = 128
-collision_mask = 156
+collision_mask = 1180
 mass = 0.2
 linear_damp = 0.5
+angular_damp = 40.0
+script = ExtResource("1_xnf3e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00387573, 0.087616, 0.00183105)
 shape = SubResource("BoxShape3D_5mfnc")
 
 [node name="radio" parent="." instance=ExtResource("1_l8j5t")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ego3d")
+
+[node name="HogDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HogDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0747681, 0)
+shape = SubResource("SphereShape3D_n3tt2")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="HogDetector" to="." method="_on_hog_detector_body_entered"]

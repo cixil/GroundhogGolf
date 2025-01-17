@@ -2,7 +2,7 @@ extends Node
 class_name StateMachine
 
 @onready var pivot: Node3D = $"../Pivot"
-@onready var animation_player: AnimationPlayer = $"../Pivot/man/AnimationPlayer"
+@onready var animation_player: AnimationPlayer = $"../Pivot/ModelGoesHere/man/AnimationPlayer"
 
 @export var debug := false
 

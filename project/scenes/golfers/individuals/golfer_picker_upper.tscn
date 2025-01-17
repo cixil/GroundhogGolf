@@ -1664,13 +1664,13 @@ script = ExtResource("2_xijkl")
 [node name="WatchBall" type="Node" parent="StateMachine" index="10"]
 script = ExtResource("4_nwfr1")
 
-[node name="man" type="Node3D" parent="Pivot" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+[node name="man" type="Node3D" parent="Pivot/ModelGoesHere" index="0"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
 
-[node name="Armature" type="Node3D" parent="Pivot/man" index="0"]
+[node name="Armature" type="Node3D" parent="Pivot/ModelGoesHere/man" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Pivot/man/Armature" index="0"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Pivot/ModelGoesHere/man/Armature" index="0"]
 bones/0/name = "mixamorig_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.012938, 0.001924, -0.955867)
@@ -1774,7 +1774,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(0.999994, -0.00343635, 0.000266679, 0.00344668, 0.996988, -0.0774769, 3.61892e-07, 0.0774774, 0.996994, 1.86265e-09, 0.284548, 1.07684e-08)
 bones/14/enabled = true
 bones/14/position = Vector3(1.86265e-09, 0.284548, 1.07684e-08)
-bones/14/rotation = Quaternion(0.00324116, 6.64869e-05, -0.0687445, 0.997629)
+bones/14/rotation = Quaternion(0.00324115, 6.64869e-05, -0.0687445, 0.997629)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "mixamorig_RightHand"
 bones/15/parent = 14
@@ -1854,23 +1854,23 @@ bones/25/position = Vector3(3.35276e-08, 0.0657976, -2.98314e-10)
 bones/25/rotation = Quaternion(4.38449e-08, 3.10929e-07, -3.3597e-07, 1)
 bones/25/scale = Vector3(1, 1, 1)
 
-[node name="name-tag" type="BoneAttachment3D" parent="Pivot/man/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.799013, -0.151275, 0.181074, -0.215448, -0.207091, 0.777681, -0.0961978, -0.792668, -0.237733, 0.0779831, 0.0922548, -1.30272)
+[node name="name-tag" type="BoneAttachment3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.799013, -0.151276, 0.181073, -0.215448, -0.207091, 0.777682, -0.0961994, -0.792667, -0.237733, 0.0779831, 0.0922544, -1.30272)
 bone_name = "name-tag"
 bone_idx = 11
 
-[node name="name-tag" type="MeshInstance3D" parent="Pivot/man/Armature/Skeleton3D/name-tag" index="0"]
+[node name="name-tag" type="MeshInstance3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D/name-tag" index="0"]
 mesh = SubResource("ArrayMesh_3jwnh")
 skeleton = NodePath("")
 
-[node name="man" type="MeshInstance3D" parent="Pivot/man/Armature/Skeleton3D" index="1"]
+[node name="man" type="MeshInstance3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D" index="1"]
 mesh = SubResource("ArrayMesh_u7o02")
 skin = SubResource("Skin_tkqe1")
 
-[node name="BoneAttachment3D" parent="Pivot/man/Armature/Skeleton3D" index="2" instance=ExtResource("5_s2auo")]
-transform = Transform3D(0.087366, -0.171029, 0.981385, 0.957812, 0.285187, -0.0355669, -0.273795, 0.943089, 0.188729, -0.294933, -0.0334205, -1.04603)
+[node name="BoneAttachment3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D" index="2" instance=ExtResource("5_s2auo")]
+transform = Transform3D(0.0873667, -0.171029, 0.981385, 0.957812, 0.285187, -0.0355675, -0.273796, 0.943089, 0.18873, -0.294933, -0.0334202, -1.04603)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/man" index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/ModelGoesHere/man" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_qvqt7")
 }

@@ -9,6 +9,7 @@ class_name GroundHog
 @onready var animation_player: AnimationPlayer = $"Pivot/ground-hog/AnimationPlayer"
 @onready var ball_detector_collision: CollisionShape3D = %BallDetectorCollision
 
+@onready var nose_push_area: Area3D = $Pivot/NosePushArea
 
 
 # Different speeds so it looks more normal with the camera angle
@@ -18,6 +19,7 @@ var speed_z = 2
 # The downward acceleration when in the air, in meters per second squared.
 var fall_acceleration = 2
 var jump_impulse = .3
+var _nose_boop_offset = 0.18
 
 var _target_velocity = Vector3.ZERO
 var _prev_direction:Vector3 = Vector3.ZERO
@@ -103,6 +105,9 @@ func _tx_to_walk():
 
 
 func _physics_process(delta):
+	if animation_player.current_animation == 'nose-push':
+		return
+	
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
@@ -121,6 +126,11 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("stand"):
 		animation_player.play("stand")
+		return
+	elif Input.is_action_just_pressed("boop"):
+		animation_player.play('nose-push')
+		await get_tree().create_timer(_nose_boop_offset).timeout
+		nose_push_area.booped()
 		return
 	
 	if Settings.hold_to_dig: # hold dig to dig and release to emerge
@@ -194,8 +204,6 @@ func _physics_process(delta):
 					collider.apply_force(c.get_normal() * push_force * delta * 100, c.get_position())
 					collider.apply_central_force(-c.get_normal() * push_force * delta * 100)
 
-			
-			#print('pushing ', c.get_collider(),' ', c.get_normal().distance_to(Vector3.UP))
 
 	_prev_direction = direction
 
@@ -221,9 +229,13 @@ func _on_golf_ball_detector_body_entered(body: Node3D) -> void:
 
 
 func _on_ground_detector_body_entered(body: Node3D) -> void:
-	print('on grd')
 	_on_ground = true
 
 func _on_ground_detector_body_exited(body: Node3D) -> void:
-	print('off grnd')
 	_on_ground = false
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		'nose-push':
+			animation_player.play('idle')

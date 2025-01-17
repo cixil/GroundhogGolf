@@ -14,6 +14,7 @@ signal reset_ball
 
 
 func _ready() -> void:
+	trippable = true
 	super()
 	if tee_to_monitor:
 		Signals.golf_tee_fell.connect(_on_tee_fell)
