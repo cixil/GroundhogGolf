@@ -31,3 +31,4 @@ signal outfit_ruined
 signal balls_everywhere
 signal purple_ball_in_hole
 signal employee_dance_off
+signal wine_spilled

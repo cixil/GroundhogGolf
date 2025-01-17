@@ -10,6 +10,7 @@ var tasks = [
 	["Ruin someone's outfit", Signals.outfit_ruined, false],
 	["Balls everywhere", Signals.balls_everywhere, false],
 	["Make the employees slack off", Signals.employee_dance_off , false],
+	["Spill the wine", Signals.wine_spilled, false], 
 	["Put the special ball in the hole", Signals.purple_ball_in_hole, false]
 ]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://x1h27fbgavxn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_656sy"]
+albedo_color = Color(0.368983, 0.0304582, 0.286429, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a45bf"]
+material = SubResource("StandardMaterial3D_656sy")
+
+[node name="WineSpill" type="Node3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_a45bf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.14, 0, 0, 0, 0.7, -0.458191, 0, 0.270996)
+mesh = SubResource("SphereMesh_a45bf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.050415, 0, 0.573242)
+mesh = SubResource("SphereMesh_a45bf")
