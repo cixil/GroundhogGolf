@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://bltxires7oi0u"]
+[gd_scene load_steps=11 format=4 uid="uid://bltxires7oi0u"]
 
 [ext_resource type="Script" path="res://scenes/environment/golf_tee.gd" id="1_aa55g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_utmca"]
+size = Vector3(0.0386353, 0.156387, 0.043457)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a1x2"]
 resource_name = "corq"
@@ -112,6 +115,15 @@ radius = 0.0507614
 [node name="GolfTee" type="Node3D"]
 script = ExtResource("1_aa55g")
 
+[node name="GolfBallDetector" type="Area3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GolfBallDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00125359, 0.151314, 0.00166954)
+shape = SubResource("BoxShape3D_utmca")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
@@ -140,4 +152,5 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0432859, 0)
 shape = SubResource("CylinderShape3D_d3j4o")
 
+[connection signal="body_exited" from="GolfBallDetector" to="." method="_on_golf_ball_detector_body_exited"]
 [connection signal="body_entered" from="HogDetector" to="." method="_on_hog_detector_body_entered"]

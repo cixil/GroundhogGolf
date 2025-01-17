@@ -9,6 +9,7 @@ var yell_direction:Vector3
 
 func init():
 	animation_player.animation_finished.connect(_on_animation_finished)
+	Signals.radio_turned_off.connect(_radio_was_turned_off)
 
 func enter(args=[]):
 	radio = args[0]
@@ -33,10 +34,18 @@ func phys_update(_delta):
 		await get_tree().create_timer(pick_up_anim_offset/pick_up_speed).timeout
 		radio.on = false
 
+func _radio_was_turned_off():
+	if not active: return
+	
+	reached_target = true
+	animation_player.play("idle-standing")
+
 func _on_animation_finished(anim:String):
+	if not active: return
 	match anim:
 		"pick-up":
 			pivot.basis = Basis.looking_at(yell_direction)
 			animation_player.play("yelling")
-		"yelling":
+		"yelling", "idle-standing":
 			state_ended.emit()
+		

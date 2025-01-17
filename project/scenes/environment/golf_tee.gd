@@ -7,7 +7,7 @@ var fallen := false
 func fall():
 	if not fallen:
 		fallen = true
-		Signals.golf_tee_fell.emit(self)
+		
 		animation_player.play("fall")
 
 func reset():
@@ -19,3 +19,8 @@ func _on_hog_detector_body_entered(body: Node3D) -> void:
 	if body is GroundHog:
 		if body.current_mode == GroundHog.mode.dig:
 			fall()
+
+
+func _on_golf_ball_detector_body_exited(body: Node3D) -> void:
+	if body is GolfBall:
+		Signals.golf_tee_fell.emit(self)

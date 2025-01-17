@@ -30,24 +30,24 @@ func phys_update(_delta):
 			var target = ball.global_position
 			target.y = 0
 			if body.global_position.distance_squared_to(target) > 0.2:
-				move_to(target)
+				body.move_to(target)
 			else:
 				get_ball()
 		states.walking_to_tee:
 			var target = tee.global_position
 			target.y = 0
 			if body.global_position.distance_squared_to(target) > 0.2:
-				move_to(target)
+				body.move_to(target)
 			else:
 				get_tee()
 
-func move_to(target):
-	animation_player.play('walking-forward')
-	var direction =  body.global_position.direction_to(target)
-	body.direction = direction
-	body.velocity = body.walk_speed * direction
-	pivot.basis = Basis.looking_at(direction)
-	body.move_and_slide()
+#func move_to(target):
+	#animation_player.play('walking-forward')
+	#var direction =  body.global_position.direction_to(target)
+	#body.direction = direction
+	#body.velocity = body.walk_speed * direction
+	#pivot.basis = Basis.looking_at(direction)
+	#body.move_and_slide()
 
 func start_walking_to_ball_state():
 	state = states.walking_to_ball

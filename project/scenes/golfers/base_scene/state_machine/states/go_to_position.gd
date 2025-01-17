@@ -8,11 +8,7 @@ func enter(args = []) -> void:
 
 func phys_update(_delta) -> void:
 	if body.global_position.distance_squared_to(target) > .3:
-		animation_player.play('walking-forward')
-		var direction =  body.global_position.direction_to(target)
-		body.velocity = body.walk_speed * direction
-		pivot.basis = Basis.looking_at(direction)
-		body.move_and_slide()
+		body.move_to(target)
 	else:
 		animation_player.stop()
 		state_ended.emit()

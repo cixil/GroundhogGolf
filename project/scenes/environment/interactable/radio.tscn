@@ -7,7 +7,7 @@
 size = Vector3(0.124817, 0.190613, 0.260498)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ego3d"]
-radius = 3.27306
+radius = 4.72538
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n3tt2"]
 radius = 0.153998

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=42 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cli2uvnbgvg6n" path="res://models/golf-bag.glb" id="18_dgp7q"]
 [ext_resource type="PackedScene" uid="uid://6y32g5pik4c3" path="res://scenes/ui/hud.tscn" id="18_wsg20"]
 [ext_resource type="PackedScene" uid="uid://bevovdahq7i11" path="res://scenes/golfers/individuals/golfer_radio_manager.tscn" id="20_vrukk"]
+[ext_resource type="PackedScene" uid="uid://blji2o1gp7qjk" path="res://scenes/golfers/individuals/dancing_worker_2.tscn" id="21_56di6"]
 [ext_resource type="Script" path="res://scenes/main_scene/radio_area.gd" id="22_duoyc"]
 [ext_resource type="PackedScene" uid="uid://ce7qgvjpmvrbj" path="res://scenes/environment/purple_golf_ball.tscn" id="22_tr7vf"]
 [ext_resource type="PackedScene" uid="uid://63sn7aw2pf6p" path="res://scenes/environment/interactable/radio.tscn" id="23_d2gv3"]
@@ -63,6 +64,13 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve3D" id="Curve3D_7lhmo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 13.0792, 0, 6.97092, 0.580434, 0, -0.580434, -0.580434, 0, 0.580434, 12.7036, 0, 8.3025, 0, 0, 0, 0, 0, 0, 10.3989, 0, 8.50736, 0, 0, 0, 0, 0, 0, 12.089, 0, 7.96107),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_io5of"]
 size = Vector3(1, 4, 7.6001)
 
@@ -88,7 +96,7 @@ cell_size = Vector3(3, 3, 3)
 collision_layer = 4
 collision_mask = 0
 data = {
-"cells": PackedInt32Array(1, 65533, 1, 0, 65533, 0, 0, 65532, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 0, 4, 0, 0, 3, 0, 1, 3, 0, 2, 2, 0, 3, 2, 0, 2, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 2, 0, 2, 0, 0, 3, 65535, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 4, 0, 0, 1, 2, 0, 5, 0, 0, 2, 3, 0, 4, 2, 0, 5, 2, 0, 1, 4, 0, 4, 3, 0, 3, 3, 0, 4, 4, 0, 2, 4, 0, 3, 4, 0, 65534, 65529, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 4, 6, 0, 4, 7, 0, 3, 7, 0, 2, 7, 0, 65534, 7, 0, 65534, 6, 0, 65535, 6, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 1, 7, 0, 0, 7, 0, 3, 6, 0, 65534, 8, 0, 65535, 8, 0, 65535, 7, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 1, 9, 0, 0, 9, 0, 65535, 9, 0, 65534, 9, 0, 65533, 8, 0, 65533, 9, 0, 65532, 8, 0, 65532, 7, 0, 65532, 6, 0, 65533, 6, 0, 65533, 5, 0, 65533, 4, 0, 65533, 3, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65532, 5, 0, 65533, 7, 0, 65532, 4, 0, 65532, 3, 0, 65532, 2, 0, 65532, 1, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65534, 65528, 0, 65534, 65527, 0, 65535, 65528, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 3, 65528, 0, 3, 65529, 0, 2, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 4, 65531, 0, 3, 65531, 0, 2, 65531, 0, 3, 65532, 0, 4, 65532, 0, 4, 65533, 0, 3, 65533, 0, 3, 65534, 0, 4, 65535, 0, 5, 65534, 0, 5, 65533, 0, 5, 3, 0, 5, 5, 0, 5, 6, 0, 5, 1, 0, 5, 65535, 0, 5, 4, 0, 5, 65532, 0, 5, 65531, 0, 5, 65530, 0, 5, 65529, 0, 4, 65529, 0, 4, 65528, 0, 4, 65527, 0, 5, 65527, 0, 5, 65528, 0, 4, 65526, 0, 5, 65526, 0, 3, 65527, 0, 2, 65527, 0, 1, 65527, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 0, 65526, 0, 65533, 65527, 0, 65533, 65526, 0, 65534, 65526, 0, 65535, 65525, 0, 0, 65525, 0, 65535, 65526, 0, 65532, 65526, 0, 65532, 65527, 0, 65532, 65528, 0, 65532, 65529, 0, 65533, 65525, 0, 65534, 65525, 0, 65533, 65528, 0, 0, 65527, 0, 2, 65532, 0, 2, 65533, 0, 4, 65534, 0, 1, 65529, 0, 1, 65530, 0, 65535, 65530, 0, 0, 65531, 2, 0, 65530, 0, 1, 65532, 2, 1, 65531, 0, 20, 65532, 0, 3, 0, 0, 3, 1, 0, 4, 1, 0)
+"cells": PackedInt32Array(1, 65533, 1, 0, 65533, 0, 0, 65532, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 0, 4, 0, 0, 3, 0, 1, 3, 0, 2, 2, 0, 3, 2, 0, 2, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 2, 0, 2, 0, 0, 3, 65535, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 4, 0, 0, 1, 2, 0, 5, 0, 0, 2, 3, 0, 4, 2, 0, 5, 2, 0, 1, 4, 0, 4, 3, 0, 3, 3, 0, 4, 4, 0, 2, 4, 0, 3, 4, 0, 65534, 65529, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 4, 6, 0, 4, 7, 0, 3, 7, 0, 2, 7, 0, 65534, 7, 0, 65534, 6, 0, 65535, 6, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 1, 7, 0, 0, 7, 0, 3, 6, 0, 65534, 8, 0, 65535, 8, 0, 65535, 7, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 1, 9, 0, 0, 9, 0, 65535, 9, 0, 65534, 9, 0, 65533, 8, 0, 65533, 9, 0, 65532, 8, 0, 65532, 7, 0, 65532, 6, 0, 65533, 6, 0, 65533, 5, 0, 65533, 4, 0, 65533, 3, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65532, 5, 0, 65533, 7, 0, 65532, 4, 0, 65532, 3, 0, 65532, 2, 0, 65532, 1, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65534, 65528, 0, 65534, 65527, 0, 65535, 65528, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 3, 65528, 0, 3, 65529, 0, 2, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 4, 65531, 0, 3, 65531, 0, 2, 65531, 0, 3, 65532, 0, 4, 65532, 0, 4, 65533, 0, 3, 65533, 0, 3, 65534, 0, 4, 65535, 0, 5, 65534, 0, 5, 65533, 0, 5, 3, 0, 5, 5, 0, 5, 6, 0, 5, 1, 0, 5, 65535, 0, 5, 4, 0, 5, 65532, 0, 5, 65531, 0, 5, 65530, 0, 5, 65529, 0, 4, 65529, 0, 4, 65528, 0, 4, 65527, 0, 5, 65527, 0, 5, 65528, 0, 4, 65526, 0, 5, 65526, 0, 3, 65527, 0, 2, 65527, 0, 1, 65527, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 0, 65526, 0, 65533, 65527, 0, 65533, 65526, 0, 65534, 65526, 0, 65535, 65525, 0, 0, 65525, 0, 65535, 65526, 0, 65532, 65526, 0, 65532, 65527, 0, 65532, 65528, 0, 65532, 65529, 0, 65533, 65525, 0, 65534, 65525, 0, 65533, 65528, 0, 0, 65527, 0, 2, 65532, 0, 2, 65533, 0, 4, 65534, 0, 1, 65529, 0, 1, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 0, 65530, 0, 1, 65532, 2, 1, 65531, 0, 20, 65532, 0, 3, 0, 0, 3, 1, 0, 4, 1, 0)
 }
 script = ExtResource("1_0iia1")
 dirt_lump_scene = ExtResource("2_if6fa")
@@ -101,6 +109,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53256, 1.87036, -10.4987)
 [node name="MudPit" parent="GridMap" instance=ExtResource("8_in42m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47704, 1.58261, -7.53197)
 
+[node name="MudPit2" parent="GridMap" instance=ExtResource("8_in42m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45734, 1.58261, 4.47389)
+
 [node name="FloorBallCounter" type="Area3D" parent="GridMap"]
 collision_layer = 0
 collision_mask = 8
@@ -111,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71262, 2.1167, -4.93481)
 shape = SubResource("BoxShape3D_pdaf2")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14597, 1.41882, 11.0424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99343, 1.41882, -3.57923)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)
@@ -196,7 +207,10 @@ path_to_follow = NodePath("../DancingWorker1Path")
 curve = SubResource("Curve3D_ctljx")
 
 [node name="DancingWorker1DancingSpot" type="Node3D" parent="Environment/DancingScenario/PeopleAndPaths"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4063, 0, 8.7576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3964, 0, 9.13317)
+
+[node name="DancingWorker2DancingSpot2" type="Node3D" parent="Environment/DancingScenario/PeopleAndPaths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69562, 0, 9.29471)
 
 [node name="GolferRadioManager" parent="Environment/DancingScenario/PeopleAndPaths" node_paths=PackedStringArray("yell_to_direction", "path_to_follow") instance=ExtResource("20_vrukk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94553, 0, 3.29187)
@@ -206,6 +220,16 @@ path_point_animations = Array[String](["idle-standing", "", "look in future", ""
 
 [node name="ManagerPath" type="Path3D" parent="Environment/DancingScenario/PeopleAndPaths"]
 curve = SubResource("Curve3D_phe4s")
+
+[node name="DancingWorker2" parent="Environment/DancingScenario/PeopleAndPaths" node_paths=PackedStringArray("radio", "dancing_spot", "path_to_follow") instance=ExtResource("21_56di6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9033, 0, 8.67932)
+radio = NodePath("../../Crate7/Radio")
+dancing_spot = NodePath("../DancingWorker2DancingSpot2")
+path_to_follow = NodePath("../DancingWorker2Path")
+path_point_animations = Array[String](["looking trough files low", "", "look in future", ""])
+
+[node name="DancingWorker2Path" type="Path3D" parent="Environment/DancingScenario/PeopleAndPaths"]
+curve = SubResource("Curve3D_7lhmo")
 
 [node name="Crate7" parent="Environment/DancingScenario" instance=ExtResource("16_jryvw")]
 transform = Transform3D(-0.132548, 0.00438314, -0.991167, -0.0330505, -0.999454, -1.56701e-09, -0.990625, 0.0327586, 0.132619, 9.11586, 0.65918, 6.98052)
@@ -217,10 +241,10 @@ transform = Transform3D(-0.866614, -0.0330505, -0.497884, 0.0286577, -0.999453, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7739, 0, 7.41321)
 
 [node name="Crate4" parent="Environment/DancingScenario" instance=ExtResource("16_jryvw")]
-transform = Transform3D(-0.998405, 0.0564661, 0, -0.0564661, -0.998405, 0, 0, 0, 1, 12.6953, 0.739746, 8.79359)
+transform = Transform3D(-0.998405, 0.0564661, 0, -0.0564661, -0.998405, 0, 0, 0, 1, 12.8831, 0.739746, 9.42524)
 
 [node name="Crate5" parent="Environment/DancingScenario" instance=ExtResource("16_jryvw")]
-transform = Transform3D(-0.998405, 0.0564661, 0, -0.0564661, -0.998405, 0, 0, 0, 1, 12.8182, 0.739746, 10.114)
+transform = Transform3D(-0.998405, 0.0564661, 0, -0.0564661, -0.998405, 0, 0, 0, 1, 12.9036, 0.739746, 10.2847)
 
 [node name="RadioContainer" type="StaticBody3D" parent="Environment/DancingScenario"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.32331, 0, 9.85315)
