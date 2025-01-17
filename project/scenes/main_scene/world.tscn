@@ -91,11 +91,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6478, 1.41882, 4.65211)
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)
 
 [node name="Camera3D" type="Camera3D" parent="GroundHog/CameraPivot"]
+process_mode = 3
 transform = Transform3D(0.999849, 0.00874414, -0.0150432, -3.69799e-09, 0.864556, 0.502537, 0.0174, -0.502461, 0.864425, -0.529217, 6.92833, 11.1658)
 projection = 1
 current = true
-fov = 14.0
-size = 4.0
+fov = 13.0
+size = 3.8
 far = 50.92
 script = ExtResource("8_h4qvh")
 

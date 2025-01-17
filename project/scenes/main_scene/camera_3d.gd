@@ -1,11 +1,10 @@
 extends Camera3D
 
+func _ready():
+	Settings.camera_mode_changed.connect(_change_camera_mode)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _change_camera_mode(value:bool):
+	if value:
+		projection = ProjectionType.PROJECTION_ORTHOGONAL
+	else:
+		projection = ProjectionType.PROJECTION_PERSPECTIVE

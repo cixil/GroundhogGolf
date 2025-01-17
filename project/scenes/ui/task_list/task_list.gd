@@ -1,6 +1,7 @@
 extends Control
 
 @onready var item_container: VBoxContainer = %ItemContainer
+@onready var settings_panel: MarginContainer = %SettingsPanel
 
 @export var task_item_scene:PackedScene
 
@@ -37,6 +38,6 @@ func _process(delta: float) -> void:
 			hide()
 		else:
 			show()
-			$AudioSlider.grab_focus()
+			settings_panel.start()
 			Audio.dim_theme()
 			get_tree().paused = true

@@ -10,7 +10,6 @@ class_name GroundHog
 @onready var ball_detector_collision: CollisionShape3D = %BallDetectorCollision
 
 
-var hold_to_dig := true
 
 # Different speeds so it looks more normal with the camera angle
 var walk_speed_x = .7
@@ -124,7 +123,7 @@ func _physics_process(delta):
 		animation_player.play("stand")
 		return
 	
-	if hold_to_dig: # hold dig to dig and release to emerge
+	if Settings.hold_to_dig: # hold dig to dig and release to emerge
 		if is_on_floor() and _on_ground and Input.is_action_just_pressed("dig"):
 			_tx_to_dig()
 		elif current_mode == mode.dig and Input.is_action_just_released("dig"):

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://s5loiq0em0p6"]
+
+[ext_resource type="Script" path="res://scenes/ui/settings/setting_panel.gd" id="1_gqq0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qgrv"]
+bg_color = Color(0.46, 0.38916, 0.3082, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mptym"]
+bg_color = Color(0.36, 0.30624, 0.2448, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.254912, 0.129348, 0.0223021, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Panel" type="Panel"]
+mouse_filter = 1
+script = ExtResource("1_gqq0p")
+normal_box = SubResource("StyleBoxFlat_4qgrv")
+focus_box = SubResource("StyleBoxFlat_mptym")

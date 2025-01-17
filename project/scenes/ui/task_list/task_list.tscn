@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1msrql0hw5ro"]
+[gd_scene load_steps=8 format=3 uid="uid://d1msrql0hw5ro"]
 
 [ext_resource type="Script" path="res://scenes/ui/task_list/task_list.gd" id="1_panm4"]
 [ext_resource type="PackedScene" uid="uid://drjarpv62rv3b" path="res://scenes/ui/task_list/task_item.tscn" id="2_leihd"]
-[ext_resource type="PackedScene" uid="uid://cly2hs7phsrwy" path="res://scenes/ui/settings/audio_slider.tscn" id="3_tx4wc"]
+[ext_resource type="PackedScene" uid="uid://onwxwtuppplq" path="res://scenes/ui/settings/SettingsPanel.tscn" id="3_bfg3v"]
+[ext_resource type="Script" path="res://scenes/ui/task_list/help_display.gd" id="4_8gqah"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4xyr"]
 bg_color = Color(0.920576, 0.893824, 0.651623, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kr35y"]
 font_color = Color(0.712896, 0.3836, 0.0872114, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ke4a"]
+bg_color = Color(0.28, 0.28, 0.28, 0.909804)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="TaskList" type="Control"]
 process_mode = 3
@@ -22,48 +30,81 @@ mouse_filter = 1
 script = ExtResource("1_panm4")
 task_item_scene = ExtResource("2_leihd")
 
-[node name="AudioSlider" parent="." instance=ExtResource("3_tx4wc")]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_vertical = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer"]
+[node name="TaskList" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_constants/margin_top = 50
 
-[node name="Panel" type="Panel" parent="CenterContainer/MarginContainer2"]
+[node name="Panel" type="Panel" parent="VBoxContainer/TaskList"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i4xyr")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TaskList"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TaskList/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/TaskList/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Revenge Tasks"
 label_settings = SubResource("LabelSettings_kr35y")
 horizontal_alignment = 1
 
-[node name="ItemContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+[node name="ItemContainer" type="VBoxContainer" parent="VBoxContainer/TaskList/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="SettingsPanel" parent="VBoxContainer" instance=ExtResource("3_bfg3v")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HelpDisplay" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -355.0
+offset_top = -148.0
+offset_right = -80.0
+offset_bottom = 101.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("4_8gqah")
+
+[node name="Panel" type="Panel" parent="HelpDisplay"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ke4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpDisplay"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="HelpDisplay/MarginContainer"]
+layout_mode = 2
+text = "beep boop"
+autowrap_mode = 3
+
+[connection signal="disable_help_text" from="VBoxContainer/SettingsPanel" to="HelpDisplay" method="_on_settings_panel_disable_help_text"]
+[connection signal="display_help_text" from="VBoxContainer/SettingsPanel" to="HelpDisplay" method="display_text"]

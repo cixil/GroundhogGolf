@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func dim_theme():
-	main_theme.volume_db = -1
+	main_theme.volume_db = linear_to_db(0.35)
 
 func undim_theme():
 	main_theme.volume_db = 0
