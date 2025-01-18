@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcbxb30ba8cnb"]
+
+[ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_v83da"]
+
+[node name="Slide" instance=ExtResource("1_v83da")]

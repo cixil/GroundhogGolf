@@ -11,6 +11,21 @@ bg_color = Color(0.808214, 0.766688, 0.417176, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_i0jbn"]
 font_color = Color(0.55, 0.329542, 0.1925, 1)
 
+[sub_resource type="Animation" id="Animation_oba44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer2/Control/Control/DownArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, 16)]
+}
+
 [sub_resource type="Animation" id="Animation_733kx"]
 resource_name = "drop-down-indicate"
 length = 0.5
@@ -26,21 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-16, 17), Vector2(-16, 29), Vector2(-16, 25), Vector2(-16, 27)]
-}
-
-[sub_resource type="Animation" id="Animation_oba44"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/VBoxContainer2/Control/Control/DownArrow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-16, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_klayg"]

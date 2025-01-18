@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgwso77s0ew1k"]
+
+[ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_udbm4"]
+[ext_resource type="Texture2D" uid="uid://db3pxv0rmifk4" path="res://2d-art-assets/screenshots/2-purple-balls.png" id="2_a6eme"]
+
+[node name="Slide" instance=ExtResource("1_udbm4")]
+texture = ExtResource("2_a6eme")
+
+[node name="Panel" parent="." index="1"]
+offset_left = -367.84
+offset_right = -35.8401
+
+[node name="Label" parent="Panel" index="0"]
+text = "\"The limited edition 
+purple balls are RUINED!\""

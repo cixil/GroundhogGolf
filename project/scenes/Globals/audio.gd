@@ -16,7 +16,7 @@ extends Node
 @onready var cricket_timer: Timer = $CricketTimer
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func start_game() -> void:
 	 #play the sound when the signal is emitted.
 	play_once(Signals.hog_touched_ball, sfx[0])
 	play_once(Signals.golfer_swung_no_arg, sfx[3])

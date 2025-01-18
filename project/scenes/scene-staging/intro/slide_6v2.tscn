@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2l7emkqhueo"]
+
+[ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_b4njv"]
+[ext_resource type="Texture2D" uid="uid://dqfbdhftnuvv4" path="res://2d-art-assets/screenshots/6-transformation.png" id="2_kpok8"]
+[ext_resource type="AudioStream" uid="uid://h0pra61d25f3" path="res://audio/intro/lightning fx.wav" id="3_7p3f1"]
+
+[node name="Slide" instance=ExtResource("1_b4njv")]
+texture = ExtResource("2_kpok8")
+
+[node name="Panel" parent="." index="1"]
+offset_left = -367.84
+offset_right = -8.84009
+
+[node name="Label" parent="Panel" index="0"]
+text = "\"AAAAAAAAAAAUUGH\"
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("3_7p3f1")
+autoplay = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c74fk5lybcmbn"]
+
+[ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_tjlav"]
+[ext_resource type="Texture2D" uid="uid://doun3j54bmwr3" path="res://2d-art-assets/screenshots/3-yourfired.png" id="2_wwvpe"]
+
+[node name="Slide" instance=ExtResource("1_tjlav")]
+texture = ExtResource("2_wwvpe")
+
+[node name="Panel" parent="." index="1"]
+offset_left = -1086.0
+offset_top = -379.0
+offset_right = -727.0
+offset_bottom = -264.0
+
+[node name="Label" parent="Panel" index="0"]
+text = "\"Insurance is never 
+gonna cover this\""

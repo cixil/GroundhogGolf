@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://blse0hhob0mq7"]
+
+[ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_3vt04"]
+[ext_resource type="Texture2D" uid="uid://cix20of8ajosv" path="res://2d-art-assets/screenshots/5-groundhog-surprise.png" id="2_8gr8b"]
+
+[node name="Slide" instance=ExtResource("1_3vt04")]
+texture = ExtResource("2_8gr8b")
+
+[node name="Panel" parent="." index="1"]
+offset_left = -367.84
+offset_right = -8.83997
+
+[node name="Label" parent="Panel" index="0"]
+text = "\"Huh??\""

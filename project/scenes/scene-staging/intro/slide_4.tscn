@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ftm51b1tfv7g"]
+
+[ext_resource type="Script" path="res://scenes/scene-staging/intro/slide_4.gd" id="2_oosj2"]
+[ext_resource type="Texture2D" uid="uid://6hmptv058rnx" path="res://2d-art-assets/screenshots/4-your-fired-no-manager.png" id="2_tfuia"]
+
+[node name="Slide4" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tfuia")
+expand_mode = 3
+script = ExtResource("2_oosj2")
+
+[node name="BlackOut" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
