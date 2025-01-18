@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rfysofgc0ssw"]
+[gd_scene load_steps=21 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
 [ext_resource type="AudioStream" uid="uid://c60hnnc08hske" path="res://audio/sfx/groundhog touching ball.wav" id="2_v0d0s"]
@@ -8,18 +8,41 @@
 [ext_resource type="AudioStream" uid="uid://c8fn1duhj56mp" path="res://audio/sfx/golf swing hit.wav" id="6_2fj5b"]
 [ext_resource type="AudioStream" uid="uid://bn52fjcmqmfnd" path="res://audio/sfx/hog going down.wav" id="7_008x6"]
 [ext_resource type="AudioStream" uid="uid://b5k0ialylndnc" path="res://audio/sfx/hog going up.wav" id="8_jy2yl"]
+[ext_resource type="AudioStream" uid="uid://b4obo4ys6qmfu" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 1.wav" id="9_6llqk"]
 [ext_resource type="AudioStream" uid="uid://c6t1ce5q1dpso" path="res://audio/Music/Gopher Main Theme WITH intro.wav" id="9_busy6"]
 [ext_resource type="AudioStream" uid="uid://05pxvnfanc54" path="res://audio/Music/latin-beats-120752.mp3" id="10_83s05"]
+[ext_resource type="AudioStream" uid="uid://bql3myyhr8qaq" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 2.wav" id="10_825p4"]
+[ext_resource type="AudioStream" uid="uid://cdsfesowfbfdu" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 3.wav" id="11_o48sv"]
+[ext_resource type="AudioStream" uid="uid://d1bo83nrjynac" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 4.wav" id="12_mbfd8"]
+[ext_resource type="AudioStream" uid="uid://wup4qi1om152" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 5.wav" id="13_xiksk"]
+[ext_resource type="AudioStream" uid="uid://dgk7p1sh657qd" path="res://audio/ambient-music-sounds/bird sound 1.wav" id="14_y6ix1"]
+[ext_resource type="AudioStream" uid="uid://bkllyyumfpy0s" path="res://audio/ambient-music-sounds/bird sound 2.wav" id="15_5x23q"]
+[ext_resource type="AudioStream" uid="uid://dgdw5omrvwpl2" path="res://audio/ambient-music-sounds/bird sound 3.wav" id="16_03hfa"]
+[ext_resource type="AudioStream" uid="uid://bsrocfch1ww03" path="res://audio/ambient-music-sounds/bug sound LEFT .wav" id="17_qs57g"]
+[ext_resource type="AudioStream" uid="uid://d2g0iyhkcx83d" path="res://audio/ambient-music-sounds/bug sound RIGHT.wav" id="18_sgmjv"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
 script = ExtResource("1_ovd6e")
 sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b"), ExtResource("7_008x6"), ExtResource("8_jy2yl")])
+ambient_guitar = Array[AudioStream]([ExtResource("9_6llqk"), ExtResource("10_825p4"), ExtResource("11_o48sv"), ExtResource("12_mbfd8"), ExtResource("13_xiksk")])
+ambient_birds = Array[AudioStream]([ExtResource("14_y6ix1"), ExtResource("15_5x23q"), ExtResource("16_03hfa")])
+ambient_bugs = Array[AudioStream]([ExtResource("17_qs57g"), ExtResource("18_sgmjv")])
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_busy6")
+volume_db = -10.0
 bus = &"Music"
 
 [node name="RadioTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_83s05")
 bus = &"Music"
+
+[node name="GuitarTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BirdTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CricketTimer" type="Timer" parent="."]
+one_shot = true

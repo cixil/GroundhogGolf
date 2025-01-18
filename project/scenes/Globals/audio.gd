@@ -5,6 +5,13 @@ extends Node
 @onready var radio_theme: AudioStreamPlayer = $RadioTheme
 
 @export var sfx:Array[AudioStream]
+@export var ambient_guitar:Array[AudioStream]
+@export var ambient_birds:Array[AudioStream]
+@export var ambient_bugs:Array[AudioStream]
+
+@onready var guitar_timer:Timer = $GuitarTimer
+@onready var bird_timer: Timer = $BirdTimer
+@onready var cricket_timer: Timer = $CricketTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +28,17 @@ func _ready() -> void:
 	Signals.radio_turned_on.connect(play_radio_music)
 	Signals.radio_turned_off.connect(stop_radio_music)
 	
-	main_theme.play()
+	#main_theme.play()
+	
+	guitar_timer.timeout.connect(
+		_play_random_from_array.bind(guitar_timer, 5, 10, ambient_guitar)
+	)
+	bird_timer.timeout.connect(
+		_play_random_from_array.bind(bird_timer, 7, 10, ambient_birds)
+	)
+	_play_random_from_array(guitar_timer, 5, 10, ambient_guitar)
+	_play_random_from_array(bird_timer, 7, 10, ambient_birds)
+
 
 func play_radio_music():
 	main_theme.stop()
@@ -54,5 +71,16 @@ func play_until(sig_start:Signal, sig_end:Signal, sound:AudioStream):
 	sig_start.connect(player.play)
 	sig_end.connect(player.stop)
 
-func stop_player():
-	pass
+
+
+func _play_random_from_array(timer:Timer, min_delay:float, max_delay:float, samples:Array[AudioStream]) -> void:
+	timer.wait_time = randi_range(min_delay, max_delay)
+	timer.start()
+	
+	var sound = samples.pick_random()
+	var player:AudioStreamPlayer = AudioStreamPlayer.new()
+	player.stream = sound
+	player.bus = &"Music"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

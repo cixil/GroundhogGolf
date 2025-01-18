@@ -12,6 +12,8 @@ class_name Golfer
 @export var radio:Radio
 @export var dancing_spot:Node3D
 
+@onready var _model = $Pivot/ModelGoesHere/man/Armature/Skeleton3D/man
+
 var in_mud:bool = false
 
 ## Default home position to return to
@@ -58,7 +60,7 @@ func notice_radio_turned_off(radio:Radio):
 
 func get_muddy():
 	Signals.outfit_ruined.emit()
-	var mesh:Mesh = $Pivot/man/Armature/Skeleton3D/man.mesh
+	var mesh:Mesh = _model.mesh
 	var material:Material = mesh.surface_get_material(0)
 	var mud_color = Color('9d5a40')
 	material.albedo_color = mud_color
@@ -73,7 +75,7 @@ func _on_lump_detector_body_entered(_body: Node3D) -> void:
 func _on_trip_state_ended() -> void:
 	# TODO would be nice to return to the point on the path we were at before being tripped
 	if path_to_follow:
-		state_machine.transition_to('followpath', [path_to_follow])
+		state_machine.transition_to('followpath', [path_to_follow, path_point_animations])
 
 
 func move_to(target):
