@@ -10,10 +10,12 @@ var states:Dictionary # maps state name string to state node
 var current_state:State
 var transitioning:bool = true
 
+
 func _ready() -> void:
 	for node in get_children():
 		if node is State:
 			states[node.name.to_lower()] = node
+			node.state_machine = self
 			node.animation_player = animation_player
 			node.body = owner
 			node.pivot = pivot
@@ -46,3 +48,4 @@ func transition_to(new_state:String, args:Array = []):
 	current_state.active = true
 	await current_state.enter(args)
 	transitioning = false
+	

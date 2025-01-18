@@ -43,15 +43,7 @@ func hold_in_hand(obj:Holdable.objects):
 	hand.show_obj(obj)
 
 func notice_radio(radio:Radio):
-	trippable = false
-	pivot.basis = Basis.looking_at(global_position.direction_to(radio.global_position))
-	animation_player.play("scared")
-	await animation_player.animation_finished
-	state_machine.transition_to("gotoposition", [dancing_spot.global_position])
-	await $StateMachine/GoToPosition.state_ended
-	state_machine.transition_to("dance")
-	await $StateMachine/Dance.state_ended
-	trippable = true
+	state_machine.transition_to('noticeradio', [radio, dancing_spot])
 
 func notice_radio_turned_off(radio:Radio):
 	state_machine.transition_to("stopdance", [radio.global_position, 2])

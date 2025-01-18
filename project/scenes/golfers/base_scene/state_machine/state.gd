@@ -1,6 +1,7 @@
 extends Node
 class_name State
 
+var state_machine:StateMachine
 var animation_player:AnimationPlayer
 var body:Golfer
 var pivot:Node3D

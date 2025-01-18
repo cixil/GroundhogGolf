@@ -23,19 +23,22 @@ func _ready() -> void:
 	play_once(Signals.golf_ball_hit_by_golfer, sfx[4])
 	play_once(Signals.hog_entered_dirt, sfx[5])
 	play_once(Signals.hog_exited_dirt, sfx[6])
+	play_once(Signals.radio_turned_off, sfx[7])
+	
 	play_once(Signals.golfer_tripped, chaos_fills[0])
+	play_once(Signals.wine_spilled, chaos_fills[0])
 	play_once(Signals.crate_pushed_from_ground, chaos_fills[1])
 	
 	play_until(Signals.hog_started_walking, Signals.hog_stopped_walking, sfx[1])
 	play_until(Signals.hog_entered_dirt, Signals.hog_exited_dirt, sfx[2])
 	
-	Signals.radio_turned_on.connect(play_radio_music)
-	Signals.radio_turned_off.connect(stop_radio_music)
+	#Signals.radio_turned_on.connect(play_radio_music)
+	#Signals.radio_turned_off.connect(stop_radio_music)
 	
 	#main_theme.play()
 	
 	guitar_timer.timeout.connect(
-		_play_random_from_array.bind(guitar_timer, 5, 10, ambient_guitar)
+		_play_random_from_array.bind(guitar_timer, 3, 7, ambient_guitar)
 	)
 	bird_timer.timeout.connect(
 		_play_random_from_array.bind(bird_timer, 7, 10, ambient_birds)

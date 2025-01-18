@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://63sn7aw2pf6p"]
+[gd_scene load_steps=8 format=3 uid="uid://63sn7aw2pf6p"]
 
 [ext_resource type="PackedScene" uid="uid://2en1cesdwmeg" path="res://models/radio.glb" id="1_l8j5t"]
 [ext_resource type="Script" path="res://scenes/environment/interactable/radio.gd" id="1_xnf3e"]
+[ext_resource type="AudioStream" uid="uid://wn4rq7hwg0pp" path="res://audio/radio/radio white noise sound.wav" id="3_62hbs"]
+[ext_resource type="AudioStream" uid="uid://05pxvnfanc54" path="res://audio/Music/latin-beats-120752.mp3" id="4_gw1om"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5mfnc"]
 size = Vector3(0.124817, 0.190613, 0.260498)
@@ -40,6 +42,18 @@ collision_mask = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HogDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0747681, 0)
 shape = SubResource("SphereShape3D_n3tt2")
+
+[node name="StaticNoise" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_62hbs")
+max_distance = 3.0
+panning_strength = 0.2
+bus = &"Music"
+
+[node name="MusicNoise" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_gw1om")
+max_distance = 10.0
+panning_strength = 0.2
+bus = &"Music"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

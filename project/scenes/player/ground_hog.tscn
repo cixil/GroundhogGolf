@@ -1736,6 +1736,9 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214889, 0.042391, -0.0413818)
 shape = SubResource("BoxShape3D_lt5xl")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
 [connection signal="timeout" from="DigEffects/LumpRaiseInterval" to="." method="_on_lump_raise_interval_timeout"]
 [connection signal="body_entered" from="Pivot/NosePushArea" to="Pivot/NosePushArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Pivot/NosePushArea" to="Pivot/NosePushArea" method="_on_body_exited"]

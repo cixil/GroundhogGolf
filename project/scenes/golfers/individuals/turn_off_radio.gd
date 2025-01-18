@@ -31,21 +31,28 @@ func phys_update(_delta):
 	else:
 		reached_target = true
 		animation_player.play("pick-up", -1, pick_up_speed)
+		_turn_off_radio()
+
+func _turn_off_radio():
 		await get_tree().create_timer(pick_up_anim_offset/pick_up_speed).timeout
 		radio.on = false
 
+# react if radio was turned of by groundhog
 func _radio_was_turned_off():
 	if not active: return
+	if reached_target: return # if reached the target then we turned off the radio
 	
 	reached_target = true
 	animation_player.play("idle-standing")
 
 func _on_animation_finished(anim:String):
+	print(active, ' got ', anim)
 	if not active: return
 	match anim:
 		"pick-up":
 			pivot.basis = Basis.looking_at(yell_direction)
 			animation_player.play("yelling")
+			print('play yell')
 		"yelling", "idle-standing":
 			state_ended.emit()
 		

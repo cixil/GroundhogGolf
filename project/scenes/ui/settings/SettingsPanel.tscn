@@ -60,7 +60,7 @@ label_settings = SubResource("LabelSettings_i0jbn")
 [node name="MusicSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1qoxr")]
 unique_name_in_owner = true
 layout_mode = 2
-label_text = "Music"
+label_text = "Ambient Music"
 bus_name = "Music"
 initial_value = 0.7
 

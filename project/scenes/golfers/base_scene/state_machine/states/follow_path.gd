@@ -44,6 +44,7 @@ func phys_update(_delta: float) -> void:
 				var animation_name = path_point_animations[point_idx]
 				if animation_name:
 					playing_animation = true
+					#print(body, ' play ', animation_name)
 					animation_player.play(animation_name)
 					await animation_player.animation_finished
 			point_idx = (point_idx + 1) % path.curve.point_count

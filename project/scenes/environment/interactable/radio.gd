@@ -3,6 +3,10 @@ class_name Radio
 
 var _golfers:Array[Golfer]
 
+@onready var static_noise: AudioStreamPlayer3D = $StaticNoise
+@onready var music_noise: AudioStreamPlayer3D = $MusicNoise
+
+
 # TODO make audio3d node play from position
 
 var on := false:
@@ -15,10 +19,14 @@ var on := false:
 
 func _turn_on():
 	Signals.radio_turned_on.emit()
+	static_noise.stop()
+	music_noise.play()
 	for golfer in _golfers:
 		golfer.notice_radio(self)
 
 func _turn_off():
+	static_noise.play()
+	music_noise.stop()
 	Signals.radio_turned_off.emit()
 	# above signal will tell golfers
 	#for golfer in _golfers:
