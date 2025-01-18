@@ -32,7 +32,7 @@ func mark_done(index:int):
 	var item:TaskItemControl = item_container.get_child(index)
 	item.set_done()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if visible:
 			get_tree().paused = false

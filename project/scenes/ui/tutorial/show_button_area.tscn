@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpbj73p8amv1x"]
+
+[ext_resource type="Script" path="res://scenes/ui/tutorial/show_button_area.gd" id="1_bh4hm"]
+
+[node name="ShowButtonArea" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_bh4hm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

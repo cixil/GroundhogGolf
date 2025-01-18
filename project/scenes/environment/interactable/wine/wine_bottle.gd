@@ -5,7 +5,7 @@ extends RigidBody3D
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
-func _on_ground_detector_body_entered(body: Node3D) -> void:
+func _on_ground_detector_body_entered(_body: Node3D) -> void:
 	collision_shape_3d.set_deferred('disabled', true)
 	var broken_botle = broken_bottle_scene.instantiate()
 	get_parent().add_child(broken_botle)

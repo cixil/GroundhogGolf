@@ -22,7 +22,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(_bus_index, linear_to_db(value))
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not has_focus():
 		return
 	if Input.is_action_pressed("move_left"):

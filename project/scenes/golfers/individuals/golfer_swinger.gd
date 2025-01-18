@@ -31,7 +31,6 @@ func _on_golf_tee_fell(tee:GolfTee):
 		print($StateMachine/Golf.about_to_swing)
 		if state_machine.current_state == $StateMachine/Golf and $StateMachine/Golf.about_to_swing:
 			await $StateMachine/Golf.just_swung
-			print('get angry')
 			state_machine.transition_to("getangry")
 		else:
 			state_machine.transition_to('noticehog', [tee])

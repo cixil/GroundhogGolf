@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo5uq1t4puaes"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42n4v"]
+albedo_color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2adw"]
+material = SubResource("StandardMaterial3D_42n4v")
+size = Vector3(3, 3, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npbj2"]
+points = PackedVector3Array(-1.5, -1.49971, -1.49971, 1.5, 1.49978, 1.49978, 1.5, -1.49978, 1.49978, 1.5, 1.49978, -1.49978, -1.5, 1.49971, 1.49971, 1.5, -1.49978, -1.49978, -1.5, -1.49971, 1.49971, -1.5, 1.49971, -1.49971)
+
+[node name="Rock" type="StaticBody3D"]
+collision_layer = 33
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.990227, -0.139467, 0, 0.139467, 0.990227, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_n2adw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.990227, -0.139467, 0, 0.139467, 0.990227, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_npbj2")

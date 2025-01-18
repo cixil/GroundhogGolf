@@ -11,9 +11,11 @@ var anim = 'golf-swing'
 func _ready():
 	end_practice /= slow_speed
 
-func enter(args=[]) -> void:
+func enter(_args=[]) -> void:
 	#var tee:GolfTee = argsA[0]
 	#pivot.basis = Basis.looking_at(body.global_position.direction_to(tee.global_position))
+	animation_player.play("stretching-neck")
+	await animation_player.animation_finished
 	pivot.rotate_y(PI*-1.6)
 	start_teeing()
 	

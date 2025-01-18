@@ -228,10 +228,10 @@ func _on_golf_ball_detector_body_entered(body: Node3D) -> void:
 		body.hit_from_gopher(_target_velocity.normalized())
 
 
-func _on_ground_detector_body_entered(body: Node3D) -> void:
+func _on_ground_detector_body_entered(_body: Node3D) -> void:
 	_on_ground = true
 
-func _on_ground_detector_body_exited(body: Node3D) -> void:
+func _on_ground_detector_body_exited(_body: Node3D) -> void:
 	_on_ground = false
 
 

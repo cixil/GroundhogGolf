@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw6rtroebno68"]
+
+[ext_resource type="PackedScene" uid="uid://0ph5h3dmis7o" path="res://models/barrels/barrels/barrel-open.glb" id="1_2q1yi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3tr8s"]
+height = 0.888156
+radius = 0.338853
+
+[node name="ToxicBarrel" type="StaticBody3D"]
+
+[node name="barrel-open2" parent="." instance=ExtResource("1_2q1yi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442245, 0)
+shape = SubResource("CylinderShape3D_3tr8s")

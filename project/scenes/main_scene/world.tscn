@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=49 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://np0vw36v8swo" path="res://scenes/environment/mud/mud_pit.tscn" id="8_in42m"]
 [ext_resource type="PackedScene" uid="uid://cmpbhj8q7u8lu" path="res://scenes/environment/hole.tscn" id="9_whhha"]
 [ext_resource type="PackedScene" uid="uid://dx1i63pbpp6v" path="res://scenes/environment/ornamental_golf_cart.tscn" id="11_l3ify"]
+[ext_resource type="PackedScene" uid="uid://dpbj73p8amv1x" path="res://scenes/ui/tutorial/show_button_area.tscn" id="11_r0ekm"]
 [ext_resource type="PackedScene" uid="uid://bpiu14v1sey5r" path="res://scenes/environment/interactable/crate_with_balls.tscn" id="15_3jqbs"]
 [ext_resource type="PackedScene" uid="uid://4rtr770dm2y7" path="res://scenes/environment/interactable/crate.tscn" id="16_jryvw"]
 [ext_resource type="PackedScene" uid="uid://cli2uvnbgvg6n" path="res://models/golf-bag.glb" id="18_dgp7q"]
@@ -31,6 +32,10 @@
 [ext_resource type="PackedScene" uid="uid://ddns455j4hafe" path="res://scenes/environment/breakable_picnic_table.tscn" id="24_j1eqy"]
 [ext_resource type="PackedScene" uid="uid://bulcju0x1fgh5" path="res://scenes/environment/picnic_bench.tscn" id="24_y1cha"]
 [ext_resource type="PackedScene" uid="uid://cpvfthi812k8d" path="res://scenes/golfers/individuals/dancing_worker.tscn" id="26_3wuid"]
+[ext_resource type="PackedScene" uid="uid://uuhie6f5om6g" path="res://scenes/environment/toxic_barrel.tscn" id="26_p7efo"]
+[ext_resource type="PackedScene" uid="uid://bw6rtroebno68" path="res://scenes/environment/toxic_barrel_open.tscn" id="27_b7d4a"]
+[ext_resource type="PackedScene" uid="uid://cmoxaoewwnxjc" path="res://scenes/environment/toxic_barrel_enterable.tscn" id="28_fk1r3"]
+[ext_resource type="PackedScene" uid="uid://bo5uq1t4puaes" path="res://scenes/environment/rock.tscn" id="29_vyo0j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15tv3"]
 sky_top_color = Color(0.302046, 0.445495, 0.698011, 1)
@@ -47,6 +52,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdaf2"]
 size = Vector3(40, 1, 40)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xgx1n"]
+radius = 2.40909
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fdefp"]
 bounce = 0.5
@@ -86,6 +94,8 @@ size = Vector3(8.08197, 6.21088, 9.02783)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nfbip")
 
+[node name="Hud" parent="." instance=ExtResource("18_wsg20")]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0282007, 0.999602, 0, -0.999602, -0.0282007, 0, 10.7994, 0)
 shadow_enabled = true
@@ -123,14 +133,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71262, 2.1167, -4.93481)
 shape = SubResource("BoxShape3D_pdaf2")
 
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81262, 1.41882, 12.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29452, 0.24725, 12.1718)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(0.957299, 0, 0.289099, 0, 1, 0, -0.289099, 0, 0.957299, 0.46521, 0, 0.320068)
 
 [node name="Camera3D" type="Camera3D" parent="GroundHog/CameraPivot"]
 process_mode = 3
-transform = Transform3D(0.999849, 0.00874414, -0.0150432, -3.69799e-09, 0.864556, 0.502537, 0.0174, -0.502461, 0.864425, -0.529217, 6.92833, 11.1658)
+transform = Transform3D(0.999849, 0.00874414, -0.0150432, -3.69799e-09, 0.864556, 0.502537, 0.0174, -0.502461, 0.864425, -0.493574, 6.92833, 11.0478)
 projection = 1
 current = true
 fov = 13.0
@@ -139,6 +149,125 @@ far = 50.92
 script = ExtResource("8_h4qvh")
 
 [node name="Environment" type="Node3D" parent="."]
+
+[node name="StartScenario" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93401, 0, 13.6413)
+
+[node name="Tutorial" type="Node3D" parent="Environment/StartScenario"]
+
+[node name="ShowButtonArea" parent="Environment/StartScenario/Tutorial" instance=ExtResource("11_r0ekm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22003, 0, 2.24908)
+text_to_show = "Hold space to dig"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StartScenario/Tutorial/ShowButtonArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481993, 0, 0.478453)
+shape = SubResource("CylinderShape3D_xgx1n")
+
+[node name="ShowButtonArea2" parent="Environment/StartScenario/Tutorial" instance=ExtResource("11_r0ekm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56735, -0.0697021, 2.42354)
+text_to_show = "Press \"J\" to nudge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StartScenario/Tutorial/ShowButtonArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176116, 0, 0.512388)
+shape = SubResource("CylinderShape3D_xgx1n")
+
+[node name="Decor" type="Node3D" parent="Environment/StartScenario"]
+
+[node name="Bush10" parent="Environment/StartScenario/Decor" instance=ExtResource("7_8t7xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.488146, 0.121244, 0.57453)
+
+[node name="ToxicBarrel" parent="Environment/StartScenario/Decor" instance=ExtResource("26_p7efo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.365053, 0, -2.23047)
+
+[node name="ToxicBarrel5" parent="Environment/StartScenario/Decor" instance=ExtResource("26_p7efo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.374945, 0, -6.125)
+
+[node name="ToxicBarrel6" parent="Environment/StartScenario/Decor" instance=ExtResource("26_p7efo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208138, 0, -5.71643)
+
+[node name="ToxicBarrel2" parent="Environment/StartScenario/Decor" instance=ExtResource("26_p7efo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8291, 0, -0.522339)
+
+[node name="ToxicBarrel3" parent="Environment/StartScenario/Decor" instance=ExtResource("27_b7d4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095459, 0, -2.73486)
+
+[node name="ToxicBarrel4" parent="Environment/StartScenario/Decor" instance=ExtResource("28_fk1r3")]
+transform = Transform3D(0.936794, -0.349725, -0.0104346, 0, 0.0298233, -0.999555, 0.34988, 0.936378, 0.0279383, -0.599003, 0.287109, -3.26819)
+
+[node name="Rock" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.989318, 0.145772, 0, -0.145772, 0.989318, 0, 0, 0, 1, -0.279602, -0.0611572, -9.67371)
+
+[node name="Rock2" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.693288, -0.221988, 0.685619, 0.0808189, 0.969323, 0.232123, -0.716115, -0.105517, 0.689961, -3.3479, 0.453491, -8.27625)
+
+[node name="Rock3" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.264044, -0.0734559, 0.961709, -0.328852, 0.930494, 0.161361, -0.906717, -0.358867, 0.221536, -4.91718, 0.877502, -5.58618)
+
+[node name="Rock4" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.440477, -1.27479e-05, 0.897764, -0.328852, 0.930494, 0.161361, -0.835366, -0.366307, 0.409857, -5.81818, 0.362793, -3.08057)
+
+[node name="Rock5" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.315551, -0.269309, 0.90989, -0.328852, 0.930494, 0.161361, -0.890103, -0.248302, -0.382181, -5.9646, 0.362793, -0.072876)
+
+[node name="Rock6" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.334472, -0.213733, 0.917849, -0.309589, 0.944809, 0.107194, -0.890103, -0.248302, -0.382181, -5.0304, 0.362793, 2.59204)
+
+[node name="Rock7" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.334472, -0.213733, 0.917849, -0.309589, 0.944809, 0.107194, -0.890103, -0.248302, -0.382181, -3.78137, 0.362793, 4.16907)
+
+[node name="Rock8" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.428212, 0.168513, 0.887828, -0.156047, 0.953913, -0.25632, -0.890103, -0.248302, -0.382181, 19.8881, 0.15686, 1.39832)
+
+[node name="Rock9" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.048068, 0.251858, 0.96657, -0.156047, 0.953913, -0.25632, -0.986579, -0.163151, -0.00655106, 20.4923, 0.15686, 4.03021)
+
+[node name="Rock10" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.0183529, 0.0709358, 0.997312, -0.162248, 0.984048, -0.072978, -0.986579, -0.163151, -0.00655106, 20.1987, 0.15686, 6.73676)
+
+[node name="Rock11" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.545653, -0.0278527, 0.837548, -0.162248, 0.984048, -0.072978, -0.822154, -0.175711, -0.541468, 18.8023, 0.15686, 9.44135)
+
+[node name="Rock12" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.313161, 0.0187837, 0.949514, -0.162248, 0.984048, -0.072978, -0.935738, -0.17691, -0.305118, 16.9449, 0.844971, 11.0753)
+
+[node name="Rock13" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.139729, 0.0503006, 0.988911, -0.0346562, 0.997849, -0.0556519, -0.989583, -0.0420481, -0.137685, 14.8164, 1.3634, 12.1938)
+
+[node name="Rock14" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.139729, 0.0503006, 0.988911, -0.0346562, 0.997849, -0.0556519, -0.989583, -0.0420481, -0.137685, 14.8164, 1.3634, 12.1938)
+
+[node name="Rock15" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(-0.139729, 0.0503006, 0.988911, -0.0346562, 0.997849, -0.0556519, -0.989583, -0.0420481, -0.137685, 12.3731, 1.3634, 12.6705)
+
+[node name="Rock16" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.0561014, 0.05754, 0.996766, -0.0346562, 0.997849, -0.0556519, -0.997823, -0.031422, 0.0579747, 9.87019, 1.3634, 13.0877)
+
+[node name="Rock17" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.0561014, 0.05754, 0.996766, -0.0346562, 0.997849, -0.0556519, -0.997823, -0.031422, 0.0579747, 7.18852, 1.3634, 13.0281)
+
+[node name="Rock18" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.281854, 0.0631837, 0.957375, -0.0346562, 0.997849, -0.0556519, -0.958831, -0.0174933, 0.283437, 4.924, 1.3634, 12.7897)
+
+[node name="Rock19" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.281854, 0.0631837, 0.957375, -0.0346562, 0.997849, -0.0556519, -0.958831, -0.0174933, 0.283437, 2.36152, 1.3634, 12.015)
+
+[node name="Rock20" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.730724, 0.0632888, 0.679733, -0.0346562, 0.997849, -0.0556519, -0.681793, 0.0171092, 0.731345, -0.320145, 1.3634, 10.8232)
+
+[node name="Rock21" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.860562, 0.0581099, 0.50602, -0.0346562, 0.997848, -0.0556519, -0.508165, 0.0303552, 0.860724, -1.98874, 1.3634, 8.67782)
+
+[node name="Rock22" parent="Environment/StartScenario/Decor" instance=ExtResource("29_vyo0j")]
+transform = Transform3D(0.974552, 0.046082, 0.219374, -0.0346562, 0.997848, -0.0556519, -0.221466, 0.0466331, 0.974052, -3.121, 1.3634, 6.47289)
+
+[node name="GolfBall" parent="Environment/StartScenario/Decor" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.658386, 0, 1.83118)
+
+[node name="GolfBall2" parent="Environment/StartScenario/Decor" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574707, 0, 2.34369)
+
+[node name="GolfBall3" parent="Environment/StartScenario/Decor" instance=ExtResource("6_figgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48438, 0, 3.94861)
 
 [node name="GolferScenarioGolfing" type="Node3D" parent="Environment"]
 
@@ -596,10 +725,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8586, 0, 6.77649)
 [node name="BrickWallPillar" parent="Environment/Other/Wall/RightSection2/BrickWallSection6" instance=ExtResource("5_180vv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18647, 0, 0)
 
-[node name="Hud" parent="." instance=ExtResource("18_wsg20")]
-
 [connection signal="body_entered" from="GridMap/FloorBallCounter" to="GridMap/FloorBallCounter" method="_on_body_entered"]
 [connection signal="body_exited" from="GridMap/FloorBallCounter" to="GridMap/FloorBallCounter" method="_on_body_exited"]
+[connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea" to="Hud" method="show_tutorial_message"]
+[connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea" to="Hud" method="hide_tutorial_message"]
+[connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea2" to="Hud" method="show_tutorial_message"]
+[connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea2" to="Hud" method="hide_tutorial_message"]
 [connection signal="reset_ball" from="Environment/GolferScenarioGolfing/GolferPickerUpper" to="Environment/GolferScenarioGolfing/GolferSwinger" method="resume_golfing"]
 [connection signal="body_entered" from="Environment/DancingScenario/RadioContainer/RadioArea" to="Environment/DancingScenario/RadioContainer/RadioArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Environment/DancingScenario/RadioContainer/RadioArea" to="Environment/DancingScenario/RadioContainer/RadioArea" method="_on_body_exited"]

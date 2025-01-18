@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ddns455j4hafe"]
+[gd_scene load_steps=31 format=4 uid="uid://ddns455j4hafe"]
 
 [ext_resource type="Script" path="res://scenes/environment/breakable_picnic_table.gd" id="1_eca7p"]
 [ext_resource type="PackedScene" uid="uid://c1bxfadcm7t5u" path="res://scenes/golfers/lump_detector.tscn" id="2_s3ha2"]
@@ -269,7 +269,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.925232, 0.591751, -0.529861)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -317,7 +317,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0.912476, -0.541504)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -345,7 +345,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.3, 0.433333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.925962, 0.591179, -0.532252), Vector3(0.925962, 0.610725, -0.446071), Vector3(0.925962, 0.0932387, -0.462642), Vector3(0.830687, 0.0293959, -0.464229)]
+"values": [Vector3(0.925962, 0.6054, -0.532252), Vector3(0.925962, 0.610725, -0.446071), Vector3(0.925962, 0.0932387, -0.462642), Vector3(0.830687, 0.0293959, -0.464229)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -381,7 +381,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.166667, 0.333333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.108521, 0), Vector3(0, 0.186615, 0), Vector3(-0.102173, 0.432545, -0.192366), Vector3(-0.102173, 0.432545, -0.192366)]
+"values": [Vector3(0, -0.0112305, 0), Vector3(0, -0.108521, 0), Vector3(0, 0.186615, 0), Vector3(-0.102173, 0.432545, -0.192366), Vector3(-0.102173, 0.432545, -0.192366)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -416,6 +416,13 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_100q3"]
 size = Vector3(2, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7odyb"]
+albedo_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3erws"]
+material = SubResource("StandardMaterial3D_7odyb")
+size = Vector3(0.05, 0.3, 0.15)
 
 [node name="BreakablePicnicTable" type="Node3D"]
 script = ExtResource("1_eca7p")
@@ -458,6 +465,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00250266, 0.917529, -0.0031
 shape = SubResource("ConvexPolygonShape3D_4fvru")
 
 [node name="Ramp" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.912476, -0.541504)
 
 [node name="ramp" type="MeshInstance3D" parent="Ramp"]
 mesh = SubResource("ArrayMesh_8ciq2")
@@ -482,6 +490,7 @@ shape = SubResource("ConvexPolygonShape3D_4tyta")
 metadata/_edit_lock_ = true
 
 [node name="BrokenLegTop" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925232, 0.591751, -0.529861)
 
 [node name="broken1" type="MeshInstance3D" parent="BrokenLegTop"]
 mesh = SubResource("ArrayMesh_dijv1")
@@ -504,6 +513,10 @@ mesh = SubResource("BoxMesh_100q3")
 
 [node name="LumpDetector" parent="." instance=ExtResource("2_s3ha2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97821, 0.1745, -0.474945)
-collision_mask = 18
+collision_mask = 2
+
+[node name="Emphasis" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.934448, 0.383987, -0.522339)
+mesh = SubResource("BoxMesh_3erws")
 
 [connection signal="body_entered" from="LumpDetector" to="." method="_on_lump_detector_body_entered"]
