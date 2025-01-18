@@ -46,13 +46,11 @@ func _radio_was_turned_off():
 	animation_player.play("idle-standing")
 
 func _on_animation_finished(anim:String):
-	print(active, ' got ', anim)
 	if not active: return
 	match anim:
 		"pick-up":
 			pivot.basis = Basis.looking_at(yell_direction)
 			animation_player.play("yelling")
-			print('play yell')
 		"yelling", "idle-standing":
 			state_ended.emit()
 		

@@ -1855,7 +1855,7 @@ bones/25/rotation = Quaternion(4.38449e-08, 3.10929e-07, -3.3597e-07, 1)
 bones/25/scale = Vector3(1, 1, 1)
 
 [node name="name-tag" type="BoneAttachment3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.799013, -0.151276, 0.181073, -0.215448, -0.207091, 0.777682, -0.0961994, -0.792667, -0.237733, 0.0779831, 0.0922544, -1.30272)
+transform = Transform3D(0.799013, -0.151276, 0.181073, -0.215448, -0.207092, 0.777682, -0.0961993, -0.792667, -0.237734, 0.0779831, 0.0922544, -1.30272)
 bone_name = "name-tag"
 bone_idx = 11
 
@@ -1868,7 +1868,7 @@ mesh = SubResource("ArrayMesh_u7o02")
 skin = SubResource("Skin_tkqe1")
 
 [node name="BoneAttachment3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D" index="2" instance=ExtResource("5_s2auo")]
-transform = Transform3D(0.0873667, -0.171029, 0.981385, 0.957812, 0.285187, -0.0355675, -0.273796, 0.943089, 0.18873, -0.294933, -0.0334202, -1.04603)
+transform = Transform3D(0.0873667, -0.171029, 0.981385, 0.957812, 0.285188, -0.0355674, -0.273796, 0.943089, 0.18873, -0.294933, -0.0334203, -1.04603)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/ModelGoesHere/man" index="1"]
 libraries = {
