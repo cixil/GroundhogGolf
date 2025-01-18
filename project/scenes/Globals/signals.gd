@@ -24,6 +24,7 @@ signal hog_touched_ball
 signal golfer_tripped
 signal golfer_swung_no_arg
 
+signal crate_pushed_from_ground
 
 ## Tasks
 signal missed_the_shot

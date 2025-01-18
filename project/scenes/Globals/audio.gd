@@ -4,7 +4,9 @@ extends Node
 @onready var main_theme: AudioStreamPlayer = $MainTheme
 @onready var radio_theme: AudioStreamPlayer = $RadioTheme
 
+# soundbanks
 @export var sfx:Array[AudioStream]
+@export var chaos_fills:Array[AudioStream]
 @export var ambient_guitar:Array[AudioStream]
 @export var ambient_birds:Array[AudioStream]
 @export var ambient_bugs:Array[AudioStream]
@@ -21,6 +23,8 @@ func _ready() -> void:
 	play_once(Signals.golf_ball_hit_by_golfer, sfx[4])
 	play_once(Signals.hog_entered_dirt, sfx[5])
 	play_once(Signals.hog_exited_dirt, sfx[6])
+	play_once(Signals.golfer_tripped, chaos_fills[0])
+	play_once(Signals.crate_pushed_from_ground, chaos_fills[1])
 	
 	play_until(Signals.hog_started_walking, Signals.hog_stopped_walking, sfx[1])
 	play_until(Signals.hog_entered_dirt, Signals.hog_exited_dirt, sfx[2])

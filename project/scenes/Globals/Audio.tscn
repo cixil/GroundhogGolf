@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rfysofgc0ssw"]
+[gd_scene load_steps=23 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
 [ext_resource type="AudioStream" uid="uid://c60hnnc08hske" path="res://audio/sfx/groundhog touching ball.wav" id="2_v0d0s"]
@@ -10,8 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://b5k0ialylndnc" path="res://audio/sfx/hog going up.wav" id="8_jy2yl"]
 [ext_resource type="AudioStream" uid="uid://b4obo4ys6qmfu" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 1.wav" id="9_6llqk"]
 [ext_resource type="AudioStream" uid="uid://c6t1ce5q1dpso" path="res://audio/Music/Gopher Main Theme WITH intro.wav" id="9_busy6"]
+[ext_resource type="AudioStream" uid="uid://uo6y3lrx2ohd" path="res://audio/ambient-music-sounds/chaotic/drum fill.wav" id="9_ugg1s"]
 [ext_resource type="AudioStream" uid="uid://05pxvnfanc54" path="res://audio/Music/latin-beats-120752.mp3" id="10_83s05"]
 [ext_resource type="AudioStream" uid="uid://bql3myyhr8qaq" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 2.wav" id="10_825p4"]
+[ext_resource type="AudioStream" uid="uid://dsnurekxih6e5" path="res://audio/ambient-music-sounds/chaotic/jazz sax.wav" id="10_jub0u"]
 [ext_resource type="AudioStream" uid="uid://cdsfesowfbfdu" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 3.wav" id="11_o48sv"]
 [ext_resource type="AudioStream" uid="uid://d1bo83nrjynac" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 4.wav" id="12_mbfd8"]
 [ext_resource type="AudioStream" uid="uid://wup4qi1om152" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 5.wav" id="13_xiksk"]
@@ -25,6 +27,7 @@
 process_mode = 3
 script = ExtResource("1_ovd6e")
 sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b"), ExtResource("7_008x6"), ExtResource("8_jy2yl")])
+chaos_fills = Array[AudioStream]([ExtResource("9_ugg1s"), ExtResource("10_jub0u")])
 ambient_guitar = Array[AudioStream]([ExtResource("9_6llqk"), ExtResource("10_825p4"), ExtResource("11_o48sv"), ExtResource("12_mbfd8"), ExtResource("13_xiksk")])
 ambient_birds = Array[AudioStream]([ExtResource("14_y6ix1"), ExtResource("15_5x23q"), ExtResource("16_03hfa")])
 ambient_bugs = Array[AudioStream]([ExtResource("17_qs57g"), ExtResource("18_sgmjv")])

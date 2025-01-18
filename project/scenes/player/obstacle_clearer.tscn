@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://xnxdla6g3vtd"]
+[gd_scene load_steps=8 format=3 uid="uid://xnxdla6g3vtd"]
 
 [ext_resource type="Script" path="res://scenes/player/obstacle_clearer.gd" id="1_j2bdk"]
+[ext_resource type="Script" path="res://scenes/player/obstacle_clearer_sub.gd" id="2_nn5q4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_awvr3"]
 height = 0.6
@@ -53,6 +54,7 @@ script = ExtResource("1_j2bdk")
 [node name="ObstacleClearer" type="StaticBody3D" parent="."]
 collision_layer = 256
 collision_mask = 0
+script = ExtResource("2_nn5q4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleClearer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.337129, 0)
