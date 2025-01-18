@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=50 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
@@ -55,6 +55,9 @@ size = Vector3(40, 1, 40)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xgx1n"]
 radius = 2.40909
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pdrko"]
+radius = 1.6246
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fdefp"]
 bounce = 0.5
@@ -170,6 +173,14 @@ text_to_show = "Press \"J\" to nudge"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StartScenario/Tutorial/ShowButtonArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176116, 0, 0.512388)
 shape = SubResource("CylinderShape3D_xgx1n")
+
+[node name="ShowButtonArea3" parent="Environment/StartScenario/Tutorial" instance=ExtResource("11_r0ekm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27207, -0.0697021, -3.51897)
+text_to_show = "Use \"WASD\" buttons to move"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StartScenario/Tutorial/ShowButtonArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.446261, 0, 0.697577)
+shape = SubResource("CylinderShape3D_pdrko")
 
 [node name="Decor" type="Node3D" parent="Environment/StartScenario"]
 
@@ -731,6 +742,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18647, 0, 0)
 [connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea" to="Hud" method="hide_tutorial_message"]
 [connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea2" to="Hud" method="show_tutorial_message"]
 [connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea2" to="Hud" method="hide_tutorial_message"]
+[connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea3" to="Hud" method="show_tutorial_message"]
+[connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea3" to="Hud" method="hide_tutorial_message"]
 [connection signal="reset_ball" from="Environment/GolferScenarioGolfing/GolferPickerUpper" to="Environment/GolferScenarioGolfing/GolferSwinger" method="resume_golfing"]
 [connection signal="body_entered" from="Environment/DancingScenario/RadioContainer/RadioArea" to="Environment/DancingScenario/RadioContainer/RadioArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Environment/DancingScenario/RadioContainer/RadioArea" to="Environment/DancingScenario/RadioContainer/RadioArea" method="_on_body_exited"]

@@ -5,12 +5,16 @@
 [node name="TaskItem" type="MarginContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
 script = ExtResource("1_nhsmv")
 accomplished_color = Color(0.385493, 0.385493, 0.385492, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.167608, 0.0566296, 0.0607286, 1)
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "test words"
 fit_content = true

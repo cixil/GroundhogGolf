@@ -6,11 +6,11 @@ extends Control
 @export var task_item_scene:PackedScene
 
 var tasks = [
-	["Make him miss the shot", Signals.missed_the_shot , false],
-	["Ruin someone's outfit", Signals.outfit_ruined, false],
 	["Balls everywhere", Signals.balls_everywhere, false],
+	["Ruin someone's outfit", Signals.outfit_ruined, false],
 	["Make the employees slack off", Signals.employee_dance_off , false],
 	["Spill the wine", Signals.wine_spilled, false], 
+	["Make him miss the shot", Signals.missed_the_shot , false],
 	["Put the special ball in the hole", Signals.purple_ball_in_hole, false]
 ]
 
@@ -37,6 +37,7 @@ func _process(_delta: float) -> void:
 		if visible:
 			get_tree().paused = false
 			Audio.undim_theme()
+			settings_panel.end()
 			hide()
 		else:
 			show()

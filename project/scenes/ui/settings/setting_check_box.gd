@@ -6,9 +6,11 @@ extends MarginContainer
 signal value_changed(value:bool)
 
 @export var text:String
+@export var initial_value:bool
 
 func _ready():
 	label.text = text
+	check_box.button_pressed = initial_value
 
 func _input(event: InputEvent) -> void:
 	if not has_focus(): return

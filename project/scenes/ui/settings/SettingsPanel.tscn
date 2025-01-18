@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://onwxwtuppplq"]
+[gd_scene load_steps=10 format=3 uid="uid://onwxwtuppplq"]
 
 [ext_resource type="PackedScene" uid="uid://cly2hs7phsrwy" path="res://scenes/ui/settings/audio_slider.tscn" id="1_1qoxr"]
 [ext_resource type="Script" path="res://scenes/ui/settings/settings_panel.gd" id="1_2jhls"]
+[ext_resource type="Texture2D" uid="uid://cekjik5qvuj5t" path="res://2d-art-assets/down arrow.png" id="2_yl2qv"]
 [ext_resource type="PackedScene" uid="uid://oda05qwn2yyq" path="res://scenes/ui/settings/SettingCheckBox.tscn" id="3_7kqg8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqjol"]
@@ -10,12 +11,49 @@ bg_color = Color(0.808214, 0.766688, 0.417176, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_i0jbn"]
 font_color = Color(0.55, 0.329542, 0.1925, 1)
 
+[sub_resource type="Animation" id="Animation_733kx"]
+resource_name = "drop-down-indicate"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer2/Control/Control/DownArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(2, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 17), Vector2(-16, 29), Vector2(-16, 25), Vector2(-16, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_oba44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer2/Control/Control/DownArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klayg"]
+_data = {
+"RESET": SubResource("Animation_oba44"),
+"drop-down-indicate": SubResource("Animation_733kx")
+}
+
 [node name="SettingsPanel" type="MarginContainer"]
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 43.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_2jhls")
 dig_mode_help_text = "Hold button to dig:
 
@@ -43,52 +81,83 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Audio" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Control" type="MarginContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Settings" type="Label" parent="MarginContainer/VBoxContainer2/Control"]
 layout_mode = 2
 text = "Settings"
 label_settings = SubResource("LabelSettings_i0jbn")
 horizontal_alignment = 1
 
-[node name="Audio2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer2/Control"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="DownArrow" type="Sprite2D" parent="MarginContainer/VBoxContainer2/Control/Control"]
+unique_name_in_owner = true
+position = Vector2(-16, 16)
+texture = ExtResource("2_yl2qv")
+
+[node name="SettingContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Audio2" type="Label" parent="MarginContainer/VBoxContainer2/SettingContainer"]
 layout_mode = 2
 text = "Audio"
 label_settings = SubResource("LabelSettings_i0jbn")
 
-[node name="MusicSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1qoxr")]
+[node name="MusicSlider" parent="MarginContainer/VBoxContainer2/SettingContainer" instance=ExtResource("1_1qoxr")]
 unique_name_in_owner = true
 layout_mode = 2
 label_text = "Ambient Music"
 bus_name = "Music"
 initial_value = 0.7
 
-[node name="SFXSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1qoxr")]
+[node name="SFXSlider" parent="MarginContainer/VBoxContainer2/SettingContainer" instance=ExtResource("1_1qoxr")]
 unique_name_in_owner = true
 layout_mode = 2
 label_text = "Sound Effects"
 bus_name = "SFX"
 initial_value = 0.7
 
-[node name="Accessibility" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Accessibility" type="Label" parent="MarginContainer/VBoxContainer2/SettingContainer"]
 layout_mode = 2
 text = "Accessability"
 label_settings = SubResource("LabelSettings_i0jbn")
 
-[node name="SettingCheckBox" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_7kqg8")]
+[node name="SettingCheckBox" parent="MarginContainer/VBoxContainer2/SettingContainer" instance=ExtResource("3_7kqg8")]
 layout_mode = 2
 size_flags_horizontal = 1
 text = "Hold Button To Dig"
+initial_value = true
 
-[node name="CameraCheckBox" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_7kqg8")]
+[node name="CameraCheckBox" parent="MarginContainer/VBoxContainer2/SettingContainer" instance=ExtResource("3_7kqg8")]
 layout_mode = 2
 size_flags_horizontal = 1
 text = "Use Orthographic Camera Projection"
+initial_value = true
 
-[connection signal="focus_entered" from="MarginContainer/VBoxContainer/SettingCheckBox" to="." method="_on_setting_check_box_focus_entered"]
-[connection signal="focus_exited" from="MarginContainer/VBoxContainer/SettingCheckBox" to="." method="_on_setting_check_box_focus_exited"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/SettingCheckBox" to="." method="_on_setting_check_box_value_changed"]
-[connection signal="focus_entered" from="MarginContainer/VBoxContainer/CameraCheckBox" to="." method="_on_camera_check_box_focus_entered"]
-[connection signal="focus_exited" from="MarginContainer/VBoxContainer/CameraCheckBox" to="." method="_on_camera_check_box_focus_exited"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/CameraCheckBox" to="." method="_on_camera_check_box_value_changed"]
+[node name="ShowControlsCheckBox" parent="MarginContainer/VBoxContainer2/SettingContainer" instance=ExtResource("3_7kqg8")]
+layout_mode = 2
+size_flags_horizontal = 1
+text = "Show Controls On Screen"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_klayg")
+}
+
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer2/SettingContainer/SettingCheckBox" to="." method="_on_setting_check_box_focus_entered"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer2/SettingContainer/SettingCheckBox" to="." method="_on_setting_check_box_focus_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/SettingContainer/SettingCheckBox" to="." method="_on_setting_check_box_value_changed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer2/SettingContainer/CameraCheckBox" to="." method="_on_camera_check_box_focus_entered"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer2/SettingContainer/CameraCheckBox" to="." method="_on_camera_check_box_focus_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/SettingContainer/CameraCheckBox" to="." method="_on_camera_check_box_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/SettingContainer/ShowControlsCheckBox" to="." method="_on_show_controls_check_box_value_changed"]
