@@ -53,14 +53,17 @@ func start_game() -> void:
 	_play_random_from_array(guitar_timer, 5, 10, ambient_guitar)
 	_play_random_from_array(bird_timer, 7, 10, ambient_birds)
 
+func play_intro():
+	main_theme.play()
+
+func stop_intro():
+	main_theme.stop()
 
 func play_radio_music():
-	main_theme.stop()
 	radio_theme.play()
 	radio_theme.seek(11)
 
 func stop_radio_music():
-	main_theme.play()
 	radio_theme.stop()
 
 func dim_theme():

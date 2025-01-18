@@ -12,12 +12,14 @@ var can_advance := false
 
 func _ready() -> void:
 	show_slide(0)
+	Audio.play_intro()
 
 func advance_slide():
 	if idx < len(slides)-1:
 		idx += 1
 		show_slide(idx)
 	elif idx == len(slides)-1:
+		# start the game
 		get_tree().change_scene_to_packed(main_scene)
 
 func previous_slide():
@@ -26,6 +28,8 @@ func previous_slide():
 		show_slide(idx)
 
 func show_slide(index:int):
+	if index == 5:
+		Audio.stop_intro()
 	arrows.hide()
 	if slide_container.get_child_count() > 0:
 		slide_container.get_child(0).queue_free()
