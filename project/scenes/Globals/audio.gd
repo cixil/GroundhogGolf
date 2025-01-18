@@ -38,7 +38,7 @@ func _ready() -> void:
 	#main_theme.play()
 	
 	guitar_timer.timeout.connect(
-		_play_random_from_array.bind(guitar_timer, 3, 7, ambient_guitar)
+		_play_random_from_array.bind(guitar_timer, 3, 7, ambient_guitar, 17)
 	)
 	bird_timer.timeout.connect(
 		_play_random_from_array.bind(bird_timer, 7, 10, ambient_birds)
@@ -80,13 +80,14 @@ func play_until(sig_start:Signal, sig_end:Signal, sound:AudioStream):
 
 
 
-func _play_random_from_array(timer:Timer, min_delay:float, max_delay:float, samples:Array[AudioStream]) -> void:
+func _play_random_from_array(timer:Timer, min_delay:float, max_delay:float, samples:Array[AudioStream], db=0) -> void:
 	timer.wait_time = randi_range(min_delay, max_delay)
 	timer.start()
 	
 	var sound = samples.pick_random()
 	var player:AudioStreamPlayer = AudioStreamPlayer.new()
 	player.stream = sound
+	player.volume_db = db
 	player.bus = &"Music"
 	add_child(player)
 	player.play()
