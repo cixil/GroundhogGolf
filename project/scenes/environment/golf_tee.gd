@@ -8,6 +8,8 @@ var just_hit := false
 func _ready() -> void:
 	Signals.golf_ball_hit_by_golfer.connect(_hit_cooldown)
 
+# add cool down so that golfers don't react when golfball
+# is removed due to being hit by golfer
 func _hit_cooldown():
 	just_hit = true
 	await get_tree().create_timer(1).timeout
@@ -31,6 +33,5 @@ func _on_hog_detector_body_entered(body: Node3D) -> void:
 
 func _on_golf_ball_detector_body_exited(body: Node3D) -> void:
 	if body is GolfBall:
-		print('left')
 		if not just_hit:
 			Signals.golf_tee_fell.emit(self)

@@ -21,16 +21,21 @@ func _ready() -> void:
 	play_once(Signals.hog_touched_ball, sfx[0])
 	play_once(Signals.golfer_swung_no_arg, sfx[3])
 	play_once(Signals.golf_ball_hit_by_golfer, sfx[4])
-	play_once(Signals.hog_entered_dirt, sfx[5])
-	play_once(Signals.hog_exited_dirt, sfx[6])
-	play_once(Signals.radio_turned_off, sfx[7])
+	play_once(Signals.hog_entered_dirt, sfx[5], 0.5)
+	play_once(Signals.hog_exited_dirt, sfx[6], 0.1)
+	play_once(Signals.radio_turned_off, sfx[7], 1.2)
+	play_once(Signals.radio_turned_on, sfx[7], 1.2)
+	play_once(Signals.bush_moved, sfx[9])
 	
 	play_once(Signals.golfer_tripped, chaos_fills[0])
+	play_once(Signals.golfer_tripped, sfx[8], 0.8)
 	play_once(Signals.wine_spilled, chaos_fills[0])
 	play_once(Signals.crate_pushed_from_ground, chaos_fills[1])
 	
-	play_until(Signals.hog_started_walking, Signals.hog_stopped_walking, sfx[1])
-	play_until(Signals.hog_entered_dirt, Signals.hog_exited_dirt, sfx[2])
+	# TODO fade this one in and out
+	play_until(Signals.hog_entered_crate, Signals.hog_left_crate, chaos_fills[2], .8)
+	play_until(Signals.hog_started_walking, Signals.hog_stopped_walking, sfx[1], 1.5)
+	play_until(Signals.hog_entered_dirt, Signals.hog_exited_dirt, sfx[2], 1.5)
 	
 	#Signals.radio_turned_on.connect(play_radio_music)
 	#Signals.radio_turned_off.connect(stop_radio_music)
@@ -62,18 +67,20 @@ func dim_theme():
 func undim_theme():
 	main_theme.volume_db = 0
 
-func play_once(sig:Signal, sound:AudioStream):
+func play_once(sig:Signal, sound:AudioStream, db:float=1):
 	var player = AudioStreamPlayer.new()
 	player.stream = sound
 	player.bus = &"SFX"
+	player.volume_db = linear_to_db(db)
 	add_child(player)
 	sig.connect(player.play)
 
 
-func play_until(sig_start:Signal, sig_end:Signal, sound:AudioStream):
+func play_until(sig_start:Signal, sig_end:Signal, sound:AudioStream, db:float=1):
 	var player = AudioStreamPlayer.new()
 	player.stream = sound
 	player.bus = &"SFX"
+	player.volume_db = linear_to_db(db)
 	add_child(player)
 	sig_start.connect(player.play)
 	sig_end.connect(player.stop)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://4rtr770dm2y7"]
+[gd_scene load_steps=11 format=4 uid="uid://4rtr770dm2y7"]
 
 [ext_resource type="Script" path="res://scenes/environment/interactable/crate.gd" id="1_sg7ae"]
 
@@ -83,6 +83,9 @@ size = Vector3(0.62521, 0.529846, 0.0414734)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioy32"]
 size = Vector3(0.387177, 0.0843811, 0.445679)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g5w6c"]
+size = Vector3(0.387177, 0.123024, 0.445679)
+
 [node name="Crate" type="RigidBody3D"]
 collision_layer = 128
 collision_mask = 413
@@ -128,6 +131,16 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00276184, 0.146194, -0.0125122)
 shape = SubResource("BoxShape3D_ioy32")
 
+[node name="UnderCrate" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UnderCrate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00276184, 0.512017, -0.0125122)
+shape = SubResource("BoxShape3D_g5w6c")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="InsideCrate" to="." method="_on_inside_crate_body_entered"]
 [connection signal="body_exited" from="InsideCrate" to="." method="_on_inside_crate_body_exited"]
+[connection signal="body_entered" from="UnderCrate" to="." method="_on_under_crate_body_entered"]
+[connection signal="body_exited" from="UnderCrate" to="." method="_on_under_crate_body_exited"]

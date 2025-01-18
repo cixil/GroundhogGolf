@@ -5,6 +5,7 @@ class_name Golfer
 @onready var state_machine: Node = $StateMachine
 @onready var hand: Holdable = $Pivot/ModelGoesHere/man/Armature/Skeleton3D/BoneAttachment3D
 @onready var pivot: Node3D = $Pivot
+@onready var foot_steps: AudioStreamPlayer3D = $FootSteps
 
 @export var walk_speed := 1.0
 
@@ -36,6 +37,19 @@ func _ready() -> void:
 	home_position = global_position
 	if receptive_to_radio:
 		Signals.radio_turned_off.connect(notice_radio_turned_off.bind(radio))
+	
+	animation_player.animation_started.connect(_anim_started)
+	animation_player.animation_finished.connect(_anim_ended)
+
+func _anim_started(anim_name:String):
+	match anim_name:
+		'walking-forward':
+			foot_steps.play()
+
+func _anim_ended(anim_name:String):
+	match anim_name:
+		'walking-forward':
+			foot_steps.stop()
 
 
 func hold_in_hand(obj:Holdable.objects):

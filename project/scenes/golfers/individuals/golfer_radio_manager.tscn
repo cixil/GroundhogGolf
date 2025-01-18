@@ -9,7 +9,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vlsy"]
 resource_name = "red.001"
 cull_mode = 2
-albedo_color = Color(0.907502, 0.0805521, 0.196226, 1)
+albedo_color = Color(0.710005, 0.672891, 0.524142, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo5gr"]
 resource_name = "skin"
@@ -19,7 +19,7 @@ albedo_color = Color(0.906387, 0.711924, 0.664697, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tmi2"]
 resource_name = "pants"
 cull_mode = 2
-albedo_color = Color(0.403939, 0.188529, 0.073912, 1)
+albedo_color = Color(0.501961, 0.380392, 0.0705882, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1w6x"]
 resource_name = "Material.004"

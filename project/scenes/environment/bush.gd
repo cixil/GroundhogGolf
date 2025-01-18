@@ -6,7 +6,9 @@ extends StaticBody3D
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	animation_player.play('bush-enter-exit')
+	Signals.bush_moved.emit()
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	animation_player.play('bush-enter-exit')
+	Signals.bush_moved.emit()

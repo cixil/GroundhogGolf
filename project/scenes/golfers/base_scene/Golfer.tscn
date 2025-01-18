@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mgs8ef2jfsy1"]
+[gd_scene load_steps=19 format=3 uid="uid://mgs8ef2jfsy1"]
 
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/golfer.gd" id="1_87tke"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/state_machine.gd" id="2_siak4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/dance.gd" id="12_0ua46"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/pout.gd" id="13_pquxa"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/notice_radio.gd" id="14_vamns"]
+[ext_resource type="AudioStream" uid="uid://bi5xy2ygnf8ek" path="res://audio/sfx/human footsteps.wav" id="16_s6shq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xxynn"]
 height = 1.51473
@@ -82,6 +83,12 @@ shape = SubResource("BoxShape3D_bpw3h")
 
 [node name="ModelGoesHere" type="Node3D" parent="Pivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="FootSteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("16_s6shq")
+volume_db = 10.0
+max_distance = 6.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="LumpDetector" to="." method="_on_lump_detector_body_entered"]
 [connection signal="state_ended" from="StateMachine/Trip" to="." method="_on_trip_state_ended"]

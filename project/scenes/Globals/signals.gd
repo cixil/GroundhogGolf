@@ -23,8 +23,11 @@ signal hog_stopped_walking
 signal hog_touched_ball
 signal golfer_tripped
 signal golfer_swung_no_arg
+signal bush_moved
 
 signal crate_pushed_from_ground
+signal hog_entered_crate
+signal hog_left_crate
 
 ## Tasks
 signal missed_the_shot
