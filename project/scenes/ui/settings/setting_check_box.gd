@@ -2,6 +2,7 @@ extends MarginContainer
 @onready var check_box: CheckBox = $MarginContainer/CheckBox
 @onready var panel: Panel = $Panel
 @onready var label: Label = $MarginContainer/Label
+@onready var click: AudioStreamPlayer = $Click
 
 signal value_changed(value:bool)
 
@@ -15,6 +16,7 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if not has_focus(): return
 	if event.is_action_pressed("ui_enter"):
+		click.play()
 		check_box.button_pressed = !check_box.button_pressed
 		value_changed.emit(check_box.button_pressed)
 

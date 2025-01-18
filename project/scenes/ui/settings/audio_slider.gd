@@ -8,6 +8,8 @@ extends Control
 @onready var h_slider: HSlider = $MarginContainer/HBoxContainer/HSlider
 @onready var panel: Panel = $Panel
 
+@onready var clicks: AudioStreamPlayer = $Clicks
+
 var _bus_index
 
 # Called when the node enters the scene tree for the first time.
@@ -29,6 +31,11 @@ func _process(_delta: float) -> void:
 		h_slider.value -= h_slider.step *5
 	if Input.is_action_pressed("move_right"):
 		h_slider.value += h_slider.step*5
+	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+		clicks.play()
+	# TODO bug when you press on direction then immediately press another, sound stops but should not
+	elif Input.is_action_just_released("move_left") or Input.is_action_just_released("move_right"):
+		clicks.stop()
 
 
 func _on_focus_entered() -> void:
@@ -36,4 +43,5 @@ func _on_focus_entered() -> void:
 
 
 func _on_focus_exited() -> void:
+	clicks.stop()
 	panel.unfocus()

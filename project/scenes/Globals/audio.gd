@@ -26,6 +26,8 @@ func _ready() -> void:
 	play_once(Signals.radio_turned_off, sfx[7], 1.2)
 	play_once(Signals.radio_turned_on, sfx[7], 1.2)
 	play_once(Signals.bush_moved, sfx[9])
+	play_once(Signals.wine_spilled, sfx[10])
+	play_once(Signals.table_broke, sfx[11])
 	
 	play_once(Signals.golfer_tripped, chaos_fills[0])
 	play_once(Signals.golfer_tripped, sfx[8], 0.8)

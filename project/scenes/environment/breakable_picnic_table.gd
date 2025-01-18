@@ -13,5 +13,7 @@ func _on_lump_detector_body_entered(_body: Node3D) -> void:
 	if not broken:
 		broken = true
 		emphasis.queue_free()
+		Signals.table_broke.emit()
+
 		animation_player.play('break', -1, 0.6)
 	

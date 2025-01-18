@@ -44,7 +44,7 @@ func _ready():
 	for i in range(1, 33):
 		if get_collision_mask_value(i):
 			_used_mask_layers.append(i)
-	_tx_to_walk()
+	_tx_to_walk(false)
 
 func _tx_to_dig():
 	current_mode = mode.transition_to_dig
@@ -74,11 +74,12 @@ func set_collision_masks(val:bool):
 		if i != ground_collision and i != underground_collision:
 			set_collision_mask_value(i, val)
 
-
-func _tx_to_walk():
+# use_sound param is just so we can call this function in _ready
+func _tx_to_walk(use_sound=true):
 	current_mode = mode.transition_to_walk
 	if _prev_direction != Vector3.ZERO:
-		Signals.hog_started_walking.emit()
+		if use_sound:
+			Signals.hog_started_walking.emit()
 	
 	ball_detector_collision.set_deferred('disabled', false)
 	
@@ -91,7 +92,8 @@ func _tx_to_walk():
 	
 	
 	animation_player.play('jump out', -1, 2)
-	Signals.hog_left_ground_at.emit(global_position)
+	if use_sound:
+		Signals.hog_left_ground_at.emit(global_position)
 	_target_velocity.y = jump_impulse
 	# wait a short time before setting collisions back so the obstacle clearer
 	# can make sure baskets are out of the way

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cly2hs7phsrwy"]
+[gd_scene load_steps=4 format=3 uid="uid://cly2hs7phsrwy"]
 
 [ext_resource type="Script" path="res://scenes/ui/settings/audio_slider.gd" id="1_dxsmt"]
 [ext_resource type="PackedScene" uid="uid://s5loiq0em0p6" path="res://scenes/ui/settings/setting_panel.tscn" id="2_bxra4"]
+[ext_resource type="AudioStream" uid="uid://c1lnruwxy5krv" path="res://audio/sfx/ui/slider click.wav" id="3_gotnv"]
 
 [node name="AudioSlider" type="MarginContainer"]
 anchors_preset = 15
@@ -40,6 +41,11 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.001
 value = 1.0
+
+[node name="Clicks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gotnv")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

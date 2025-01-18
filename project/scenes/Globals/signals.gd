@@ -24,6 +24,7 @@ signal hog_touched_ball
 signal golfer_tripped
 signal golfer_swung_no_arg
 signal bush_moved
+signal table_broke
 
 signal crate_pushed_from_ground
 signal hog_entered_crate
