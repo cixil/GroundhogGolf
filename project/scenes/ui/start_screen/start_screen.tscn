@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://18ogyu2gqi3x"]
+[gd_scene load_steps=63 format=4 uid="uid://18ogyu2gqi3x"]
 
 [ext_resource type="Script" path="res://scenes/ui/start_screen/menu.gd" id="1_661y1"]
 [ext_resource type="MeshLibrary" uid="uid://cbufi4a8vv2i1" path="res://scenes/environment/mesh_lib/MeshLibrary.tres" id="1_qh0hm"]
@@ -12,8 +12,31 @@
 [ext_resource type="PackedScene" uid="uid://by0augtkru51r" path="res://models/golf-cart.glb" id="10_k0nnw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_isocx"]
-font_size = 40
+font_size = 50
 font_color = Color(0.301385, 0.186469, 0.0776039, 1)
+outline_size = 20
+outline_color = Color(0.593467, 0.590918, 0.321256, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk4oi"]
+bg_color = Color(0.702479, 0.641763, 0.214432, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4u6o"]
+bg_color = Color(0.450828, 0.409821, 0.120093, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ry6go"]
+bg_color = Color(0.792623, 0.725079, 0.258609, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kknra"]
 resource_name = "Material.016"
@@ -4298,12 +4321,30 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_pk4oi")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ry6go")
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="Menu/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_pk4oi")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b4u6o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ry6go")
 text = "Settings
 "
 
@@ -4529,7 +4570,7 @@ bones/25/rotation = Quaternion(4.38449e-08, 3.10929e-07, -3.3597e-07, 1)
 bones/25/scale = Vector3(1, 1, 1)
 
 [node name="name-tag" type="BoneAttachment3D" parent="worker-moustache-separate/Armature/Skeleton3D"]
-transform = Transform3D(0.831129, -0.055328, 0.016015, -0.0212152, -0.0786963, 0.829126, -0.0535497, -0.82755, -0.0799168, 0.119804, 0.126065, -1.31817)
+transform = Transform3D(0.831128, -0.0553282, 0.0160139, -0.0212142, -0.0786956, 0.829127, -0.0535502, -0.827549, -0.079916, 0.119804, 0.126064, -1.31817)
 bone_name = "name-tag"
 bone_idx = 11
 

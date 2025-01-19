@@ -2,7 +2,10 @@ extends CanvasLayer
 
 @onready var item_container: VBoxContainer = %ItemContainer
 @onready var settings_panel: MarginContainer = %SettingsPanel
-@onready var task_list: MarginContainer = $VBoxContainer/TaskList
+@onready var task_list: MarginContainer = %TaskList
+@onready var pause_menu: Control = $PauseMenu
+@onready var task_completion_indicator: MarginContainer = %TaskCompletionIndicator
+@onready var task_complete_indicator_node: MarginContainer = %TaskCompleteIndicatorNode
 
 @export var task_item_scene:PackedScene
 signal task_list_closed # for start menu
@@ -15,7 +18,7 @@ var tasks = [
 	["Make the employees slack off", Signals.employee_dance_off , false],
 	["Spill the wine", Signals.wine_spilled, false], 
 	["Make him miss the shot", Signals.missed_the_shot , false],
-	["Put the special ball in the hole", Signals.purple_ball_in_hole, false]
+	["Put a special edition ball in the lake", Signals.purple_ball_in_lake, false]
 ]
 
 
@@ -29,22 +32,28 @@ func _ready() -> void:
 		task_item.set_text(text)
 		trigger.connect(mark_done.bind(i))
 	
-	hide()
+	task_completion_indicator.hide()
+	pause_menu.hide()
 
 func mark_done(index:int):
 	tasks[index][2] = true
 	var item:TaskItemControl = item_container.get_child(index)
 	item.set_done()
+	task_completion_indicator.show()
+	task_complete_indicator_node.add_child(item.duplicate())
+	await get_tree().create_timer(4).timeout
+	task_complete_indicator_node.get_child(0).queue_free()
+	task_completion_indicator.hide()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and game_started:
-		if visible:
+		if pause_menu.visible:
 			hide_menu()
 		else:
 			show_menu()
 
 func show_menu(start_screen_version:bool=false):
-	show()
+	pause_menu.show()
 	task_list.show()
 	settings_panel.start()
 	Audio.dim_theme()
@@ -58,7 +67,7 @@ func hide_menu():
 	get_tree().paused = false
 	Audio.undim_theme()
 	settings_panel.end()
-	hide()
+	pause_menu.hide()
 	task_list_closed.emit()
 
 

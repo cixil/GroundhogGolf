@@ -50,8 +50,13 @@ func start_game() -> void:
 	bird_timer.timeout.connect(
 		_play_random_from_array.bind(bird_timer, 7, 10, ambient_birds)
 	)
+	cricket_timer.timeout.connect(
+		_play_random_from_array.bind(cricket_timer, 15, 25, ambient_bugs)
+	)
 	_play_random_from_array(guitar_timer, 5, 10, ambient_guitar)
 	_play_random_from_array(bird_timer, 7, 10, ambient_birds)
+	_play_random_from_array(cricket_timer, 15, 25, ambient_bugs)
+
 
 func play_intro():
 	main_theme.play()

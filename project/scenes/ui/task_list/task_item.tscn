@@ -3,12 +3,15 @@
 [ext_resource type="Script" path="res://scenes/ui/task_list/task_item.gd" id="1_nhsmv"]
 
 [node name="TaskItem" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 122.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_nhsmv")
-accomplished_color = Color(0.385493, 0.385493, 0.385492, 1)
+accomplished_color = Color(0.664281, 0.539526, 0.412506, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2

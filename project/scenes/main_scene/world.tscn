@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=65 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scenes/main_scene/camera_3d.gd" id="8_h4qvh"]
 [ext_resource type="PackedScene" uid="uid://np0vw36v8swo" path="res://scenes/environment/mud/mud_pit.tscn" id="8_in42m"]
 [ext_resource type="PackedScene" uid="uid://cmpbhj8q7u8lu" path="res://scenes/environment/hole.tscn" id="9_whhha"]
+[ext_resource type="Script" path="res://scenes/main_scene/lake.gd" id="10_2rbjj"]
 [ext_resource type="PackedScene" uid="uid://dx1i63pbpp6v" path="res://scenes/environment/ornamental_golf_cart.tscn" id="11_l3ify"]
 [ext_resource type="PackedScene" uid="uid://dpbj73p8amv1x" path="res://scenes/ui/tutorial/show_button_area.tscn" id="11_r0ekm"]
 [ext_resource type="Script" path="res://scenes/main_scene/intro_guitar_lick.gd" id="14_1p7p6"]
@@ -41,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6rtroebno68" path="res://scenes/environment/toxic_barrel_open.tscn" id="27_b7d4a"]
 [ext_resource type="PackedScene" uid="uid://cmoxaoewwnxjc" path="res://scenes/environment/toxic_barrel_enterable.tscn" id="28_fk1r3"]
 [ext_resource type="PackedScene" uid="uid://bo5uq1t4puaes" path="res://scenes/environment/rock.tscn" id="29_vyo0j"]
+[ext_resource type="PackedScene" uid="uid://bqcnu6smrxwu2" path="res://scenes/environment/drink_station.tscn" id="43_nj0kw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15tv3"]
 sky_top_color = Color(0.302046, 0.445495, 0.698011, 1)
@@ -57,6 +59,16 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdaf2"]
 size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vkef"]
+albedo_color = Color(0.411033, 0.488192, 0.787542, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_twu4j"]
+material = SubResource("StandardMaterial3D_0vkef")
+size = Vector3(3, 1, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xbeqf"]
+points = PackedVector3Array(1.45426, 0.5, 1.45426, -1.45426, -0.5, -1.45426, -1.45426, -0.5, 1.45426, -1.45426, 0.5, -1.45426, 1.45426, -0.5, -1.45426, -1.45426, 0.5, 1.45426, 1.45426, -0.5, 1.45426, 1.45426, 0.5, -1.45426)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xgx1n"]
 radius = 2.40909
@@ -109,6 +121,9 @@ size = Vector3(8.75012, 1, 8.26929)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uehb6"]
 size = Vector3(8.08197, 6.21088, 9.02783)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcj8d"]
+size = Vector3(2.2061, 17.0382, 30.8837)
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_v2r77")
 
@@ -128,7 +143,7 @@ cell_size = Vector3(3, 3, 3)
 collision_layer = 4
 collision_mask = 0
 data = {
-"cells": PackedInt32Array(1, 65533, 1, 0, 65533, 0, 0, 65532, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 0, 4, 0, 0, 3, 0, 1, 3, 0, 2, 2, 0, 3, 2, 0, 2, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 2, 0, 2, 0, 0, 3, 65535, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 4, 0, 0, 1, 2, 0, 5, 0, 0, 2, 3, 0, 4, 2, 0, 5, 2, 0, 1, 4, 0, 4, 3, 0, 3, 3, 0, 4, 4, 0, 2, 4, 0, 3, 4, 0, 65534, 65529, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 4, 6, 0, 4, 7, 0, 3, 7, 0, 2, 7, 0, 65534, 7, 0, 65534, 6, 0, 65535, 6, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 1, 7, 0, 0, 7, 0, 3, 6, 0, 65534, 8, 0, 65535, 8, 0, 65535, 7, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 1, 9, 0, 0, 9, 0, 65535, 9, 0, 65534, 9, 0, 65533, 8, 0, 65533, 9, 0, 65532, 8, 0, 65532, 7, 0, 65532, 6, 0, 65533, 6, 0, 65533, 5, 0, 65533, 4, 0, 65533, 3, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65532, 5, 0, 65533, 7, 0, 65532, 4, 0, 65532, 3, 0, 65532, 2, 0, 65532, 1, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65534, 65528, 0, 65534, 65527, 0, 65535, 65528, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 3, 65528, 0, 3, 65529, 0, 2, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 4, 65531, 0, 3, 65531, 0, 2, 65531, 0, 3, 65532, 0, 4, 65532, 0, 4, 65533, 0, 3, 65533, 0, 3, 65534, 0, 4, 65535, 0, 5, 65534, 0, 5, 65533, 0, 5, 3, 0, 5, 5, 0, 5, 6, 0, 5, 1, 0, 5, 65535, 0, 5, 4, 0, 5, 65532, 0, 5, 65531, 0, 5, 65530, 0, 5, 65529, 0, 4, 65529, 0, 4, 65528, 0, 4, 65527, 0, 5, 65527, 0, 5, 65528, 0, 4, 65526, 0, 5, 65526, 0, 3, 65527, 0, 2, 65527, 0, 1, 65527, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 0, 65526, 0, 65533, 65527, 0, 65533, 65526, 0, 65534, 65526, 0, 65535, 65525, 0, 0, 65525, 0, 65535, 65526, 0, 65532, 65526, 0, 65532, 65527, 0, 65532, 65528, 0, 65532, 65529, 0, 65533, 65525, 0, 65534, 65525, 0, 65533, 65528, 0, 0, 65527, 0, 2, 65532, 0, 2, 65533, 0, 4, 65534, 0, 1, 65529, 0, 1, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 0, 65530, 0, 1, 65532, 2, 1, 65531, 0, 20, 65532, 0, 3, 0, 0, 3, 1, 0, 4, 1, 0)
+"cells": PackedInt32Array(0, 65533, 0, 0, 65532, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 0, 4, 0, 0, 3, 0, 1, 3, 0, 2, 2, 0, 3, 2, 0, 2, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 2, 0, 2, 0, 0, 3, 65535, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 4, 0, 0, 1, 2, 0, 5, 0, 0, 2, 3, 0, 4, 2, 0, 5, 2, 0, 1, 4, 0, 4, 3, 0, 3, 3, 0, 4, 4, 0, 2, 4, 0, 3, 4, 0, 65534, 65529, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 4, 6, 0, 4, 7, 0, 3, 7, 0, 2, 7, 0, 65534, 7, 0, 65534, 6, 0, 65535, 6, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 1, 7, 0, 0, 7, 0, 3, 6, 0, 65534, 8, 0, 65535, 8, 0, 65535, 7, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 1, 9, 0, 0, 9, 0, 65535, 9, 0, 65534, 9, 0, 65533, 8, 0, 65533, 9, 0, 65532, 8, 0, 65532, 7, 0, 65532, 6, 0, 65533, 6, 0, 65533, 5, 0, 65533, 4, 0, 65533, 3, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65532, 5, 0, 65533, 7, 0, 65532, 4, 0, 65532, 3, 0, 65532, 2, 0, 65532, 1, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65534, 65528, 0, 65534, 65527, 0, 65535, 65528, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 3, 65528, 0, 3, 65529, 0, 2, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 4, 65531, 0, 3, 65531, 0, 3, 65532, 1, 4, 65532, 0, 4, 65533, 0, 3, 65533, 0, 3, 65534, 0, 4, 65535, 0, 5, 65534, 0, 5, 65533, 0, 5, 3, 0, 5, 5, 0, 5, 6, 0, 5, 1, 0, 5, 65535, 0, 5, 4, 0, 5, 65532, 0, 5, 65531, 0, 5, 65530, 0, 5, 65529, 0, 4, 65529, 0, 4, 65528, 0, 4, 65527, 0, 5, 65527, 0, 5, 65528, 0, 4, 65526, 0, 5, 65526, 0, 3, 65527, 0, 2, 65527, 0, 1, 65527, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 0, 65526, 0, 65533, 65527, 0, 65533, 65526, 0, 65534, 65526, 0, 65535, 65525, 0, 0, 65525, 0, 65535, 65526, 0, 65532, 65526, 0, 65532, 65527, 0, 65532, 65528, 0, 65532, 65529, 0, 65533, 65525, 0, 65534, 65525, 0, 65533, 65528, 0, 0, 65527, 0, 2, 65533, 0, 4, 65534, 0, 1, 65529, 0, 1, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 0, 65530, 0, 1, 65531, 0, 20, 65532, 0, 3, 0, 0, 3, 1, 0, 4, 1, 0, 1, 65533, 1, 1, 65532, 2, 2, 65532, 0, 2, 65531, 0)
 }
 script = ExtResource("1_0iia1")
 dirt_lump_scene = ExtResource("2_if6fa")
@@ -153,8 +168,23 @@ script = ExtResource("5_ovem5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71262, 2.1167, -4.93481)
 shape = SubResource("BoxShape3D_pdaf2")
 
+[node name="Lake" type="Area3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25787, 0, -13.3291)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("10_2rbjj")
+
+[node name="Lake" type="MeshInstance3D" parent="GridMap/Lake"]
+transform = Transform3D(0.999962, 0.00872654, 0, -0.00872654, 0.999962, 0, 0, 0, 1, 1.16613, 1.975, 3.1201)
+mesh = SubResource("BoxMesh_twu4j")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Lake"]
+transform = Transform3D(0.999962, 0.00872654, 0, -0.00872654, 0.999962, 0, 0, 0, 1, 1.16613, 1.975, 3.1201)
+shape = SubResource("ConvexPolygonShape3D_xbeqf")
+
 [node name="GroundHog" parent="." instance=ExtResource("1_b6dm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82817, 0.24725, 11.4102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82587, 0.24725, 11.4368)
 
 [node name="CameraPivot" type="Node3D" parent="GroundHog"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46521, 0, 0.320067)
@@ -445,7 +475,7 @@ curve = SubResource("Curve3D_7lhmo")
 transform = Transform3D(-0.132548, 0.00438314, -0.991167, -0.0330505, -0.999454, -1.56701e-09, -0.990625, 0.0327586, 0.132619, 9.11586, 0.65918, 6.98052)
 
 [node name="Radio" parent="Environment/DancingScenario/Crate7" instance=ExtResource("23_d2gv3")]
-transform = Transform3D(-0.866614, -0.0330505, -0.497884, 0.0286577, -0.999453, 0.0164643, -0.498155, 3.77127e-08, 0.867089, -1.44698, 0.635328, 0.112703)
+transform = Transform3D(-0.866614, -0.0330505, -0.497884, 0.0286577, -0.999453, 0.0164643, -0.498155, 3.73366e-08, 0.867089, -1.44698, 0.635328, 0.112703)
 
 [node name="ShowButtonArea4" parent="Environment/DancingScenario/Crate7/Radio" instance=ExtResource("11_r0ekm")]
 transform = Transform3D(0.608748, 2.38427e-08, 0.793364, 2.10222e-08, 1, 2.04503e-08, -0.793363, 1.5787e-08, 0.608748, 0, 0, 0)
@@ -809,8 +839,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8586, 0, 6.77649)
 [node name="BrickWallPillar" parent="Environment/Other/Wall/RightSection2/BrickWallSection6" instance=ExtResource("5_180vv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18647, 0, 0)
 
+[node name="DrinkStation" parent="Environment/Other" instance=ExtResource("43_nj0kw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1964, 0, -12.7241)
+
+[node name="DrinkStation2" parent="Environment/Other" instance=ExtResource("43_nj0kw")]
+transform = Transform3D(0.0475946, 0, 0.998867, 0, 1, 0, -0.998867, 0, 0.0475946, -2.0289, 0, 3.83899)
+
+[node name="GolfBallContainer" type="StaticBody3D" parent="Environment"]
+collision_layer = 4096
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/GolfBallContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2021, 8.0191, 0.378113)
+shape = SubResource("BoxShape3D_xcj8d")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/GolfBallContainer"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.70592, 8.0191, -14.5174)
+shape = SubResource("BoxShape3D_xcj8d")
+
 [connection signal="body_entered" from="GridMap/FloorBallCounter" to="GridMap/FloorBallCounter" method="_on_body_entered"]
 [connection signal="body_exited" from="GridMap/FloorBallCounter" to="GridMap/FloorBallCounter" method="_on_body_exited"]
+[connection signal="body_entered" from="GridMap/Lake" to="GridMap/Lake" method="_on_body_entered"]
+[connection signal="body_exited" from="GridMap/Lake" to="GridMap/Lake" method="_on_body_exited"]
 [connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea" to="Hud" method="show_tutorial_message"]
 [connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea" to="Hud" method="hide_tutorial_message"]
 [connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea2" to="Hud" method="show_tutorial_message"]

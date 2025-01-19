@@ -128,3 +128,4 @@ boop={
 3d_physics/layer_8="movable_obstacle"
 3d_physics/layer_9="obstacle_clearer"
 3d_physics/layer_11="radio_container"
+3d_physics/layer_13="golfball_container"

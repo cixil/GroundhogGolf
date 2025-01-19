@@ -34,6 +34,6 @@ signal hog_left_crate
 signal missed_the_shot
 signal outfit_ruined
 signal balls_everywhere
-signal purple_ball_in_hole
+signal purple_ball_in_lake
 signal employee_dance_off
 signal wine_spilled

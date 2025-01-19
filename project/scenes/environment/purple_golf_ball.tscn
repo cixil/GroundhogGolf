@@ -53,7 +53,7 @@ radius = 0.0765121
 
 [node name="PurpleGolfBall" type="RigidBody3D"]
 collision_layer = 136
-collision_mask = 159
+collision_mask = 4255
 mass = 0.05
 physics_material_override = SubResource("PhysicsMaterial_fdefp")
 linear_damp = 2.0
