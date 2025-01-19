@@ -9,8 +9,11 @@ extends MarginContainer
 
 @export_multiline var dig_mode_help_text:String
 @export_multiline var cam_mode_help_text:String
+@export_multiline var credit_text:String
+@export_multiline var credits_small_text:String
 
-signal display_help_text(text:String)
+
+signal display_help_text(text:String, small_text:String)
 signal disable_help_text
 signal exit_pressed
 
@@ -48,7 +51,7 @@ func _on_setting_check_box_value_changed(value: bool) -> void:
 
 
 func _on_setting_check_box_focus_entered() -> void:
-	display_help_text.emit(dig_mode_help_text)
+	display_help_text.emit(dig_mode_help_text, '')
 
 
 func _on_setting_check_box_focus_exited() -> void:
@@ -60,7 +63,7 @@ func _on_camera_check_box_value_changed(value: bool) -> void:
 
 
 func _on_camera_check_box_focus_entered() -> void:
-	display_help_text.emit(cam_mode_help_text)
+	display_help_text.emit(cam_mode_help_text, '')
 
 
 func _on_camera_check_box_focus_exited() -> void:
@@ -74,3 +77,10 @@ func _on_show_controls_check_box_value_changed(value: bool) -> void:
 
 func _on_exit_button_pressed() -> void:
 	exit_pressed.emit()
+
+
+func _on_button_focus_entered() -> void:
+	display_help_text.emit(credit_text, credits_small_text)
+
+func _on_button_focus_exited() -> void:
+	disable_help_text.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1msrql0hw5ro"]
+[gd_scene load_steps=9 format=3 uid="uid://d1msrql0hw5ro"]
 
 [ext_resource type="Script" path="res://scenes/ui/task_list/task_list.gd" id="1_panm4"]
 [ext_resource type="PackedScene" uid="uid://drjarpv62rv3b" path="res://scenes/ui/task_list/task_item.tscn" id="2_leihd"]
@@ -18,20 +18,23 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="TaskList" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_x2usb"]
+font_size = 12
+
+[node name="TaskList" type="CanvasLayer"]
 process_mode = 3
-layout_mode = 3
+script = ExtResource("1_panm4")
+task_item_scene = ExtResource("2_leihd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("1_panm4")
-task_item_scene = ExtResource("2_leihd")
+color = Color(0, 0, 0, 0.207843)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -76,7 +79,6 @@ layout_mode = 2
 size_flags_vertical = 2
 
 [node name="HelpDisplay" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -101,9 +103,18 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="HelpDisplay/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpDisplay/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HelpDisplay/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "beep boop"
+autowrap_mode = 3
+
+[node name="SmallLabel" type="Label" parent="HelpDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "beep boop"
+label_settings = SubResource("LabelSettings_x2usb")
 autowrap_mode = 3
 
 [connection signal="disable_help_text" from="VBoxContainer/SettingsPanel" to="HelpDisplay" method="_on_settings_panel_disable_help_text"]

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var item_container: VBoxContainer = %ItemContainer
 @onready var settings_panel: MarginContainer = %SettingsPanel
