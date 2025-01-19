@@ -45,7 +45,7 @@ func start_game() -> void:
 	#main_theme.play()
 	
 	guitar_timer.timeout.connect(
-		_play_random_from_array.bind(guitar_timer, 3, 7, ambient_guitar, 17)
+		_play_random_from_array.bind(guitar_timer, 5, 10, ambient_guitar, 17)
 	)
 	bird_timer.timeout.connect(
 		_play_random_from_array.bind(bird_timer, 7, 10, ambient_birds)

@@ -8,12 +8,15 @@ var slow_speed = 0.5
 var anim = 'golf-swing'
 @export var practice_swings = 3
 
+var original_basis
+
 func _ready():
 	end_practice /= slow_speed
+func init():
+	original_basis = pivot.basis
 
 func enter(_args=[]) -> void:
-	#var tee:GolfTee = argsA[0]
-	#pivot.basis = Basis.looking_at(body.global_position.direction_to(tee.global_position))
+	pivot.basis = original_basis
 	animation_player.play("stretching-neck")
 	await animation_player.animation_finished
 	pivot.rotate_y(PI*-1.6)

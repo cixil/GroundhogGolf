@@ -34,6 +34,9 @@ var direction:Vector3
 
 var trippable:bool = false
 
+# TODO lots of unnecessary states in the main scene, all states from main should be removed
+# and then added to inheriting scenes as necessary
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	home_position = global_position
