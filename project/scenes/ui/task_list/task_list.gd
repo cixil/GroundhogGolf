@@ -9,7 +9,9 @@ extends CanvasLayer
 
 @export var task_item_scene:PackedScene
 signal task_list_closed # for start menu
+signal task_list_opened # and audio
 signal task_completed
+signal task_completed_sound
 
 var game_started := false # prevent you from seeing tasks before game starts
 
@@ -47,6 +49,8 @@ func mark_done(index:int):
 	# TODO fade out would be better than visibility toggle
 	task_completion_indicator.show()
 	task_complete_indicator_node.add_child(item.duplicate())
+	await get_tree().create_timer(.5).timeout
+	task_completed_sound.emit()
 	await get_tree().create_timer(6).timeout
 	task_complete_indicator_node.get_child(0).queue_free()
 	task_completion_indicator.hide()
@@ -64,6 +68,7 @@ func show_menu(start_screen_version:bool=false):
 	settings_panel.start()
 	Audio.dim_theme()
 	get_tree().paused = true
+	task_list_opened.emit()
 	
 	if start_screen_version:
 		settings_panel.open()

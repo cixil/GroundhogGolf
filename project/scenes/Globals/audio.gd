@@ -22,7 +22,7 @@ func start_game() -> void:
 	play_once(Signals.golfer_swung_no_arg, sfx[3])
 	play_once(Signals.golf_ball_hit_by_golfer, sfx[4])
 	play_once(Signals.hog_entered_dirt, sfx[5], 0.5)
-	play_once(Signals.hog_exited_dirt, sfx[6], 0.1)
+	play_once(Signals.hog_exited_dirt, sfx[6], 0.07)
 	play_once(Signals.radio_turned_off, sfx[7], 1.2)
 	play_once(Signals.radio_turned_on, sfx[7], 1.2)
 	play_once(Signals.bush_moved, sfx[9])
@@ -32,7 +32,12 @@ func start_game() -> void:
 	play_once(Signals.golfer_tripped, chaos_fills[0])
 	play_once(Signals.golfer_tripped, sfx[8], 0.8)
 	play_once(Signals.wine_spilled, chaos_fills[0])
-	play_once(Signals.crate_pushed_from_ground, chaos_fills[1])
+	#play_once(Signals.crate_pushed_from_ground, chaos_fills[1])
+	play_once(Signals.golfball_in_lake, sfx[14])
+	
+	play_once(TaskList.task_list_opened, sfx[12], .8)
+	play_once(TaskList.task_list_closed, sfx[13], .8)
+	play_once(TaskList.task_completed_sound, chaos_fills[1], 1)
 	
 	# TODO fade this one in and out
 	play_until(Signals.hog_entered_crate, Signals.hog_left_crate, chaos_fills[2], .8)

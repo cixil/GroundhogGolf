@@ -29,6 +29,7 @@ signal table_broke
 signal crate_pushed_from_ground
 signal hog_entered_crate
 signal hog_left_crate
+signal golfball_in_lake
 
 ## Tasks
 signal missed_the_shot

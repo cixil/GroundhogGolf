@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://rfysofgc0ssw"]
+[gd_scene load_steps=32 format=3 uid="uid://rfysofgc0ssw"]
 
 [ext_resource type="Script" path="res://scenes/Globals/audio.gd" id="1_ovd6e"]
 [ext_resource type="AudioStream" uid="uid://c60hnnc08hske" path="res://audio/sfx/groundhog touching ball.wav" id="2_v0d0s"]
@@ -21,10 +21,13 @@
 [ext_resource type="AudioStream" uid="uid://d1bo83nrjynac" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 4.wav" id="12_mbfd8"]
 [ext_resource type="AudioStream" uid="uid://xw7rbcgr0wma" path="res://audio/sfx/table crash.wav" id="13_biitq"]
 [ext_resource type="AudioStream" uid="uid://wup4qi1om152" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 5.wav" id="13_xiksk"]
+[ext_resource type="AudioStream" uid="uid://db272f1uaaffo" path="res://audio/sfx/ui/open window woosh.wav" id="14_0h5f2"]
 [ext_resource type="AudioStream" uid="uid://b6qkiftplqxil" path="res://audio/ambient-music-sounds/chaotic/Sneaky pizzicato.wav" id="14_86lrf"]
 [ext_resource type="AudioStream" uid="uid://dgk7p1sh657qd" path="res://audio/ambient-music-sounds/bird sound 1.wav" id="14_y6ix1"]
 [ext_resource type="AudioStream" uid="uid://bkllyyumfpy0s" path="res://audio/ambient-music-sounds/bird sound 2.wav" id="15_5x23q"]
+[ext_resource type="AudioStream" uid="uid://6rm7qrc1jm6k" path="res://audio/sfx/ui/open window woosh 2.wav" id="15_6o2jr"]
 [ext_resource type="AudioStream" uid="uid://dgdw5omrvwpl2" path="res://audio/ambient-music-sounds/bird sound 3.wav" id="16_03hfa"]
+[ext_resource type="AudioStream" uid="uid://ckt1ef8nu23lb" path="res://audio/sfx/golfball splash.wav" id="16_fst2h"]
 [ext_resource type="AudioStream" uid="uid://bsrocfch1ww03" path="res://audio/ambient-music-sounds/bug sound LEFT .wav" id="17_qs57g"]
 [ext_resource type="AudioStream" uid="uid://d2g0iyhkcx83d" path="res://audio/ambient-music-sounds/bug sound RIGHT.wav" id="18_sgmjv"]
 [ext_resource type="AudioStream" uid="uid://cst1hpvhrl3fq" path="res://audio/Music/tinny-latin-music.wav" id="28_fwpx2"]
@@ -32,7 +35,7 @@
 [node name="Audio" type="Node"]
 process_mode = 3
 script = ExtResource("1_ovd6e")
-sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b"), ExtResource("7_008x6"), ExtResource("8_jy2yl"), ExtResource("9_t4wp6"), ExtResource("10_50n43"), ExtResource("11_orm73"), ExtResource("12_lh7ga"), ExtResource("13_biitq")])
+sfx = Array[AudioStream]([ExtResource("2_v0d0s"), ExtResource("3_dxhrd"), ExtResource("4_nogc6"), ExtResource("5_ubfdg"), ExtResource("6_2fj5b"), ExtResource("7_008x6"), ExtResource("8_jy2yl"), ExtResource("9_t4wp6"), ExtResource("10_50n43"), ExtResource("11_orm73"), ExtResource("12_lh7ga"), ExtResource("13_biitq"), ExtResource("14_0h5f2"), ExtResource("15_6o2jr"), ExtResource("16_fst2h")])
 chaos_fills = Array[AudioStream]([ExtResource("9_ugg1s"), ExtResource("10_jub0u"), ExtResource("14_86lrf")])
 ambient_guitar = Array[AudioStream]([ExtResource("9_6llqk"), ExtResource("10_825p4"), ExtResource("11_o48sv"), ExtResource("12_mbfd8"), ExtResource("13_xiksk")])
 ambient_birds = Array[AudioStream]([ExtResource("14_y6ix1"), ExtResource("15_5x23q"), ExtResource("16_03hfa")])

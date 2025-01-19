@@ -4,6 +4,7 @@ var balls:Array[GolfBall]
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is GolfBall:
+		Signals.golfball_in_lake.emit()
 		if body.is_purple:
 			balls.append(body)
 			Signals.purple_ball_in_lake.emit()
