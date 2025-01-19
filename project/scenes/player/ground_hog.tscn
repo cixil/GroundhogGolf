@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bnt1aqmoo4cw"]
+[gd_scene load_steps=32 format=4 uid="uid://bnt1aqmoo4cw"]
 
 [ext_resource type="Script" path="res://scenes/player/ground_hog.gd" id="1_ly145"]
 [ext_resource type="Script" path="res://scenes/player/nose_push_area.gd" id="2_gxow1"]
@@ -1536,6 +1536,14 @@ _data = {
 "walk": SubResource("Animation_nuyqd")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ib6cr"]
+albedo_color = Color(0.447196, 0.273724, 0.0321728, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ibt5h"]
+material = SubResource("StandardMaterial3D_ib6cr")
+radius = 0.1
+height = 0.2
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_h67b6"]
 size = Vector3(0.52899, 0.362625, 0.532227)
 
@@ -1718,6 +1726,34 @@ skin = SubResource("Skin_sb7c1")
 libraries = {
 "": SubResource("AnimationLibrary_4cona")
 }
+
+[node name="MudSplash" type="CPUParticles3D" parent="Pivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11037, -0.144523)
+emitting = false
+amount = 30
+lifetime = 0.3
+speed_scale = 0.5
+mesh = SubResource("SphereMesh_ibt5h")
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, -0.05, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.2
+
+[node name="MudSplash2" type="CPUParticles3D" parent="Pivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11037, 0.150274)
+emitting = false
+amount = 30
+lifetime = 0.3
+speed_scale = 0.5
+mesh = SubResource("SphereMesh_ibt5h")
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, -0.05, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.2
 
 [node name="Detectors" type="Node3D" parent="."]
 

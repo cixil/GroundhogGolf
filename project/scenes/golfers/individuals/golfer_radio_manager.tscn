@@ -2390,7 +2390,7 @@ skin = SubResource("Skin_n8lt4")
 transform = Transform3D(0.0873665, -0.171029, 0.981385, 0.957812, 0.285187, -0.0355673, -0.273796, 0.943089, 0.18873, -0.337627, 0.0377714, -0.810607)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Pivot/ModelGoesHere/man/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.509946, 0.0821817, -0.856271, -0.837488, 0.274693, -0.472396, 0.19639, 0.958014, 0.208905, 0.244021, 0.0458545, -0.812601)
+transform = Transform3D(0.509946, 0.0821819, -0.856272, -0.837488, 0.274693, -0.472396, 0.19639, 0.958014, 0.208905, 0.244021, 0.0458545, -0.812601)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 10
 

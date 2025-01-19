@@ -7,6 +7,8 @@ class_name Golfer
 @onready var pivot: Node3D = $Pivot
 @onready var foot_steps: AudioStreamPlayer3D = $FootSteps
 
+@export var mud_splash_scene:PackedScene
+
 @export var walk_speed := 1.0
 
 @export var receptive_to_radio:bool = false
@@ -70,6 +72,9 @@ func get_muddy():
 	var material:Material = mesh.surface_get_material(0)
 	var mud_color = Color('9d5a40')
 	material.albedo_color = mud_color
+	var splash:Node3D = mud_splash_scene.instantiate()
+	add_child(splash)
+	splash.global_position = global_position
 	#mesh.surface_set_material(0)
 
 func _on_lump_detector_body_entered(_body: Node3D) -> void:

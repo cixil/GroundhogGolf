@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc2pxgwr5l65g"]
+
+[ext_resource type="Script" path="res://scenes/environment/mud/mud_splash.gd" id="1_tggo3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ib6cr"]
+albedo_color = Color(0.447196, 0.273724, 0.0321728, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ibt5h"]
+material = SubResource("StandardMaterial3D_ib6cr")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Curve" id="Curve_fa8xj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.962121, 0.327586), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="MudSplash" type="CPUParticles3D"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_ibt5h")
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_amount_curve = SubResource("Curve_fa8xj")
+script = ExtResource("1_tggo3")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

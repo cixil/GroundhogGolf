@@ -26,6 +26,8 @@ func enter(arg=[]):
 func start_fall():
 	await get_tree().create_timer(fall_offset).timeout
 	fallen = true
+	if body.in_mud:
+		body.get_muddy()
 	# If holding a ball have it "fall from the hand"
 	# this is necessary for the ResetTee state to be resumable after a trip
 	if body.holding_object == Holdable.objects.Ball:
@@ -34,6 +36,7 @@ func start_fall():
 			ball.reset_position(body.hand.global_position)
 			body.hold_in_hand(Holdable.objects.None)
 			ball.fell_from_golfer(body.direction) # TODO fix direction
+			
 
 func _exit():
 	ball = null
@@ -46,10 +49,8 @@ func phys_update(_delta):
 func _animation_finished(anim_name:String):
 	match anim_name:
 		'falling-face-front':
-			if body.in_mud:
-				body.get_muddy()
+			
 			animation_player.play('getting-up', -1, speed*2)
-			print('play getting up')
 			# the end of the fall animation is different from where the body is
 			# move the body to the approximate distance we fell so the skeleton doesn't
 			# "jump" back to the original place before the fall

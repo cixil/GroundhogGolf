@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://mgs8ef2jfsy1"]
+[gd_scene load_steps=20 format=3 uid="uid://mgs8ef2jfsy1"]
 
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/golfer.gd" id="1_87tke"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/state_machine.gd" id="2_siak4"]
 [ext_resource type="PackedScene" uid="uid://c1bxfadcm7t5u" path="res://scenes/golfers/lump_detector.tscn" id="2_xra0f"]
+[ext_resource type="PackedScene" uid="uid://uur2xrtb824" path="res://scenes/environment/mud/mud_splash.tscn" id="2_yl4n5"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/follow_path.gd" id="3_q4j2i"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/trip.gd" id="4_4nvov"]
 [ext_resource type="Script" path="res://scenes/golfers/base_scene/state_machine/states/reset_tee.gd" id="5_r8hre"]
@@ -28,6 +29,7 @@ size = Vector3(0.840088, 0.342896, 0.563965)
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_87tke")
+mud_splash_scene = ExtResource("2_yl4n5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766986, 0)

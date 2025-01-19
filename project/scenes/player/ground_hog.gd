@@ -11,6 +11,8 @@ class_name GroundHog
 
 @onready var nose_push_area: Area3D = $Pivot/NosePushArea
 
+@onready var mud_splash: CPUParticles3D = %MudSplash
+@onready var mud_splash_2: CPUParticles3D = %MudSplash2
 
 # Different speeds so it looks more normal with the camera angle
 var walk_speed_x = .7
@@ -24,6 +26,12 @@ var _nose_boop_offset = 0.18
 var _target_velocity = Vector3.ZERO
 var _prev_direction:Vector3 = Vector3.ZERO
 var push_force := 0.1
+var in_mud:bool = false:
+	set(value):
+		in_mud = value
+		mud_splash.emitting = value
+		mud_splash_2.emitting = value
+		
 
 enum mode {
 	dig, 
@@ -44,6 +52,7 @@ func _ready():
 	for i in range(1, 33):
 		if get_collision_mask_value(i):
 			_used_mask_layers.append(i)
+	mud_splash.emitting = false
 	_tx_to_walk(false)
 
 func _tx_to_dig():

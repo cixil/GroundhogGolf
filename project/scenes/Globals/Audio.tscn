@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://dgivxms7ernkw" path="res://audio/radio/radio sound.wav" id="9_t4wp6"]
 [ext_resource type="AudioStream" uid="uid://uo6y3lrx2ohd" path="res://audio/ambient-music-sounds/chaotic/drum fill.wav" id="9_ugg1s"]
 [ext_resource type="AudioStream" uid="uid://b45dt05h0y2le" path="res://audio/sfx/man OOF.wav" id="10_50n43"]
-[ext_resource type="AudioStream" uid="uid://05pxvnfanc54" path="res://audio/Music/latin-beats-120752.mp3" id="10_83s05"]
 [ext_resource type="AudioStream" uid="uid://bql3myyhr8qaq" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 2.wav" id="10_825p4"]
 [ext_resource type="AudioStream" uid="uid://dsnurekxih6e5" path="res://audio/ambient-music-sounds/chaotic/jazz sax.wav" id="10_jub0u"]
 [ext_resource type="AudioStream" uid="uid://cdsfesowfbfdu" path="res://audio/ambient-music-sounds/groundhog ambient gameplay - GUITAR 3.wav" id="11_o48sv"]
@@ -28,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dgdw5omrvwpl2" path="res://audio/ambient-music-sounds/bird sound 3.wav" id="16_03hfa"]
 [ext_resource type="AudioStream" uid="uid://bsrocfch1ww03" path="res://audio/ambient-music-sounds/bug sound LEFT .wav" id="17_qs57g"]
 [ext_resource type="AudioStream" uid="uid://d2g0iyhkcx83d" path="res://audio/ambient-music-sounds/bug sound RIGHT.wav" id="18_sgmjv"]
+[ext_resource type="AudioStream" uid="uid://cst1hpvhrl3fq" path="res://audio/Music/tinny-latin-music.wav" id="28_fwpx2"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
@@ -44,7 +44,8 @@ volume_db = -10.0
 bus = &"Music"
 
 [node name="RadioTheme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_83s05")
+stream = ExtResource("28_fwpx2")
+volume_db = 6.0
 bus = &"Music"
 
 [node name="GuitarTimer" type="Timer" parent="."]
