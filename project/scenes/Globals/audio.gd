@@ -15,6 +15,11 @@ extends Node
 @onready var bird_timer: Timer = $BirdTimer
 @onready var cricket_timer: Timer = $CricketTimer
 
+# these are needed from start menu
+func _ready() -> void:
+	play_once(TaskList.task_list_opened, sfx[12], .8)
+	play_once(TaskList.task_list_closed, sfx[13], .8)
+
 # Called when the node enters the scene tree for the first time.
 func start_game() -> void:
 	 #play the sound when the signal is emitted.
@@ -34,9 +39,7 @@ func start_game() -> void:
 	play_once(Signals.wine_spilled, chaos_fills[0])
 	#play_once(Signals.crate_pushed_from_ground, chaos_fills[1])
 	play_once(Signals.golfball_in_lake, sfx[14])
-	
-	play_once(TaskList.task_list_opened, sfx[12], .8)
-	play_once(TaskList.task_list_closed, sfx[13], .8)
+
 	play_once(TaskList.task_completed_sound, chaos_fills[1], 1)
 	
 	# TODO fade this one in and out

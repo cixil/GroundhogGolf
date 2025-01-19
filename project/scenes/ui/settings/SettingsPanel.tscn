@@ -83,7 +83,9 @@ credits_small_text = "Human Animations: Adobe Mixamo
 
 - Wood breaking and digging SFX from Zapsplat.com
 
-- \"Latin Beats\" by AishuDK https://pixabay.com/music/urban-latin-latin-beats-120752/"
+- \"Latin Beats\" by AishuDK https://pixabay.com/music/urban-latin-latin-beats-120752/
+
+- Male Snore 1.wav by mattyharm -- https://freesound.org/s/432997/ -- License: Creative Commons 0"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
