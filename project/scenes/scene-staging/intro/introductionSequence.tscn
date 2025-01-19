@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ciu86xh7kmjmj"]
+[gd_scene load_steps=18 format=3 uid="uid://ciu86xh7kmjmj"]
 
 [ext_resource type="Script" path="res://scenes/scene-staging/intro/introduction_sequence.gd" id="1_4uu7e"]
 [ext_resource type="PackedScene" uid="uid://bcbxb30ba8cnb" path="res://scenes/scene-staging/intro/slide_1.tscn" id="1_eg857"]
@@ -49,6 +49,28 @@ _data = {
 "blink-right-arrow": SubResource("Animation_na0o4")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6hn7"]
+atlas = ExtResource("7_vh3n7")
+region = Rect2(0, 0, 54, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgtlt"]
+atlas = ExtResource("7_vh3n7")
+region = Rect2(54, 0, 54, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0ai5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6hn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgtlt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="IntroductionSequence" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -87,8 +109,9 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Right Arrow" type="TextureRect" parent="Arrows"]
+visible = false
 layout_mode = 0
-offset_right = 40.0
+offset_right = 108.0
 offset_bottom = 40.0
 texture = ExtResource("7_vh3n7")
 
@@ -96,3 +119,10 @@ texture = ExtResource("7_vh3n7")
 libraries = {
 "": SubResource("AnimationLibrary_7sq06")
 }
+
+[node name="Indicator" type="AnimatedSprite2D" parent="Arrows"]
+position = Vector2(12, -13)
+scale = Vector2(1.66667, 1.66667)
+sprite_frames = SubResource("SpriteFrames_v0ai5")
+autoplay = "default"
+frame_progress = 0.719975

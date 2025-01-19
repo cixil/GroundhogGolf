@@ -4,6 +4,7 @@ extends Control
 @onready var slide_container: Control = $SlideContainer
 @onready var animation_player: AnimationPlayer = $Arrows/AnimationPlayer
 @onready var arrows: Control = $Arrows
+@onready var indicator: AnimatedSprite2D = $Arrows/Indicator
 
 @export var main_scene:PackedScene
 
@@ -30,7 +31,7 @@ func previous_slide():
 func show_slide(index:int):
 	if index == 5:
 		Audio.stop_intro()
-	arrows.hide()
+	indicator.hide()
 	if slide_container.get_child_count() > 0:
 		slide_container.get_child(0).queue_free()
 	can_advance = false
@@ -41,8 +42,9 @@ func show_slide(index:int):
 	slide.play()
 	await slide.animation_finished
 	can_advance = true
-	arrows.show()
-	animation_player.play('blink-right-arrow')
+	#arrows.show()
+	#animation_player.play('blink-right-arrow')
+	indicator.show()
 
 func _input(event: InputEvent) -> void:
 	if can_advance:

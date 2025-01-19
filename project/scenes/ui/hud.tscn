@@ -82,6 +82,7 @@ offset_bottom = -29.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(60, 20)
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="TutorialPanel"]
 layout_mode = 2

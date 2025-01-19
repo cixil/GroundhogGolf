@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://db6ieujpiy73q"]
+[gd_scene load_steps=59 format=3 uid="uid://db6ieujpiy73q"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/upper_ground.gd" id="1_0iia1"]
 [ext_resource type="PackedScene" uid="uid://bnt1aqmoo4cw" path="res://scenes/player/ground_hog.tscn" id="1_b6dm5"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://cmpbhj8q7u8lu" path="res://scenes/environment/hole.tscn" id="9_whhha"]
 [ext_resource type="PackedScene" uid="uid://dx1i63pbpp6v" path="res://scenes/environment/ornamental_golf_cart.tscn" id="11_l3ify"]
 [ext_resource type="PackedScene" uid="uid://dpbj73p8amv1x" path="res://scenes/ui/tutorial/show_button_area.tscn" id="11_r0ekm"]
+[ext_resource type="Script" path="res://scenes/main_scene/intro_guitar_lick.gd" id="14_1p7p6"]
+[ext_resource type="AudioStream" uid="uid://7op1o5iyg1yy" path="res://audio/ambient-music-sounds/intro guitar.wav" id="14_s3jqc"]
 [ext_resource type="PackedScene" uid="uid://bpiu14v1sey5r" path="res://scenes/environment/interactable/crate_with_balls.tscn" id="15_3jqbs"]
 [ext_resource type="PackedScene" uid="uid://dt1ujuk8yk5ts" path="res://scenes/environment/toxic_spill.tscn" id="15_woesy"]
 [ext_resource type="PackedScene" uid="uid://4rtr770dm2y7" path="res://scenes/environment/interactable/crate.tscn" id="16_jryvw"]
@@ -62,6 +64,9 @@ radius = 2.40909
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pdrko"]
 radius = 1.6246
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8t4k"]
+size = Vector3(8.59857, 2.94092, 4.23169)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_656sy"]
 albedo_color = Color(0.433472, 0.747403, 0.316281, 1)
 
@@ -91,6 +96,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bi5mu"]
+radius = 0.402064
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_io5of"]
 size = Vector3(1, 4, 7.6001)
@@ -163,6 +171,20 @@ script = ExtResource("8_h4qvh")
 
 [node name="Environment" type="Node3D" parent="."]
 
+[node name="PurpleGolfBalls" type="Node3D" parent="Environment"]
+
+[node name="PurpleGolfBall" parent="Environment/PurpleGolfBalls" instance=ExtResource("22_tr7vf")]
+transform = Transform3D(-0.840825, 0.0278049, -0.540593, -0.0330505, -0.999454, 1.86163e-09, -0.540297, 0.0178669, 0.841284, -0.755248, 0.238526, 7.33199)
+
+[node name="PurpleGolfBall2" parent="Environment/PurpleGolfBalls" instance=ExtResource("22_tr7vf")]
+transform = Transform3D(-0.840825, 0.0278049, -0.540593, -0.0330505, -0.999454, 1.86163e-09, -0.540297, 0.0178669, 0.841284, 10.7039, 0.238526, 0.39571)
+
+[node name="PurpleGolfBall3" parent="Environment/PurpleGolfBalls" instance=ExtResource("22_tr7vf")]
+transform = Transform3D(-0.840825, 0.0278049, -0.540593, -0.0330505, -0.999454, 1.86163e-09, -0.540297, 0.0178669, 0.841284, 11.3405, 0.238526, 4.60604)
+
+[node name="PurpleGolfBall4" parent="Environment/PurpleGolfBalls" instance=ExtResource("22_tr7vf")]
+transform = Transform3D(-0.840825, 0.0278049, -0.540593, -0.0330505, -0.999454, 1.86163e-09, -0.540297, 0.0178669, 0.841284, 12.9544, 0.238526, 10.4515)
+
 [node name="StartScenario" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93401, 0, 13.6413)
 
@@ -192,10 +214,27 @@ text_to_show = "Use \"WASD\" buttons to move"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.446261, 0, 0.697577)
 shape = SubResource("CylinderShape3D_pdrko")
 
+[node name="IntroGuitarLick" type="Area3D" parent="Environment/StartScenario/Tutorial"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08392, 0, 0.726562)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("14_1p7p6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Environment/StartScenario/Tutorial/IntroGuitarLick"]
+stream = ExtResource("14_s3jqc")
+volume_db = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StartScenario/Tutorial/IntroGuitarLick"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0968323, -0.751221, -1.36454)
+shape = SubResource("BoxShape3D_p8t4k")
+
 [node name="Decor" type="Node3D" parent="Environment/StartScenario"]
 
 [node name="Bush10" parent="Environment/StartScenario/Decor" instance=ExtResource("7_8t7xo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.488146, 0.121244, 0.57453)
+
+[node name="Bush11" parent="Environment/StartScenario/Decor" instance=ExtResource("7_8t7xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15425, 0.121244, -5.12335)
 
 [node name="ToxicBarrel" parent="Environment/StartScenario/Decor" instance=ExtResource("26_p7efo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.365053, 0, -2.23047)
@@ -347,9 +386,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73474, 0, 12.2408)
 [node name="Crate5" parent="Environment/CrateScenario" instance=ExtResource("16_jryvw")]
 transform = Transform3D(-0.840825, 0.0278049, -0.540593, -0.0330505, -0.999454, 0, -0.540297, 0.0178669, 0.841284, -0.755248, 0.65918, 7.33199)
 
-[node name="PurpleGolfBall" parent="Environment/CrateScenario/Crate5" instance=ExtResource("22_tr7vf")]
-transform = Transform3D(1, -5.58794e-09, 0, 9.31323e-10, 1, -1.86265e-09, 0, 9.31323e-10, 1, 0.0139027, 0.420424, 0)
-
 [node name="Crate6" parent="Environment/CrateScenario" instance=ExtResource("16_jryvw")]
 transform = Transform3D(-0.835794, 0.548034, -0.0332697, -0.0205698, 0.0292979, 0.999359, 0.548658, 0.835943, -0.0132141, -1.89186, 0.65918, 13.0986)
 
@@ -409,7 +445,14 @@ curve = SubResource("Curve3D_7lhmo")
 transform = Transform3D(-0.132548, 0.00438314, -0.991167, -0.0330505, -0.999454, -1.56701e-09, -0.990625, 0.0327586, 0.132619, 9.11586, 0.65918, 6.98052)
 
 [node name="Radio" parent="Environment/DancingScenario/Crate7" instance=ExtResource("23_d2gv3")]
-transform = Transform3D(-0.866614, -0.0330505, -0.497884, 0.0286577, -0.999453, 0.0164643, -0.498155, 3.80033e-08, 0.867089, -2.65886, 0.675403, -0.67764)
+transform = Transform3D(-0.866614, -0.0330505, -0.497884, 0.0286577, -0.999453, 0.0164643, -0.498155, 3.77127e-08, 0.867089, -1.44698, 0.635328, 0.112703)
+
+[node name="ShowButtonArea4" parent="Environment/DancingScenario/Crate7/Radio" instance=ExtResource("11_r0ekm")]
+transform = Transform3D(0.608748, 2.38427e-08, 0.793364, 2.10222e-08, 1, 2.04503e-08, -0.793363, 1.5787e-08, 0.608748, 0, 0, 0)
+text_to_show = "Press \"J\" to nudge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/DancingScenario/Crate7/Radio/ShowButtonArea4"]
+shape = SubResource("SphereShape3D_bi5mu")
 
 [node name="PicnicBench" parent="Environment/DancingScenario" instance=ExtResource("24_y1cha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7739, 0, 7.41321)
@@ -434,11 +477,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.28429, 1.81628, 0.583483)
 shape = SubResource("BoxShape3D_io5of")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/DancingScenario/RadioContainer"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.86719, 1.81628, -3.55674)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.86719, 1.81628, -3.64841)
 shape = SubResource("BoxShape3D_io5of")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/DancingScenario/RadioContainer"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.33936, 1.81628, 4.10665)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.33936, 1.81628, 3.02334)
 shape = SubResource("BoxShape3D_io5of")
 
 [node name="lid" type="CollisionShape3D" parent="Environment/DancingScenario/RadioContainer"]
@@ -774,6 +817,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18647, 0, 0)
 [connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea2" to="Hud" method="hide_tutorial_message"]
 [connection signal="hog_entered" from="Environment/StartScenario/Tutorial/ShowButtonArea3" to="Hud" method="show_tutorial_message"]
 [connection signal="hog_exited" from="Environment/StartScenario/Tutorial/ShowButtonArea3" to="Hud" method="hide_tutorial_message"]
+[connection signal="body_entered" from="Environment/StartScenario/Tutorial/IntroGuitarLick" to="Environment/StartScenario/Tutorial/IntroGuitarLick" method="_on_body_entered"]
 [connection signal="reset_ball" from="Environment/GolferScenarioGolfing/GolferPickerUpper" to="Environment/GolferScenarioGolfing/GolferSwinger" method="resume_golfing"]
+[connection signal="hog_entered" from="Environment/DancingScenario/Crate7/Radio/ShowButtonArea4" to="Hud" method="show_tutorial_message"]
+[connection signal="hog_exited" from="Environment/DancingScenario/Crate7/Radio/ShowButtonArea4" to="Hud" method="hide_tutorial_message"]
 [connection signal="body_entered" from="Environment/DancingScenario/RadioContainer/RadioArea" to="Environment/DancingScenario/RadioContainer/RadioArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Environment/DancingScenario/RadioContainer/RadioArea" to="Environment/DancingScenario/RadioContainer/RadioArea" method="_on_body_exited"]
