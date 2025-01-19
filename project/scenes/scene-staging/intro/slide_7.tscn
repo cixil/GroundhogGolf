@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b8o3vnmi80x3q"]
 
-[ext_resource type="Texture2D" uid="uid://dqfbdhftnuvv4" path="res://2d-art-assets/screenshots/6-transformation.png" id="1_y1e41"]
+[ext_resource type="Texture2D" uid="uid://cupmj5ige8ffq" path="res://2d-art-assets/screenshots/8-final-form.png" id="1_te0hn"]
 [ext_resource type="Script" path="res://scenes/scene-staging/intro/slide_7.gd" id="2_t6hl2"]
 
 [sub_resource type="Animation" id="Animation_li7n3"]
@@ -73,7 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_y1e41")
+texture = ExtResource("1_te0hn")
 expand_mode = 3
 script = ExtResource("2_t6hl2")
 

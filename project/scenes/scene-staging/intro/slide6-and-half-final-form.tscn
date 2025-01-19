@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4532t55u0nlp"]
+
+[ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_trb5a"]
+[ext_resource type="Texture2D" uid="uid://cupmj5ige8ffq" path="res://2d-art-assets/screenshots/8-final-form.png" id="2_3575x"]
+
+[node name="Slide" instance=ExtResource("1_trb5a")]
+texture = ExtResource("2_3575x")
+
+[node name="Label" parent="Panel" index="0"]
+text = "\"What's happened to me...\""

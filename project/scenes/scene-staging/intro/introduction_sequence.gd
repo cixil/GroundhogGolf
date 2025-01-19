@@ -11,6 +11,8 @@ extends Control
 var idx := 0
 var can_advance := false
 
+var transform_slide = 7 # used to cut music off
+
 func _ready() -> void:
 	show_slide(0)
 
@@ -28,7 +30,7 @@ func previous_slide():
 		show_slide(idx)
 
 func show_slide(index:int):
-	if index == len(slides)-2:
+	if index == transform_slide:
 		Audio.stop_intro()
 	indicator.hide()
 	if slide_container.get_child_count() > 0:

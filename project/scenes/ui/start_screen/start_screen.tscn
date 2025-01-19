@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://18ogyu2gqi3x"]
+[gd_scene load_steps=64 format=4 uid="uid://18ogyu2gqi3x"]
 
 [ext_resource type="Script" path="res://scenes/ui/start_screen/menu.gd" id="1_661y1"]
 [ext_resource type="MeshLibrary" uid="uid://cbufi4a8vv2i1" path="res://scenes/environment/mesh_lib/MeshLibrary.tres" id="1_qh0hm"]
@@ -17,6 +17,42 @@ font_size = 50
 font_color = Color(0.301385, 0.186469, 0.0776039, 1)
 outline_size = 20
 outline_color = Color(0.593467, 0.590918, 0.321256, 1)
+
+[sub_resource type="Animation" id="Animation_m2j3r"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0wwjq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mel74"]
+_data = {
+"RESET": SubResource("Animation_0wwjq"),
+"fade_out": SubResource("Animation_m2j3r")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kknra"]
 resource_name = "Material.016"
@@ -4313,6 +4349,17 @@ theme = ExtResource("3_i0oh1")
 theme_override_font_sizes/font_size = 28
 text = "Settings
 "
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 0
+offset_right = 1159.0
+offset_bottom = 653.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_mel74")
+}
 
 [node name="Scene" type="Node3D" parent="."]
 

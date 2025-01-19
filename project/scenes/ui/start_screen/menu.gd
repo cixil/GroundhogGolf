@@ -2,6 +2,7 @@ extends Control
 
 @onready var start_button: Button = %StartButton
 @onready var settings_button: Button = %SettingsButton
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var game:PackedScene
 
@@ -22,9 +23,9 @@ func resize():
 		button.custom_minimum_size.y = get_rect().size.y/7
 
 
-
-
 func _on_start_button_pressed() -> void:
+	animation_player.play('fade_out')
+	await animation_player.animation_finished
 	get_tree().change_scene_to_packed(game)
 
 
