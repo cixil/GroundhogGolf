@@ -6,5 +6,5 @@ func _ready() -> void:
 	TaskList.game_started = true # enable pause menu
 	Audio.start_game()
 	
-	# update settings if they were set in the start menuwwww
+	# update settings if they were set in the start menuwd 
 	Settings.emit_setting_signals()

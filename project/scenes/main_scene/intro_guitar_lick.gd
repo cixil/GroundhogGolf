@@ -7,4 +7,5 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is GroundHog:
 		audio_stream_player.play()
 		await get_tree().create_timer(3).timeout
+		Signals.entered_the_golf_course.emit()
 		queue_free()

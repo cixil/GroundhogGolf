@@ -13,7 +13,7 @@ signal golf_ball_hit_by_golfer()
 
 signal radio_turned_on
 signal radio_turned_off
-
+signal entered_the_golf_course
 
 #### Added for audio #####
 signal hog_entered_dirt

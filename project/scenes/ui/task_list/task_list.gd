@@ -9,6 +9,7 @@ extends CanvasLayer
 
 @export var task_item_scene:PackedScene
 signal task_list_closed # for start menu
+signal task_completed
 
 var game_started := false # prevent you from seeing tasks before game starts
 
@@ -39,9 +40,14 @@ func mark_done(index:int):
 	tasks[index][2] = true
 	var item:TaskItemControl = item_container.get_child(index)
 	item.set_done()
+	task_completed.emit()
+	
+	# show brief indicator that task completed
+	# TODO would be better if this were in hud, so this scene could purely be pause menu
+	# TODO fade out would be better than visibility toggle
 	task_completion_indicator.show()
 	task_complete_indicator_node.add_child(item.duplicate())
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(6).timeout
 	task_complete_indicator_node.get_child(0).queue_free()
 	task_completion_indicator.hide()
 

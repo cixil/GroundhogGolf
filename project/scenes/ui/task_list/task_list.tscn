@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/ui/task_list/task_list.gd" id="1_panm4"]
 [ext_resource type="PackedScene" uid="uid://drjarpv62rv3b" path="res://scenes/ui/task_list/task_item.tscn" id="2_leihd"]
+[ext_resource type="StyleBox" uid="uid://bxpoikbluhowc" path="res://scenes/ui/task_list/task_list_panel.tres" id="3_0kept"]
 [ext_resource type="PackedScene" uid="uid://onwxwtuppplq" path="res://scenes/ui/settings/SettingsPanel.tscn" id="3_bfg3v"]
 [ext_resource type="Script" path="res://scenes/ui/task_list/help_display.gd" id="4_8gqah"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4xyr"]
-bg_color = Color(0.920576, 0.893824, 0.651623, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wyj4"]
 font_color = Color(0.246091, 0.146344, 0.0689414, 1)
@@ -45,7 +43,7 @@ grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="TaskCompletionIndicator"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i4xyr")
+theme_override_styles/panel = ExtResource("3_0kept")
 
 [node name="MarginContainer" type="MarginContainer" parent="TaskCompletionIndicator"]
 layout_mode = 2
@@ -106,7 +104,7 @@ theme_override_constants/margin_top = 30
 
 [node name="Panel" type="Panel" parent="PauseMenu/VBoxContainer/TaskList"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i4xyr")
+theme_override_styles/panel = ExtResource("3_0kept")
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu/VBoxContainer/TaskList"]
 layout_mode = 2

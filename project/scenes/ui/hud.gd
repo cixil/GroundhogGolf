@@ -9,9 +9,14 @@ func _ready():
 	hide_tutorial_message()
 	toggle_control_visibility(false)
 	Settings.show_controls_changed.connect(toggle_control_visibility)
+	Signals.entered_the_golf_course.connect(bring_attention_to_tasks)
+	TaskList.task_completed.connect(wiggle_task_button)
+
+func wiggle_task_button():
+	animation_player.play('wiggle-task-bar')
 
 func bring_attention_to_tasks():
-	pass
+	animation_player.play("task_icon_grab_attention")
 
 func toggle_control_visibility(vis:bool) -> void:
 	control_panel.visible = vis
