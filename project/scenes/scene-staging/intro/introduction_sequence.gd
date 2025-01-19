@@ -13,7 +13,6 @@ var can_advance := false
 
 func _ready() -> void:
 	show_slide(0)
-	Audio.play_intro()
 
 func advance_slide():
 	if idx < len(slides)-1:
@@ -47,7 +46,7 @@ func show_slide(index:int):
 	indicator.show()
 
 func _input(event: InputEvent) -> void:
-	if can_advance:
+	#if can_advance:
 		if event.is_action_pressed("ui_right"):
 			advance_slide()
 		elif event.is_action_pressed("ui_left"):

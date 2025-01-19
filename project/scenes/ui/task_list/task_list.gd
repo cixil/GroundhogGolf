@@ -2,8 +2,12 @@ extends Control
 
 @onready var item_container: VBoxContainer = %ItemContainer
 @onready var settings_panel: MarginContainer = %SettingsPanel
+@onready var task_list: MarginContainer = $VBoxContainer/TaskList
 
 @export var task_item_scene:PackedScene
+signal task_list_closed # for start menu
+
+var game_started := false # prevent you from seeing tasks before game starts
 
 var tasks = [
 	["Balls everywhere", Signals.balls_everywhere, false],
@@ -33,14 +37,30 @@ func mark_done(index:int):
 	item.set_done()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and game_started:
 		if visible:
-			get_tree().paused = false
-			Audio.undim_theme()
-			settings_panel.end()
-			hide()
+			hide_menu()
 		else:
-			show()
-			settings_panel.start()
-			Audio.dim_theme()
-			get_tree().paused = true
+			show_menu()
+
+func show_menu(start_screen_version:bool=false):
+	show()
+	task_list.show()
+	settings_panel.start()
+	Audio.dim_theme()
+	get_tree().paused = true
+	
+	if start_screen_version:
+		settings_panel.open()
+		task_list.hide()
+
+func hide_menu():
+	get_tree().paused = false
+	Audio.undim_theme()
+	settings_panel.end()
+	hide()
+	task_list_closed.emit()
+
+
+func _on_settings_panel_exit_pressed() -> void:
+	hide_menu()

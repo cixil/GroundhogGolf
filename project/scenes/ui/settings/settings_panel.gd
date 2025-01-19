@@ -12,6 +12,7 @@ extends MarginContainer
 
 signal display_help_text(text:String)
 signal disable_help_text
+signal exit_pressed
 
 var active := false
 
@@ -67,4 +68,9 @@ func _on_camera_check_box_focus_exited() -> void:
 
 
 func _on_show_controls_check_box_value_changed(value: bool) -> void:
+	Settings.show_controls = value
 	Settings.show_controls_changed.emit(value)
+
+
+func _on_exit_button_pressed() -> void:
+	exit_pressed.emit()

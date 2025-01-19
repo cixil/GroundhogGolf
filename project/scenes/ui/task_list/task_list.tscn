@@ -108,3 +108,4 @@ autowrap_mode = 3
 
 [connection signal="disable_help_text" from="VBoxContainer/SettingsPanel" to="HelpDisplay" method="_on_settings_panel_disable_help_text"]
 [connection signal="display_help_text" from="VBoxContainer/SettingsPanel" to="HelpDisplay" method="display_text"]
+[connection signal="exit_pressed" from="VBoxContainer/SettingsPanel" to="." method="_on_settings_panel_exit_pressed"]
