@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ciu86xh7kmjmj"]
+[gd_scene load_steps=20 format=3 uid="uid://ciu86xh7kmjmj"]
 
 [ext_resource type="Script" path="res://scenes/scene-staging/intro/introduction_sequence.gd" id="1_4uu7e"]
 [ext_resource type="PackedScene" uid="uid://bcbxb30ba8cnb" path="res://scenes/scene-staging/intro/slide_1.tscn" id="1_eg857"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c74fk5lybcmbn" path="res://scenes/scene-staging/intro/slide_3.tscn" id="3_cqsf6"]
 [ext_resource type="PackedScene" uid="uid://blse0hhob0mq7" path="res://scenes/scene-staging/intro/slide_5.tscn" id="4_cikca"]
 [ext_resource type="PackedScene" uid="uid://ftm51b1tfv7g" path="res://scenes/scene-staging/intro/slide_4.tscn" id="5_tdklg"]
+[ext_resource type="PackedScene" uid="uid://btai6wbwvmysp" path="res://scenes/scene-staging/intro/slide_2_and_half.tscn" id="5_who8s"]
+[ext_resource type="PackedScene" uid="uid://d35itorec42ma" path="res://scenes/scene-staging/intro/slide_2_and_half-2.tscn" id="6_o2ctq"]
 [ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="7_jugh5"]
 [ext_resource type="PackedScene" uid="uid://cb2l7emkqhueo" path="res://scenes/scene-staging/intro/slide_6v2.tscn" id="7_lrwbo"]
 [ext_resource type="Texture2D" uid="uid://c3b14f44t7jpa" path="res://2d-art-assets/side-arrow.png" id="7_vh3n7"]
@@ -79,7 +81,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4uu7e")
-slides = Array[PackedScene]([ExtResource("1_eg857"), ExtResource("2_qhxn5"), ExtResource("3_cqsf6"), ExtResource("5_tdklg"), ExtResource("4_cikca"), ExtResource("7_lrwbo"), ExtResource("8_25nso")])
+slides = Array[PackedScene]([ExtResource("1_eg857"), ExtResource("2_qhxn5"), ExtResource("3_cqsf6"), ExtResource("5_who8s"), ExtResource("6_o2ctq"), ExtResource("5_tdklg"), ExtResource("4_cikca"), ExtResource("7_lrwbo"), ExtResource("8_25nso")])
 main_scene = ExtResource("9_ju2y8")
 
 [node name="SlideContainer" type="MarginContainer" parent="."]
@@ -121,7 +123,7 @@ libraries = {
 }
 
 [node name="Indicator" type="AnimatedSprite2D" parent="Arrows"]
-position = Vector2(12, -13)
+position = Vector2(-0.999999, -29)
 scale = Vector2(1.66667, 1.66667)
 sprite_frames = SubResource("SpriteFrames_v0ai5")
 autoplay = "default"

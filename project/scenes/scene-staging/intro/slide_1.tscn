@@ -3,3 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://csa5ipenysw87" path="res://scenes/scene-staging/intro/slide.tscn" id="1_v83da"]
 
 [node name="Slide" instance=ExtResource("1_v83da")]
+
+[node name="Label" parent="Panel" index="0"]
+text = "\"Ricky!
+I said not to spill any!\""

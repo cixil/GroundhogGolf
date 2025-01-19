@@ -28,7 +28,7 @@ func previous_slide():
 		show_slide(idx)
 
 func show_slide(index:int):
-	if index == 5:
+	if index == len(slides)-2:
 		Audio.stop_intro()
 	indicator.hide()
 	if slide_container.get_child_count() > 0:
@@ -39,14 +39,18 @@ func show_slide(index:int):
 	slide_container.add_child(slide)
 	slide.set_anchors_preset(Control.PRESET_FULL_RECT)
 	slide.play()
-	await slide.animation_finished
+	#await slide.animation_finished
+	if index == len(slides)-1:
+		await get_tree().create_timer(4).timeout
+	else:
+		await get_tree().create_timer(1).timeout
 	can_advance = true
 	#arrows.show()
 	#animation_player.play('blink-right-arrow')
 	indicator.show()
 
 func _input(event: InputEvent) -> void:
-	#if can_advance:
+	if can_advance:
 		if event.is_action_pressed("ui_right"):
 			advance_slide()
 		elif event.is_action_pressed("ui_left"):
