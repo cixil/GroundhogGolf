@@ -9,7 +9,7 @@ func booped():
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is GolfBall or body is Radio:  # better to use a group for this but oh well
+	if body is GolfBall or body is Radio or body.is_in_group("boopable"):  # better to use a group for all of these but no time
 		objects.append(body)
 
 

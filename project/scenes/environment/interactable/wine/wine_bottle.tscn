@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3ftdeefohon5"]
+[gd_scene load_steps=12 format=4 uid="uid://d3ftdeefohon5"]
 
 [ext_resource type="Script" path="res://scenes/environment/interactable/wine/wine_bottle.gd" id="1_3nm0d"]
 [ext_resource type="PackedScene" uid="uid://mee556rm8tsd" path="res://scenes/environment/interactable/wine/wine_bottle_broken.tscn" id="2_4yqg0"]
 [ext_resource type="PackedScene" uid="uid://x1h27fbgavxn" path="res://scenes/environment/interactable/wine/wineSpill.tscn" id="3_kah54"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wc12y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl1xd"]
 resource_name = "bottle-green"
@@ -110,9 +112,12 @@ radius = 0.072825
 height = 0.414202
 radius = 0.0965523
 
-[node name="WineBottle" type="RigidBody3D"]
+[node name="WineBottle" type="RigidBody3D" groups=["boopable"]]
 collision_layer = 128
-collision_mask = 133
+collision_mask = 135
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_wc12y")
+angular_damp = 0.5
 script = ExtResource("1_3nm0d")
 broken_bottle_scene = ExtResource("2_4yqg0")
 wine_spill_scene = ExtResource("3_kah54")
